@@ -12,5 +12,5 @@ import Observation
 @Observable
 public class AppState{
     //Everything concerning the logic goes here
-    //
+    var hittingLogic = HittingLogic()
 }
