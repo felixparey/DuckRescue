@@ -13,49 +13,76 @@ struct ImmersiveView: View {
     
     @Environment(AppState.self) private var appState
     
+    @State private var maze: Entity?
+    @State private var duck: Entity?
+    
+    @State private var subscription: EventSubscription?
+    
+    
+    
     var body: some View {
         
         RealityView { content in
             
-            if let scene = try? await Entity(named: "YuliiaScene", in: realityKitContentBundle) {
-                if let duck = try? await Entity(named: "DuckPrototypeScene", in: realityKitContentBundle){
-                    
-                    duck.name = "duck"
-                    scene.name = "maze"
-                    
-                    
-                    
-                    duck.position.z = -1
-                    duck.position.y = 1
-                    
+            if let scene = try? await Entity(named: "DuckRescueScene", in: realityKitContentBundle) {
+                content.add(scene)
                 
-                    content.add(scene)
-                    content.add(duck)
+                if let maze = content.entities.first?.findEntity(named: "Cube") {
+                    print("found Cube")
+                    self.maze = maze
+                    maze.name = "maze"
+                    maze.position.z = -3
+                    maze.position.y = 1
                     
+                } else {
+                    print("couldn't find Cube")
                 }
+                
+                if let duck = content.entities.first?.findEntity(named: "duck") {
+                    print("found duck")
+                    self.duck = duck
+                    duck.name = "duck"
+                    duck.position.z = -3
+                    duck.position.y = 1
+                }else {
+                    print("couldn't find duck")
+                }
+                
+                // Tracking collision of duck with other entities
+                subscription = content.subscribe(to: CollisionEvents.Began.self, on: duck) { collisionEvent in
+                    print("💥 Collision between \(collisionEvent.entityA.name) and \(collisionEvent.entityB.name)")
+                    
+                    if collisionEvent.entityB.name == "maze" {
+                        appState.hittingLogic.duckHitTarget = true
+                    }
+                }
+                
+                
                 
                 
                 
             }
             
-        }update: { content in
-            if let maze = content.entities.first?.findEntity(named: "maze"){
-                let event = content.subscribe(to: CollisionEvents.Began.self, on: maze) { _ in
-                    print("HITTTTTT")
-                    appState.hittingLogic.duckHitTarget = true
-                }
-            }
+            
+            
+            
         }
-        .gesture(DragGesture()
-            .targetedToAnyEntity()
-            .onChanged { value in
-                value.entity.position = value.convert(value.location3D, from: .local, to: value.entity.parent!)
-            })
-        
+        // gesture for moving duck
+        .gesture(
+            DragGesture()
+                .targetedToEntity(duck ?? Entity())
+                .onChanged { value in
+                    guard let duck, let parent = duck.parent else {
+                        return
+                    }
+                    
+                    duck.position = value.convert(value.location3D, from: .local, to: parent)
+                }
+        )
         
     }
     
-   
+    
 }
 
 #Preview {
