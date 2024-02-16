@@ -11,6 +11,8 @@ import RealityKitContent
 
 struct ImmersiveView: View {
     
+    @Environment(\.openWindow) private var openWindow
+    @Environment(\.dismissImmersiveSpace) private var dismissImmersiveSpace
     @Environment(AppState.self) private var appState
     
     @State private var maze: Entity?
@@ -31,7 +33,7 @@ struct ImmersiveView: View {
                     print("found Cube")
                     self.maze = maze
                     maze.name = "maze"
-                    maze.position.z = -3
+                    maze.position.z = -2
                     maze.position.y = 1
                     
                 } else {
@@ -42,7 +44,7 @@ struct ImmersiveView: View {
                     print("found duck")
                     self.duck = duck
                     duck.name = "duck"
-                    duck.position.z = -3
+                    duck.position.z = -2
                     duck.position.y = 1
                 }else {
                     print("couldn't find duck")
@@ -52,21 +54,23 @@ struct ImmersiveView: View {
                 subscription = content.subscribe(to: CollisionEvents.Began.self, on: duck) { collisionEvent in
                     print("💥 Collision between \(collisionEvent.entityA.name) and \(collisionEvent.entityB.name)")
                     
+                    Task{
+                        await dismissImmersiveSpace()
+                        
+                    }
+                    if appState.windowOpen == false{
+                        openWindow(id: "Start")
+                        appState.windowOpen = true
+                    }
+                        
+                    
                     if collisionEvent.entityB.name == "maze" {
                         appState.hittingLogic.duckHitTarget = true
                     }
                 }
-                
-                
-                
-                
-                
             }
-            
-            
-            
-            
         }
+        
         // gesture for moving duck
         .gesture(
             DragGesture()

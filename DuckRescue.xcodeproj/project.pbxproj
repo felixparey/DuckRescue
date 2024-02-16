@@ -15,6 +15,7 @@
 		4D9B73742B7AE581007CA380 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D9B73732B7AE581007CA380 /* Assets.xcassets */; };
 		4D9B73772B7AE581007CA380 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D9B73762B7AE581007CA380 /* Preview Assets.xcassets */; };
 		4D9B73822B7AE755007CA380 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9B73812B7AE755007CA380 /* AppState.swift */; };
+		4DA582792B7ED6E400114742 /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA582782B7ED6E400114742 /* StartScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		4D9B73762B7AE581007CA380 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4D9B73782B7AE581007CA380 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D9B73812B7AE755007CA380 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		4DA582782B7ED6E400114742 /* StartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				4D9B736F2B7AE580007CA380 /* ContentView.swift */,
+				4DA582782B7ED6E400114742 /* StartScreen.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 			files = (
 				4D9B73702B7AE580007CA380 /* ContentView.swift in Sources */,
 				4D9B736E2B7AE580007CA380 /* DuckRescueApp.swift in Sources */,
+				4DA582792B7ED6E400114742 /* StartScreen.swift in Sources */,
 				4D49555A2B7C279C00E7C608 /* AppState+CollisionLogic.swift in Sources */,
 				4D9B73722B7AE580007CA380 /* ImmersiveView.swift in Sources */,
 				4D9B73822B7AE755007CA380 /* AppState.swift in Sources */,

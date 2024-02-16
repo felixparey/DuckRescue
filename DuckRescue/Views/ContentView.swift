@@ -22,15 +22,6 @@ struct ContentView: View {
                 await openImmersiveSpace(id: "ImmersiveSpace")
             }
         }
-        .task {
-            if appState.hittingLogic.duckHitTarget{
-                
-                await dismissImmersiveSpace()
-                
-            }
-           
-        }
-        
             
     }
 }
