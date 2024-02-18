@@ -33,8 +33,8 @@ struct ImmersiveView: View {
                     print("found Cube")
                     self.maze = maze
                     maze.name = "maze"
-                    maze.position.z = -2
-                    maze.position.y = 1
+                    maze.position.z = -0.5
+                    maze.position.y = 0.85
                     
                 } else {
                     print("couldn't find Cube")
@@ -44,8 +44,8 @@ struct ImmersiveView: View {
                     print("found duck")
                     self.duck = duck
                     duck.name = "duck"
-                    duck.position.z = -2
-                    duck.position.y = 1
+                    duck.position.z = -0.5
+                    duck.position.y = 0.85
                 }else {
                     print("couldn't find duck")
                 }
@@ -54,19 +54,31 @@ struct ImmersiveView: View {
                 subscription = content.subscribe(to: CollisionEvents.Began.self, on: duck) { collisionEvent in
                     print("💥 Collision between \(collisionEvent.entityA.name) and \(collisionEvent.entityB.name)")
                     
-                    Task{
-                        await dismissImmersiveSpace()
-                        
-                    }
-                    if appState.windowOpen == false{
-                        openWindow(id: "Start")
-                        appState.windowOpen = true
-                    }
-                        
                     
-                    if collisionEvent.entityB.name == "maze" {
-                        appState.hittingLogic.duckHitTarget = true
+                    if collisionEvent.entityB.name == "Plane"{
+                        
+                        print("WATER HIT")
+                        Task{
+                            await dismissImmersiveSpace()
+                        }
+                        if appState.windowOpen == false{
+                            openWindow(id: "Start")
+                            appState.windowOpen = true
+                        }
+                        
+                       
+                        
+                    }else if collisionEvent.entityB.name == "Plane_001"{
+                        print("CEILING HIT")
+                        
+                        // Implement jump back to starting position here
+                        
+                        
+                        
                     }
+                    
+                    
+
                 }
             }
         }
@@ -79,8 +91,8 @@ struct ImmersiveView: View {
                     guard let duck, let parent = duck.parent else {
                         return
                     }
-                    
-                    duck.position = value.convert(value.location3D, from: .local, to: parent)
+                    duck.position.x = value.convert(value.location3D, from: .local, to: parent).x
+                    duck.position.y = value.convert(value.location3D, from: .local, to: parent).y
                 }
         )
         

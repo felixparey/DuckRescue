@@ -15,6 +15,57 @@
     "objectMetadataList" : [
       [
         "24EEB4BA-7DCC-49D6-B06D-DEDD602F725C",
+        "Root",
+        "Segment",
+        "geometry",
+        "USDAdobeIllustrator"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "24EEB4BA-7DCC-49D6-B06D-DEDD602F725C",
+        "Root",
+        "Cube_1",
+        "Geom"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "24EEB4BA-7DCC-49D6-B06D-DEDD602F725C",
+        "Root",
+        "FIRSTPIPEFINAL",
+        "Geom"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "24EEB4BA-7DCC-49D6-B06D-DEDD602F725C",
+        "Root",
+        "Cube",
+        "Geom"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "24EEB4BA-7DCC-49D6-B06D-DEDD602F725C",
+        "Root",
+        "Segment",
+        "geometry"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "24EEB4BA-7DCC-49D6-B06D-DEDD602F725C",
         "Root"
       ],
       {
@@ -24,7 +75,7 @@
       [
         "24EEB4BA-7DCC-49D6-B06D-DEDD602F725C",
         "Root",
-        "Cube"
+        "FIRSTPIPEFINAL"
       ],
       {
         "isExpanded" : true,
@@ -33,7 +84,7 @@
       [
         "24EEB4BA-7DCC-49D6-B06D-DEDD602F725C",
         "Root",
-        "duck"
+        "Cube"
       ],
       {
         "isExpanded" : true,
@@ -58,15 +109,6 @@
       [
         "68F5C880-F23E-4FA9-ABC7-9C2E9612F148",
         "Root",
-        "duck"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "68F5C880-F23E-4FA9-ABC7-9C2E9612F148",
-        "Root",
         "puzzleStart"
       ],
       {
@@ -85,6 +127,14 @@
       },
       [
         "68F5C880-F23E-4FA9-ABC7-9C2E9612F148",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "68F5C880-F23E-4FA9-ABC7-9C2E9612F148",
         "Root",
         "puzzleStart",
         "Geom"
@@ -95,7 +145,8 @@
       },
       [
         "68F5C880-F23E-4FA9-ABC7-9C2E9612F148",
-        "Root"
+        "Root",
+        "duck"
       ],
       {
         "isExpanded" : true,
@@ -129,15 +180,6 @@
     "objectMetadataList" : [
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "Sphere_Left"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
         "Root"
       ],
       {
@@ -152,6 +194,15 @@
       {
         "isExpanded" : true,
         "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "Sphere_Left"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
       }
     ]
   },
@@ -159,7 +210,8 @@
     "objectMetadataList" : [
       [
         "CB766F92-EE55-4A63-9401-E7B8C009764D",
-        "Root"
+        "Root",
+        "GridMaterial"
       ],
       {
         "isExpanded" : true,
@@ -167,8 +219,7 @@
       },
       [
         "CB766F92-EE55-4A63-9401-E7B8C009764D",
-        "Root",
-        "GridMaterial"
+        "Root"
       ],
       {
         "isExpanded" : true,
