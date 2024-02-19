@@ -26,26 +26,30 @@ struct ImmersiveView: View {
         
         RealityView { content in
             
-            if let scene = try? await Entity(named: "DuckRescueScene", in: realityKitContentBundle) {
-                content.add(scene)
+            if let scene = try? await Entity(named: "FullyImmersedScene", in: realityKitContentBundle) {
                 
-                if let maze = content.entities.first?.findEntity(named: "Cube") {
-                    print("found Cube")
-                    self.maze = maze
-                    maze.name = "maze"
-                    maze.position.z = -0.5
-                    maze.position.y = 0.85
-                    
-                } else {
-                    print("couldn't find Cube")
-                }
+                
+                content.add(scene)
+//                content.entities.first?.position.y = 0.5
+                
+                
+//                if let maze = content.entities.first?.findEntity(named: "Cube") {
+//                    print("found Cube")
+//                    self.maze = maze
+//                    maze.name = "maze"
+//                    maze.position.z = -0.5
+//                    maze.position.y = 0.85
+//                    
+//                } else {
+//                    print("couldn't find Cube")
+//                }
                 
                 if let duck = content.entities.first?.findEntity(named: "duck") {
                     print("found duck")
                     self.duck = duck
                     duck.name = "duck"
-                    duck.position.z = -0.5
-                    duck.position.y = 0.85
+//                    duck.position.z = -0.5
+//                    duck.position.y = 0.85
                 }else {
                     print("couldn't find duck")
                 }
@@ -56,7 +60,7 @@ struct ImmersiveView: View {
                     
                     
                     if collisionEvent.entityB.name == "Plane"{
-                        
+                        collisionEvent.entityA.components.remove(InputTargetComponent.self)
                         print("WATER HIT")
                         Task{
                             await dismissImmersiveSpace()
