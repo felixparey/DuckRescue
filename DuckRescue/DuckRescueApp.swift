@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct DuckRescueApp: App {
@@ -21,11 +22,17 @@ struct DuckRescueApp: App {
         }
         .defaultSize(width: 1000, height: 600)
         .windowResizability(.contentSize)
+       // .modelContainer(for: Level.self)
         
 
         ImmersiveSpace(id: "ImmersiveSpace") {
             ImmersiveView()
         }
         .environment(appState)
+      //  .modelContainer(for: Level.self)
+        
+        ImmersiveSpace(id: "Level"){
+            LevelBuilderView()
+        }
     }
 }
