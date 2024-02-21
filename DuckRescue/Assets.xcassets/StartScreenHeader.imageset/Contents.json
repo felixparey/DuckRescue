@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "flex2375_Mixed_reality_Game_on_Wall_top_View_rubber_duck_toon_i_d691a244-36ff-4239-bce4-bd9bf09dc925.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
