@@ -112,7 +112,6 @@
 			isa = PBXGroup;
 			children = (
 				4D9B736F2B7AE580007CA380 /* ContentView.swift */,
-				4D1811632B8402EF0044A816 /* LevelBuilderView.swift */,
 				4DA582782B7ED6E400114742 /* StartScreen.swift */,
 			);
 			path = Views;
@@ -121,6 +120,7 @@
 		4D9B737F2B7AE71E007CA380 /* ImmersiveSpaces */ = {
 			isa = PBXGroup;
 			children = (
+				4D1811632B8402EF0044A816 /* LevelBuilderView.swift */,
 				4D9B73712B7AE580007CA380 /* ImmersiveView.swift */,
 			);
 			path = ImmersiveSpaces;

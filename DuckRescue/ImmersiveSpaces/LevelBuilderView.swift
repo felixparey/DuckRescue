@@ -25,7 +25,7 @@ struct LevelBuilderView: View {
             let modelEntityArray: [ModelEntity] = [ModelEntity(mesh: mesh, materials: [SimpleMaterial(color: .blue, isMetallic: false)]), modelEntity, ModelEntity(mesh: mesh, materials: [SimpleMaterial(color: .green, isMetallic: false)]) ]
             
             
-            for i in 0..<15{
+            for i in 0..<16{
                 
                 var xPos: Float
                 var yPos: Float
@@ -52,7 +52,7 @@ struct LevelBuilderView: View {
                     yPos = 0
                 }
                 
-               try? await levelSegments.append(LevelSegment(entity: Entity(named: "duck1", in: realityKitContentBundle), position: [xPos, yPos, 0]))
+                try? await levelSegments.append(LevelSegment(entity: Entity(named: "duck1", in: realityKitContentBundle), yRotation: 90, position: [xPos, yPos, 0]))
             }
             if let firstEntity = levelSegments.first?.entity {
                 

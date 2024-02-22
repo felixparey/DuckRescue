@@ -28,7 +28,7 @@ struct ImmersiveView: View {
             
             if let scene = try? await Entity(named: "FullyImmersedScene", in: realityKitContentBundle) {
                 
-                
+            
                 content.add(scene)
 //                content.entities.first?.position.y = 0.5
                 
@@ -65,6 +65,7 @@ struct ImmersiveView: View {
                         Task{
                             await dismissImmersiveSpace()
                         }
+                        
                         if appState.windowOpen == false{
                             openWindow(id: "Start")
                             appState.windowOpen = true
@@ -74,7 +75,7 @@ struct ImmersiveView: View {
                         
                     }else if collisionEvent.entityB.name == "Plane_001"{
                         print("CEILING HIT")
-                        
+                        // duck?.position.x = 0.5
                         // Implement jump back to starting position here
                         
                         

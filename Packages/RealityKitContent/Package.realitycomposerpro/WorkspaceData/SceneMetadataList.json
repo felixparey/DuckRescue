@@ -16,16 +16,6 @@
       [
         "2C99BF58-1D1A-41C9-AF75-88E1FECEF878",
         "Root",
-        "PipePart1_2",
-        "Materials"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "2C99BF58-1D1A-41C9-AF75-88E1FECEF878",
-        "Root",
         "duck"
       ],
       {
@@ -36,7 +26,7 @@
         "2C99BF58-1D1A-41C9-AF75-88E1FECEF878",
         "Root",
         "PipePart1_2",
-        "Geom"
+        "Materials"
       ],
       {
         "isExpanded" : true,
@@ -45,16 +35,7 @@
       [
         "2C99BF58-1D1A-41C9-AF75-88E1FECEF878",
         "Root",
-        "PipePart1_3",
-        "Geom"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "2C99BF58-1D1A-41C9-AF75-88E1FECEF878",
-        "Root"
+        "PipePart1"
       ],
       {
         "isExpanded" : true,
@@ -63,17 +44,8 @@
       [
         "2C99BF58-1D1A-41C9-AF75-88E1FECEF878",
         "Root",
-        "PipePart1_1",
+        "PipePart1_2",
         "Geom"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "2C99BF58-1D1A-41C9-AF75-88E1FECEF878",
-        "Root",
-        "PipePart1_1"
       ],
       {
         "isExpanded" : true,
@@ -90,8 +62,17 @@
       },
       [
         "2C99BF58-1D1A-41C9-AF75-88E1FECEF878",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "2C99BF58-1D1A-41C9-AF75-88E1FECEF878",
         "Root",
-        "PipePart1"
+        "PipePart1_3",
+        "Geom"
       ],
       {
         "isExpanded" : true,
@@ -114,8 +95,9 @@
       [
         "24EEB4BA-7DCC-49D6-B06D-DEDD602F725C",
         "Root",
-        "Cube_1",
-        "Geom"
+        "Segment",
+        "geometry",
+        "USDAdobeIllustrator"
       ],
       {
         "isExpanded" : true,
@@ -124,15 +106,6 @@
       [
         "24EEB4BA-7DCC-49D6-B06D-DEDD602F725C",
         "Root"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "24EEB4BA-7DCC-49D6-B06D-DEDD602F725C",
-        "Root",
-        "FIRSTPIPEFINAL"
       ],
       {
         "isExpanded" : true,
@@ -152,8 +125,16 @@
       [
         "24EEB4BA-7DCC-49D6-B06D-DEDD602F725C",
         "Root",
-        "Segment",
-        "geometry"
+        "Cube"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "24EEB4BA-7DCC-49D6-B06D-DEDD602F725C",
+        "Root",
+        "FIRSTPIPEFINAL"
       ],
       {
         "isExpanded" : true,
@@ -163,8 +144,7 @@
         "24EEB4BA-7DCC-49D6-B06D-DEDD602F725C",
         "Root",
         "Segment",
-        "geometry",
-        "USDAdobeIllustrator"
+        "geometry"
       ],
       {
         "isExpanded" : true,
@@ -183,7 +163,8 @@
       [
         "24EEB4BA-7DCC-49D6-B06D-DEDD602F725C",
         "Root",
-        "Cube"
+        "Cube_1",
+        "Geom"
       ],
       {
         "isExpanded" : true,
@@ -217,7 +198,9 @@
     "objectMetadataList" : [
       [
         "68F5C880-F23E-4FA9-ABC7-9C2E9612F148",
-        "Root"
+        "Root",
+        "puzzleStart",
+        "Materials"
       ],
       {
         "isExpanded" : true,
@@ -244,6 +227,14 @@
       },
       [
         "68F5C880-F23E-4FA9-ABC7-9C2E9612F148",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "68F5C880-F23E-4FA9-ABC7-9C2E9612F148",
         "Root",
         "puzzleStart",
         "Geom"
@@ -256,16 +247,6 @@
         "68F5C880-F23E-4FA9-ABC7-9C2E9612F148",
         "Root",
         "duck"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "68F5C880-F23E-4FA9-ABC7-9C2E9612F148",
-        "Root",
-        "puzzleStart",
-        "Materials"
       ],
       {
         "isExpanded" : true,

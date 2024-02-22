@@ -33,15 +33,15 @@ struct StartScreen: View {
                     .offset(z: 20)
     
                 Button {
-                    Task{
-                        await openImmersiveSpace(id: "Level")
-                    }
 //                    Task{
-//                        appState.hittingLogic.duckHitTarget = false
-//                        await openImmersiveSpace(id: "ImmersiveSpace")
-//                        dismissWindow(id: "Start")
-//                        appState.windowOpen = false
+//                        await openImmersiveSpace(id: "Level")
 //                    }
+                    Task{
+                        appState.hittingLogic.duckHitTarget = false
+                        await openImmersiveSpace(id: "ImmersiveSpace")
+                        dismissWindow(id: "Start")
+                        appState.windowOpen = false
+                    }
                     
                 } label: {
                     Text("Start Game")
