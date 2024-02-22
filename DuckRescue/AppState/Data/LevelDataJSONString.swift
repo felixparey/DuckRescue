@@ -34,6 +34,19 @@ let LevelDataJSONString = """
         { "name": "RedTube", "rotation": 0 },
         { "name": "RedTube", "rotation": 0 },
         { "name": "GreenTube", "rotation": 90 }
+    ],
+    [
+        { "name": "GreenTube", "rotation": 90 },
+        { "name": "RedTube", "rotation": 0 },
+        { "name": "GreenTube", "rotation": 90 },
+
+        { "name": "RedTube", "rotation": 90 },
+        { "name": "RedTube", "rotation": 0 },
+        { "name": "GreenTube", "rotation": 90 },
+
+        { "name": "GreenTube", "rotation": 90 },
+        { "name": "RedTube", "rotation": 0 },
+        { "name": "RedTube", "rotation": 0 }
     ]
 ]
 """
