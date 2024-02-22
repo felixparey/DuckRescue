@@ -10,6 +10,8 @@
 		32EDF75A2B863047001185DC /* GlobalEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EDF7592B863047001185DC /* GlobalEntities.swift */; };
 		32EDF77F2B865F2E001185DC /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EDF77E2B865F2E001185DC /* Utils.swift */; };
 		32EDF7842B8707C1001185DC /* Tube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EDF7832B8707C1001185DC /* Tube.swift */; };
+		32EDF7872B870B05001185DC /* LevelDataJSONString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EDF7862B870B05001185DC /* LevelDataJSONString.swift */; };
+		32EDF7892B870E3F001185DC /* ChooseLevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EDF7882B870E3F001185DC /* ChooseLevelView.swift */; };
 		4D49555A2B7C279C00E7C608 /* AppState+CollisionLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4955592B7C279C00E7C608 /* AppState+CollisionLogic.swift */; };
 		4D9B736C2B7AE580007CA380 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = 4D9B736B2B7AE580007CA380 /* RealityKitContent */; };
 		4D9B736E2B7AE580007CA380 /* DuckRescueApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9B736D2B7AE580007CA380 /* DuckRescueApp.swift */; };
@@ -24,6 +26,8 @@
 		32EDF7592B863047001185DC /* GlobalEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalEntities.swift; sourceTree = "<group>"; };
 		32EDF77E2B865F2E001185DC /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		32EDF7832B8707C1001185DC /* Tube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tube.swift; sourceTree = "<group>"; };
+		32EDF7862B870B05001185DC /* LevelDataJSONString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDataJSONString.swift; sourceTree = "<group>"; };
+		32EDF7882B870E3F001185DC /* ChooseLevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLevelView.swift; sourceTree = "<group>"; };
 		4D4955592B7C279C00E7C608 /* AppState+CollisionLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppState+CollisionLogic.swift"; sourceTree = "<group>"; };
 		4D9B73662B7AE580007CA380 /* DuckRescue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DuckRescue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D9B736A2B7AE580007CA380 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
@@ -53,6 +57,14 @@
 			children = (
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		32EDF7852B870AF7001185DC /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				32EDF7862B870B05001185DC /* LevelDataJSONString.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		4D9B735D2B7AE580007CA380 = {
@@ -108,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				4D9B736F2B7AE580007CA380 /* ContentView.swift */,
+				32EDF7882B870E3F001185DC /* ChooseLevelView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -124,6 +137,7 @@
 		4D9B73802B7AE738007CA380 /* AppState */ = {
 			isa = PBXGroup;
 			children = (
+				32EDF7852B870AF7001185DC /* Data */,
 				4D9B73812B7AE755007CA380 /* AppState.swift */,
 				4D4955592B7C279C00E7C608 /* AppState+CollisionLogic.swift */,
 				32EDF7832B8707C1001185DC /* Tube.swift */,
@@ -206,9 +220,11 @@
 			files = (
 				4D9B73702B7AE580007CA380 /* ContentView.swift in Sources */,
 				32EDF75A2B863047001185DC /* GlobalEntities.swift in Sources */,
+				32EDF7872B870B05001185DC /* LevelDataJSONString.swift in Sources */,
 				32EDF7842B8707C1001185DC /* Tube.swift in Sources */,
 				4D9B736E2B7AE580007CA380 /* DuckRescueApp.swift in Sources */,
 				32EDF77F2B865F2E001185DC /* Utils.swift in Sources */,
+				32EDF7892B870E3F001185DC /* ChooseLevelView.swift in Sources */,
 				4D49555A2B7C279C00E7C608 /* AppState+CollisionLogic.swift in Sources */,
 				4D9B73722B7AE580007CA380 /* ImmersiveView.swift in Sources */,
 				4D9B73822B7AE755007CA380 /* AppState.swift in Sources */,
