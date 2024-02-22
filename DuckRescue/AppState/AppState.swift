@@ -13,4 +13,13 @@ import Observation
 public class AppState{
     //Everything concerning the logic goes here
     var hittingLogic = HittingLogic()
+    
+    var readyToStart = false
+    var levels: [[Tube]] = []
+    
+    init() {
+        Task { @MainActor in
+            self.readyToStart = true
+        }
+    }
 }
