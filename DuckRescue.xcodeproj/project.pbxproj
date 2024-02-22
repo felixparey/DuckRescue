@@ -19,6 +19,7 @@
 		4D9B73772B7AE581007CA380 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D9B73762B7AE581007CA380 /* Preview Assets.xcassets */; };
 		4D9B73822B7AE755007CA380 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9B73812B7AE755007CA380 /* AppState.swift */; };
 		4DA582792B7ED6E400114742 /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA582782B7ED6E400114742 /* StartScreen.swift */; };
+		4DBF2A792B87653700E2455D /* AppState+CloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBF2A782B87653700E2455D /* AppState+CloudKit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		4D9B73782B7AE581007CA380 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D9B73812B7AE755007CA380 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		4DA582782B7ED6E400114742 /* StartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreen.swift; sourceTree = "<group>"; };
+		4DBF2A782B87653700E2455D /* AppState+CloudKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppState+CloudKit.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				4D9B73812B7AE755007CA380 /* AppState.swift */,
+				4DBF2A782B87653700E2455D /* AppState+CloudKit.swift */,
 				4D4955592B7C279C00E7C608 /* AppState+CollisionLogic.swift */,
 				4D1811612B8400ED0044A816 /* AppState+LevelGeneration.swift */,
 			);
@@ -209,6 +212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DBF2A792B87653700E2455D /* AppState+CloudKit.swift in Sources */,
 				4D1811642B8402EF0044A816 /* LevelBuilderView.swift in Sources */,
 				4D18115F2B83FFE80044A816 /* LevelModel.swift in Sources */,
 				4D9B73702B7AE580007CA380 /* ContentView.swift in Sources */,

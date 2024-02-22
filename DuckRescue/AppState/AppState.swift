@@ -8,11 +8,15 @@
 import Foundation
 import SwiftUI
 import Observation
+import CloudKit
 
 @Observable
 public class AppState{
-    //Everything concerning the logic goes here
+    
     var hittingLogic = HittingLogic()
+    
+    let publicDatabase = CKContainer(identifier: "iCloud.com.felixparey.duckrescue.levels").publicCloudDatabase
+    let record = CKRecord(recordType: "EntityData")
     
     var windowOpen = true
 }

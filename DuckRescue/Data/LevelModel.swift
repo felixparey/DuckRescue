@@ -10,10 +10,7 @@ import SwiftData
 import RealityKit
 import CloudKit
 
-struct DataEntity: Codable{
-    
-   
-}
+
 
 
 @Observable
@@ -23,13 +20,14 @@ class LevelSegment{
     var yRotation: Float
     var position: SIMD3<Float>
     
+    
     init(entity: Entity, yRotation: Float, position: SIMD3<Float>) {
         self.entity = entity
         self.yRotation = yRotation
         self.position = position
     }
     
-    let record = CKRecord(recordType: "DataEntity")
+    
     
     
 }

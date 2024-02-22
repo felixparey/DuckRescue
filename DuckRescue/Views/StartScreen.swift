@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct StartScreen: View {
     
@@ -59,6 +60,9 @@ struct StartScreen: View {
                 
                 
             
+        }
+        .onAppear {
+            appState.addRecord(name: "Yuliia", yRotation: 180)
         }
     }
 }
