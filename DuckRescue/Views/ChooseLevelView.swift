@@ -30,6 +30,7 @@ struct ChooseLevelView: View {
                     Text("\(appState.currentLevelIndex)")
                         .font(.largeTitle.bold())
                         .padding()
+                        .frame(width: 100)
                     
                     Button {
                         if appState.currentLevelIndex < appState.levels.count - 1 {
