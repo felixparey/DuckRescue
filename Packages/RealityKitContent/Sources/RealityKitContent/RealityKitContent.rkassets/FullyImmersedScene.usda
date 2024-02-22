@@ -10,7 +10,7 @@
 
 def Xform "Root"
 {
-    reorder nameChildren = ["BackWall", "FrontWall", "Violin", "Material", "PipePart1", "PipePart1_1", "PipePart1_2", "PipePart1_3", "PipePart1_4", "PipePart1_5", "PipePart1_6", "PipePart1_7", "PipePart1_8", "PipePart1_9", "PipePart1_10", "PipePart1_11", "PipePart1_12", "duck", "Floor", "LeftWall", "RightWall"]
+    reorder nameChildren = ["BackWall", "FrontWall", "Violin", "Material", "PipePart1", "PipePart1_1", "FIRSTCURVE", "FIRSTCURVE_1", "PipePart1_2", "rat", "Cylinder", "carpet", "duck", "Floor", "LeftWall", "RightWall"]
     def Cube "Floor" (
         active = true
         prepend apiSchemas = ["MaterialBindingAPI"]
@@ -675,26 +675,12 @@ def Xform "Root"
         }
     }
 
-    def "rat" (
-        active = true
-        customData = {
-            float3 rotationEulerHint = (0, 4.712389, 0)
-        }
-        prepend references = @rat.usdz@
-    )
-    {
-        quatf xformOp:orient = (0.70710677, 0, -0.70710677, 0)
-        float3 xformOp:scale = (0.1, 0.3, 0.1)
-        float3 xformOp:translate = (-4.7686467, 1.9272571, -4.8633785)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-    }
-
     def "FIRSTCURVE" (
         active = true
         customData = {
             float3 rotationEulerHint = (-1.5707964, 1.5707963, 0)
         }
-        prepend references = @FIRSTCURVE.usdz@
+        references = @FIRSTCURVE.usdz@
     )
     {
         quatf xformOp:orient = (0.5, -0.50000006, 0.49999997, 0.5)
@@ -801,7 +787,7 @@ def Xform "Root"
         customData = {
             float3 rotationEulerHint = (-3.1415927, 1.5707963, 0)
         }
-        prepend references = @FIRSTCURVE.usdz@
+        references = @FIRSTCURVE.usdz@
     )
     {
         quatf xformOp:orient = (3.090862e-8, 0.70710677, 3.090862e-8, -0.70710677)
@@ -940,6 +926,7 @@ def Xform "Root"
         references = @PipePart1.usdz@
     )
     {
+        reorder nameChildren = ["tv_retro_1", "Materials", "Geom", "RigidBody", "Collider"]
         quatf xformOp:orient = (-0.003360386, 0.7070987, -0.003360892, -0.7070988)
         float3 xformOp:scale = (0.2, 0.2, 0.2)
         float3 xformOp:translate = (-3.4615073, 3.1157725, -4.799292)
@@ -1114,22 +1101,12 @@ def Xform "Root"
         }
     }
 
-    def "tv_retro" (
-        active = true
-        prepend references = @tv_retro.usdz@
-    )
-    {
-        quatf xformOp:orient = (1, 0, 0, 0)
-        float3 xformOp:scale = (0.012450887, 0.012450887, 0.012450887)
-        float3 xformOp:translate = (-4.4060316, 0.80800563, -4.764137)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-    }
-
     def Cylinder "Cylinder" (
         active = true
         prepend apiSchemas = ["MaterialBindingAPI"]
     )
     {
+        reorder nameChildren = ["rat", "DefaultMaterial"]
         uniform token axis = "Y"
         double height = 0.2
         rel material:binding = </Root/Material> (
@@ -1153,6 +1130,27 @@ def Xform "Root"
                 token outputs:surface
             }
         }
+    }
+
+    def "carpet" (
+        active = true
+        references = @Bandage.usdz@
+    )
+    {
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (5, 5, 5)
+        float3 xformOp:translate = (-4.3382883, 1.1052223, -4.7533484)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "rat" (
+        references = @rat.usdz@
+    )
+    {
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (0.02, 0.02, 0.02)
+        float3 xformOp:translate = (-4.649918, 1.7495482, -4.630212)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 }
 
