@@ -27,7 +27,7 @@ struct ChooseLevelView: View {
                             .labelStyle(.iconOnly)
                     }
                     
-                    Text("\(appState.currentLevelIndex)")
+                    Text("\(appState.currentLevelIndex + 1)")
                         .font(.largeTitle.bold())
                         .padding()
                         .frame(width: 100)
