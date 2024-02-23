@@ -48,9 +48,12 @@ public class AppState{
                 let j = index % 3
                 
                 let newOrientation = Rotation3D(angle: .degrees(Double(90) + Double(tubeData.rotation)), axis: .z)
+                tube.name = "tube"
                 tube.position = [gap * Float(j), gap * Float(i), 0.0]
                 tube.orientation = simd_quatf(newOrientation)
-                
+                tube.components.set(InputTargetComponent())
+                tube.components.set(HoverEffectComponent())
+                tube.generateCollisionShapes(recursive: false)
                 levelContainer.addChild(tube)
             }
         }
@@ -60,12 +63,16 @@ public class AppState{
     }
     
     func initDuck() {
-        if let duck = duck?.clone(recursive: true) {
-            duck.transform.rotation = simd_quatf(
+        if let duckCopy = duck?.clone(recursive: true) {
+            duckCopy.transform.rotation = simd_quatf(
                 Rotation3D(angle: .degrees(90), axis: .y)
             )
-            levelContainer.addChild(duck)
-            duck.setPosition([0.0, 0.0, 0.0], relativeTo: levelContainer)
+            levelContainer.addChild(duckCopy)
+            duckCopy.setPosition([0.0, 0.0, 0.0], relativeTo: levelContainer)
+            duckCopy.components.set(InputTargetComponent())
+            duckCopy.components.set(HoverEffectComponent())
+            duckCopy.generateCollisionShapes(recursive: true)
+            duck = duckCopy
         }
     }
     

@@ -31,23 +31,21 @@ struct ImmersiveView: View {
                 ChooseLevelView()
             }
         }
-        .gesture(DragGesture(minimumDistance: 0.0)
-            .targetedToEntity(duck!)
-            .onChanged { value in
-                print(value)
-            }
-        )
+        .gesture(dragGesture)
+        /*
         .gesture(DragGesture(minimumDistance: 0.0)
             .targetedToAnyEntity()
             .onChanged { value in
                 value.entity.position = value.convert(value.location3D, from: .local, to: value.entity.parent!)
                 print(value)
             })
+        
         .simultaneousGesture(
             TapGesture()
                 .onEnded({ value in
                     print(value)
                 }))
+         */
     }
     
     func buildAttachments(_ attachments: RealityViewAttachments) {
@@ -89,4 +87,12 @@ struct ImmersiveView: View {
 #Preview {
     ImmersiveView()
         .previewLayout(.sizeThatFits)
+}
+
+var dragGesture : some Gesture {
+    DragGesture()
+        .targetedToAnyEntity()
+        .onChanged {value in
+            print(value.entity.name)
+        }
 }
