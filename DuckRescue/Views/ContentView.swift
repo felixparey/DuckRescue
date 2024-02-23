@@ -14,12 +14,14 @@ struct ContentView: View {
     @Environment(AppState.self) private var appState
     @Environment(\.openImmersiveSpace) private var openImmersiveSpace
     @Environment(\.dismissImmersiveSpace) private var dismissImmersiveSpace
+    @Environment(\.dismissWindow) private var dismiss
     
     var body: some View {
         Button("Start"){
             Task{
                 appState.hittingLogic.duckHitTarget = false
                 await openImmersiveSpace(id: "ImmersiveSpace")
+                dismiss()
             }
         }
         .task {

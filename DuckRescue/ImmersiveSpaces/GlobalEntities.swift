@@ -12,3 +12,4 @@ let rootEntity = Entity()
 let levelContainer = Entity()
 var tube: Entity? = nil
 var duck: Entity? = nil
+var enemy: Entity? = nil 

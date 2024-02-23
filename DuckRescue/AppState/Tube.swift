@@ -22,12 +22,12 @@ let tubeRadius: Float = 0.05
 let tubeHeight: Float = 0.25
 
 let redTubeMaterial = {
-    var material = SimpleMaterial(color: .red.withAlphaComponent(0.5), isMetallic: false)
+    var material = SimpleMaterial(color: .red.withAlphaComponent(0.8), isMetallic: false)
     material.roughness = 0.90
     return material
 }()
 let greenTubeMaterial = {
-    var material = SimpleMaterial(color: .green.withAlphaComponent(0.5), isMetallic: false)
+    var material = SimpleMaterial(color: .green.withAlphaComponent(0.8), isMetallic: false)
     material.roughness = 0.90
     return material
 }()

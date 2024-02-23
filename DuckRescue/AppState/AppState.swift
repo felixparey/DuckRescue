@@ -33,6 +33,7 @@ public class AppState{
     func reset() {
         buildLevel()
         initDuck()
+        initEnemy()
     }
     
     func buildLevel() {
@@ -67,13 +68,21 @@ public class AppState{
             duckCopy.transform.rotation = simd_quatf(
                 Rotation3D(angle: .degrees(90), axis: .y)
             )
+            
             levelContainer.addChild(duckCopy)
+            
             duckCopy.setPosition([0.0, 0.0, 0.0], relativeTo: levelContainer)
             duckCopy.components.set(InputTargetComponent())
             duckCopy.components.set(HoverEffectComponent())
             duckCopy.generateCollisionShapes(recursive: true)
+            
             duck = duckCopy
         }
+    }
+    
+    func initEnemy() {
+        enemy = ModelEntity(mesh: .generateSphere(radius: 0.05 / 2), materials: [SimpleMaterial(color: .black, isMetallic: false)])
+        levelContainer.addChild(enemy!)
     }
     
     private func loadLevelData() async {

@@ -12,6 +12,7 @@ import RealityKitContent
 struct ImmersiveView: View {
     
     @Environment(AppState.self) private var appState
+    @Environment(\.dismissWindow) private var dismiss
     
     var body: some View {
         RealityView {  content, attachments in
@@ -29,6 +30,8 @@ struct ImmersiveView: View {
         } attachments: {
             Attachment(id: "a1") {
                 ChooseLevelView()
+                    .padding()
+                    .glassBackgroundEffect()
             }
         }
         .gesture(dragGesture)
@@ -56,6 +59,12 @@ struct ImmersiveView: View {
     }
     
     func duckMoving(duck: Entity) {
+
+        // duck.move(to: .init(translation: [2.0, 0.0, 0.0]), relativeTo: levelContainer, duration: 1.0)
+        // duck.move(to: Transform(translation: [1.0, 0.0, 0.0]), relativeTo: duck.parent, duration: 5.0, timingFunction: .linear)
+        
+        
+        
         /*
         duck.stopAllAnimations()
         
@@ -81,6 +90,7 @@ struct ImmersiveView: View {
             .generate(with: line)
         duck.playAnimation(animation, transitionDuration: 1.0, startsPaused: false)
         */
+        
     }
 }
 
@@ -92,7 +102,7 @@ struct ImmersiveView: View {
 var dragGesture : some Gesture {
     DragGesture()
         .targetedToAnyEntity()
-        .onChanged {value in
+        .onChanged { value in
             if value.entity.name == "Rubber_Duck_01_1_geometry" {
                 let y = value.entity.position.y
                 value.entity.position = value.convert(value.location3D, from: .local, to: value.entity.parent!)
