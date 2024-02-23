@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 import Observation
 import RealityKit
+import RealityKitContent
 
 @Observable
 public class AppState{
@@ -20,14 +21,18 @@ public class AppState{
     var currentLevelIndex = 0
     
     init() {
+        
         Task { @MainActor in
             await loadLevelData()
+            duck = try? await Entity(named: "Rubber_Duck_01_1.fbxEF69E24E-9C93-48F3-A001-002997AF9D6C", in: realityKitContentBundle)
+            duck?.name = "Duck"
             self.readyToStart = true
         }
     }
     
     func reset() {
         buildLevel()
+        initDuck()
     }
     
     func buildLevel() {
@@ -52,6 +57,16 @@ public class AppState{
         
         rootEntity.addChild(levelContainer)
         levelContainer.setPosition([-(tubeHeight * 3 / 2), -(tubeHeight * 3 / 2), 0.0], relativeTo: rootEntity)
+    }
+    
+    func initDuck() {
+        if let duck = duck?.clone(recursive: true) {
+            duck.transform.rotation = simd_quatf(
+                Rotation3D(angle: .degrees(90), axis: .y)
+            )
+            levelContainer.addChild(duck)
+            duck.setPosition([0.0, 0.0, 0.0], relativeTo: levelContainer)
+        }
     }
     
     private func loadLevelData() async {

@@ -11,3 +11,4 @@ import RealityKit
 let rootEntity = Entity()
 let levelContainer = Entity()
 var tube: Entity? = nil
+var duck: Entity? = nil
