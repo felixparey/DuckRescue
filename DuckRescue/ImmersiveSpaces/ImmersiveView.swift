@@ -93,6 +93,10 @@ var dragGesture : some Gesture {
     DragGesture()
         .targetedToAnyEntity()
         .onChanged {value in
-            print(value.entity.name)
+            if value.entity.name == "Rubber_Duck_01_1_geometry" {
+                let y = value.entity.position.y
+                value.entity.position = value.convert(value.location3D, from: .local, to: value.entity.parent!)
+                value.entity.position.y = y
+            }
         }
 }

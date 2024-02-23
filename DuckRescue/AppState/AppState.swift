@@ -51,7 +51,6 @@ public class AppState{
                 tube.name = "tube"
                 tube.position = [gap * Float(j), gap * Float(i), 0.0]
                 tube.orientation = simd_quatf(newOrientation)
-                tube.components.set(InputTargetComponent())
                 tube.components.set(HoverEffectComponent())
                 tube.generateCollisionShapes(recursive: false)
                 levelContainer.addChild(tube)
@@ -64,6 +63,7 @@ public class AppState{
     
     func initDuck() {
         if let duckCopy = duck?.clone(recursive: true) {
+            duckCopy.name = "Duck"
             duckCopy.transform.rotation = simd_quatf(
                 Rotation3D(angle: .degrees(90), axis: .y)
             )
