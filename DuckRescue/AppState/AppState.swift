@@ -20,8 +20,9 @@ public class AppState{
     var levels: [[Tube]] = []
     var currentLevelIndex = 0
     
+    var isEnemyMoving = false
+    
     init() {
-        
         Task { @MainActor in
             await loadLevelData()
             duck = try? await Entity(named: "Rubber_Duck_01_1.fbxEF69E24E-9C93-48F3-A001-002997AF9D6C", in: realityKitContentBundle)
@@ -81,7 +82,7 @@ public class AppState{
     }
     
     func initEnemy() {
-        enemy = ModelEntity(mesh: .generateSphere(radius: 0.05 / 2), materials: [SimpleMaterial(color: .black, isMetallic: false)])
+        enemy = ModelEntity(mesh: .generateSphere(radius: 0.05 / 2), materials: [SimpleMaterial(color: .yellow, isMetallic: false)])
         levelContainer.addChild(enemy!)
     }
     
