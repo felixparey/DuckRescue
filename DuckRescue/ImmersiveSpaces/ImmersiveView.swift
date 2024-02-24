@@ -38,11 +38,6 @@ struct ImmersiveView: View {
                     .padding()
                     .glassBackgroundEffect()
             }
-            Attachment(id: "a2") {
-                EnemyControllerView()
-                    .padding()
-                    .glassBackgroundEffect()
-            }
         }
         .gesture(dragGesture)
         /*
@@ -64,11 +59,7 @@ struct ImmersiveView: View {
     func buildAttachments(_ attachments: RealityViewAttachments) {
         if let entity = attachments.entity(for: "a1") {
             rootEntity.addChild(entity)
-            entity.setPosition([0.50, -0.25, 0], relativeTo: rootEntity)
-        }
-        if let entity = attachments.entity(for: "a2") {
-            rootEntity.addChild(entity)
-            entity.setPosition([0.50, -0.40, 0], relativeTo: rootEntity)
+            entity.setPosition([0.80, -0.25, 0], relativeTo: rootEntity)
         }
     }
     
@@ -147,7 +138,7 @@ struct ImmersiveView: View {
     func calculateNextEnemyPosition() -> SIMD3<Float> {
         let currentTubeSegment = appState.levels[appState.currentLevelIndex][enemyCurrentTubeSegmentIndex]
         
-        // TODO: instead calculate the next coordinates, maybe, need thinking about ready to use tube coordinates? 
+        // TODO: instead calculate the next coordinates, maybe, need thinking about ready to use tube coordinates?
         var x = enemy!.position.x + tubeHeight
         var y = enemy!.position.y
         

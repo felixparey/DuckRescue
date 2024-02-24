@@ -24,11 +24,27 @@ public class AppState{
     
     init() {
         Task { @MainActor in
+            await withTaskGroup(of: Void.self) { group in
+                ["straight", "corner_1", "corner_2", "corner_3", "corner_4"].forEach { name in
+                    group.addTask {
+                        if let model = try? await Entity(named: name, in: realityKitContentBundle) {
+                            tubesModels[name] = model
+                        }
+                    }
+                }
+                
+                group.addTask {
+                    duck = try? await Entity(named: "Rubber_Duck_01_1.fbxEF69E24E-9C93-48F3-A001-002997AF9D6C", in: realityKitContentBundle)
+                }
+                
+                await group.waitForAll()
+            }
+
             await loadLevelData()
-            duck = try? await Entity(named: "Rubber_Duck_01_1.fbxEF69E24E-9C93-48F3-A001-002997AF9D6C", in: realityKitContentBundle)
-            duck?.name = "Duck"
+            
             self.readyToStart = true
         }
+
     }
     
     func reset() {
@@ -41,25 +57,37 @@ public class AppState{
         levelContainer.children.removeAll()
         
         let level = levels[currentLevelIndex]
-        let gap: Float = tubeHeight
         
         for (index, tubeData) in level.enumerated() {
-            let tube: ModelEntity? = spawnTube(tubeData.name)
+            let tube: Entity? = spawnTube(tubeData.name)
             if let tube = tube {
+                tube.scale = .init(repeating: 0.08)
+                
+                let tubeBounds = tube.visualBounds(relativeTo: nil).max
+                let horizontalDistance: Float = tubeBounds.z * 2
+                let verticalDistance: Float = 0.3
+                
                 let i = index / 3
                 let j = index % 3
                 
-                let newOrientation = Rotation3D(angle: .degrees(Double(90) + Double(tubeData.rotation)), axis: .z)
-                tube.name = "tube"
-                tube.position = [gap * Float(j), gap * Float(i), 0.0]
+                // let newOrientation = Rotation3D(angle: .degrees(Double(90) + Double(tubeData.rotation)), axis: .z)
+                let newOrientation = Rotation3D(angle: .degrees(Double(90)), axis: .y)
                 tube.orientation = simd_quatf(newOrientation)
+                
+                tube.name = "tube"
+                tube.position = [horizontalDistance * Float(j), verticalDistance * Float(i), 0.0]
+                
+                tube.components.set(InputTargetComponent())
                 tube.components.set(HoverEffectComponent())
-                tube.generateCollisionShapes(recursive: false)
+                
+                tube.generateCollisionShapes(recursive: true
+                )
                 levelContainer.addChild(tube)
             }
         }
         
         rootEntity.addChild(levelContainer)
+        
         levelContainer.setPosition([-(tubeHeight * 3 / 2), -(tubeHeight * 3 / 2), 0.0], relativeTo: rootEntity)
     }
     

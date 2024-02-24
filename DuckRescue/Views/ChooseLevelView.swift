@@ -42,6 +42,7 @@ struct ChooseLevelView: View {
                             .labelStyle(.iconOnly)
                     }
                 }
+                EnemyControllerView()
             }
         }
     }

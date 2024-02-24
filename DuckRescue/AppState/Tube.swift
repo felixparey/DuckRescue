@@ -20,6 +20,7 @@ struct Tube : Decodable {
 
 let tubeRadius: Float = 0.05
 let tubeHeight: Float = 0.25
+var tubesModels: [String: Entity?] = [:]
 
 let redTubeMaterial = {
     var material = SimpleMaterial(color: .red.withAlphaComponent(0.8), isMetallic: false)
@@ -32,18 +33,7 @@ let greenTubeMaterial = {
     return material
 }()
 
-func spawnTube(_ name: String) -> ModelEntity? {
-    let tube: ModelEntity?
-    
-    switch name {
-    case "RedTube":
-        tube = ModelEntity(mesh: .generateCylinder(height: tubeHeight, radius: tubeRadius), materials: [redTubeMaterial])
-    case "GreenTube":
-        tube = ModelEntity(mesh: .generateCylinder(height: tubeHeight, radius: tubeRadius), materials: [greenTubeMaterial])
-    default:
-        tube = nil
-    }
-    
-    return tube
+func spawnTube(_ name: String) -> Entity? {
+    return tubesModels[name]??.clone(recursive: true)
 }
 

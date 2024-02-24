@@ -15,17 +15,8 @@
     "objectMetadataList" : [
       [
         "16C54D1F-8DCA-4D9A-9828-BFC95777EAF5",
-        "Root",
-        "puzzleStart",
+        "CurveWithFixedOrigin",
         "Geom"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "16C54D1F-8DCA-4D9A-9828-BFC95777EAF5",
-        "Root"
       ],
       {
         "isExpanded" : true,
@@ -36,6 +27,23 @@
         "Root",
         "puzzleStart",
         "Materials"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "16C54D1F-8DCA-4D9A-9828-BFC95777EAF5",
+        "CurveWithFixedOrigin",
+        "Materials"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "16C54D1F-8DCA-4D9A-9828-BFC95777EAF5",
+        "CurveWithFixedOrigin"
       ],
       {
         "isExpanded" : true,
@@ -55,7 +63,8 @@
       [
         "16C54D1F-8DCA-4D9A-9828-BFC95777EAF5",
         "Root",
-        "puzzleStart"
+        "puzzleStart",
+        "Geom"
       ],
       {
         "isExpanded" : true,
