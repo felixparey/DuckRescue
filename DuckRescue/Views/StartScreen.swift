@@ -39,7 +39,7 @@ struct StartScreen: View {
 //                    }
                     Task{
                         appState.hittingLogic.duckHitTarget = false
-                        await openImmersiveSpace(id: "ImmersiveSpace")
+                        await openImmersiveSpace(id: "Level")
                         dismissWindow(id: "Start")
                         appState.windowOpen = false
                     }
@@ -61,9 +61,9 @@ struct StartScreen: View {
                 
             
         }
-        .onAppear {
-            appState.addRecord(name: "Yuliia", yRotation: 180)
-        }
+//        .onAppear {
+//            appState.addRecord(name: "Yuliia", yRotation: 180)
+//        }
     }
 }
 

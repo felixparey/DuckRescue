@@ -16,19 +16,14 @@ import CloudKit
 @Observable
 class LevelSegment{
     
-    var entity: Entity
+    var entityName: String
     var yRotation: Float
     var position: SIMD3<Float>
     
-    
-    init(entity: Entity, yRotation: Float, position: SIMD3<Float>) {
-        self.entity = entity
+    init(entityName: String, yRotation: Float, position: SIMD3<Float>) {
+        self.entityName = entityName
         self.yRotation = yRotation
         self.position = position
     }
-    
-    
-    
-    
 }
 

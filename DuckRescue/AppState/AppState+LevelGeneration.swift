@@ -13,8 +13,6 @@ extension AppState{
    
     public class LevelGeneration{
         
-     
-        
     }
     
 }
