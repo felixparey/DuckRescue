@@ -77,11 +77,10 @@ public class AppState{
                 tube.name = "tube"
                 tube.position = [horizontalDistance * Float(j), verticalDistance * Float(i), 0.0]
                 
-                tube.components.set(InputTargetComponent())
-                tube.components.set(HoverEffectComponent())
+//                tube.components.set(InputTargetComponent())
+//                tube.components.set(HoverEffectComponent())
                 
-                tube.generateCollisionShapes(recursive: true
-                )
+                tube.generateCollisionShapes(recursive: true)
                 levelContainer.addChild(tube)
             }
         }
@@ -98,6 +97,7 @@ public class AppState{
                 Rotation3D(angle: .degrees(90), axis: .y)
             )
             
+            
             levelContainer.addChild(duckCopy)
             
             duckCopy.setPosition([0.0, 0.0, 0.0], relativeTo: levelContainer)
@@ -106,6 +106,8 @@ public class AppState{
             duckCopy.generateCollisionShapes(recursive: true)
             
             duck = duckCopy
+            
+            
         }
     }
     

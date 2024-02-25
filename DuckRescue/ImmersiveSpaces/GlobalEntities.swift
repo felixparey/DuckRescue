@@ -15,7 +15,7 @@ var tube: Entity? = nil
 var tubeStraight: Entity? = nil
 var tubeCorner: Entity? = nil
 
-var duck: Entity? = nil
+var duck: Entity?
 
 var enemy: Entity? = nil
 var enemyAnimationPlaybackController: AnimationPlaybackController?

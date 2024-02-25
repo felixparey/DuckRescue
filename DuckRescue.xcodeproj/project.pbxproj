@@ -54,13 +54,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		32EDF7802B870547001185DC /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Entities;
-			sourceTree = "<group>";
-		};
 		32EDF7852B870AF7001185DC /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -89,7 +82,6 @@
 		4D9B73682B7AE580007CA380 /* DuckRescue */ = {
 			isa = PBXGroup;
 			children = (
-				32EDF7802B870547001185DC /* Entities */,
 				4D9B736D2B7AE580007CA380 /* DuckRescueApp.swift */,
 				4D9B73802B7AE738007CA380 /* AppState */,
 				4D9B737E2B7AE70A007CA380 /* Views */,
@@ -365,7 +357,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DuckRescue/Preview Content\"";
-				DEVELOPMENT_TEAM = T2V3R3ZLQS;
+				DEVELOPMENT_TEAM = QA9FXHQ3QW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
@@ -374,7 +366,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.felixparey.DuckRescueachubutkin;
+				PRODUCT_BUNDLE_IDENTIFIER = com.felixparey.duckgame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -391,7 +383,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DuckRescue/Preview Content\"";
-				DEVELOPMENT_TEAM = T2V3R3ZLQS;
+				DEVELOPMENT_TEAM = QA9FXHQ3QW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
@@ -400,7 +392,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.felixparey.DuckRescueachubutkin;
+				PRODUCT_BUNDLE_IDENTIFIER = com.felixparey.duckgame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;

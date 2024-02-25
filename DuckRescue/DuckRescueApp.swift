@@ -15,7 +15,7 @@ struct DuckRescueApp: App {
     
     var body: some Scene {
         WindowGroup(id: "Start") {
-            StartScreen()
+            ContentView()
                 .environment(appState)
                 .frame(width: 1000, height: 600)
                 .fixedSize(horizontal: true, vertical: true)
@@ -31,8 +31,6 @@ struct DuckRescueApp: App {
         .environment(appState)
       //  .modelContainer(for: Level.self)
         
-        ImmersiveSpace(id: "Level"){
-            LevelBuilderView()
-        }
+        
     }
 }

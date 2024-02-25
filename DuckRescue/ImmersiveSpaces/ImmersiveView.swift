@@ -15,6 +15,7 @@ struct ImmersiveView: View {
     @Environment(AppState.self) private var appState
     
     @State private var enemyAnimationSubscription: EventSubscription?
+    @State private var duckSubscription: EventSubscription?
     
     var body: some View {
         RealityView { content, attachments in
@@ -25,11 +26,17 @@ struct ImmersiveView: View {
             
             buildAttachments(attachments)
             
+            duckSubscription = content.subscribe(to: CollisionEvents.Began.self, on: rootEntity.children.first?.findEntity(named: "Duck")){ event in
+                appState.hittingLogic.duckHitTarget = true
+            }
+            
             enemyAnimationSubscription = content.subscribe(to: AnimationEvents.PlaybackCompleted.self, on: enemy, componentType: nil) { event in
                 Task {
                     moveEnemy()
                 }
             }
+            print(content.entities)
+            
         } update: { updateContent, attachments in
             moveEnemy()
         } attachments: {
@@ -155,7 +162,9 @@ var dragGesture : some Gesture {
     DragGesture()
         .targetedToAnyEntity()
         .onChanged { value in
+            
             if value.entity.name == "Rubber_Duck_01_1_geometry" {
+
                 let y = value.entity.position.y
                 value.entity.position = value.convert(value.location3D, from: .local, to: value.entity.parent!)
                 value.entity.position.y = y
