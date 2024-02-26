@@ -68,7 +68,7 @@ struct ImmersiveView: View {
     func buildAttachments(_ attachments: RealityViewAttachments) {
         if let entity = attachments.entity(for: "a1") {
             rootEntity.addChild(entity)
-            entity.setPosition([0.80, -0.25, 0], relativeTo: rootEntity)
+            entity.setPosition([1.4, -0.25, 0], relativeTo: rootEntity)
         }
     }
     
