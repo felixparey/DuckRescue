@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ChooseLevelView: View {
     @Environment(AppState.self) private var appState
+    @Environment(\.dismissImmersiveSpace) private var dismissImmersiveSpace
+    @Environment(\.openWindow) private var openWindow
     
     var body: some View {
         HStack(alignment: .top) {
@@ -42,7 +44,19 @@ struct ChooseLevelView: View {
                             .labelStyle(.iconOnly)
                     }
                 }
-                EnemyControllerView()
+                
+                HStack {
+                    Button {
+                        Task {
+                            openWindow(id: "Start")
+                            await dismissImmersiveSpace()
+                        }
+                    } label: {
+                        Label("Exit", systemImage: "xmark.circle.fill")
+                            .labelStyle(.titleAndIcon)
+                    }
+                }
+                .padding()
             }
         }
     }
