@@ -24,16 +24,6 @@
       },
       [
         "16C54D1F-8DCA-4D9A-9828-BFC95777EAF5",
-        "Root",
-        "puzzleStart",
-        "Materials"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "16C54D1F-8DCA-4D9A-9828-BFC95777EAF5",
         "CurveWithFixedOrigin",
         "Materials"
       ],
@@ -55,6 +45,16 @@
         "puzzleStart",
         "Geom",
         "Cube_006"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "16C54D1F-8DCA-4D9A-9828-BFC95777EAF5",
+        "Root",
+        "puzzleStart",
+        "Materials"
       ],
       {
         "isExpanded" : true,
@@ -98,6 +98,47 @@
       [
         "7636FB1E-2305-4941-BF41-0855193F7CD2",
         "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
+  "8153C497-3958-4103-B4B6-C5D83DB897C2" : {
+    "objectMetadataList" : [
+      [
+        "8153C497-3958-4103-B4B6-C5D83DB897C2",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "8153C497-3958-4103-B4B6-C5D83DB897C2",
+        "Root",
+        "Cube",
+        "Materials"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "8153C497-3958-4103-B4B6-C5D83DB897C2",
+        "Root",
+        "Cube",
+        "Geom"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "8153C497-3958-4103-B4B6-C5D83DB897C2",
+        "Root",
+        "Cube"
       ],
       {
         "isExpanded" : true,
@@ -160,7 +201,8 @@
       [
         "BF059E7C-606E-40A6-B40E-C40A7678EE38",
         "Root",
-        "CURVELEFTDOWN"
+        "CURVELEFTDOWN",
+        "Geom"
       ],
       {
         "isExpanded" : true,
@@ -169,8 +211,7 @@
       [
         "BF059E7C-606E-40A6-B40E-C40A7678EE38",
         "Root",
-        "CURVELEFTDOWN",
-        "Geom"
+        "CURVELEFTDOWN"
       ],
       {
         "isExpanded" : true,
@@ -182,8 +223,7 @@
     "objectMetadataList" : [
       [
         "CB766F92-EE55-4A63-9401-E7B8C009764D",
-        "Root",
-        "GridMaterial"
+        "Root"
       ],
       {
         "isExpanded" : true,
@@ -191,7 +231,8 @@
       },
       [
         "CB766F92-EE55-4A63-9401-E7B8C009764D",
-        "Root"
+        "Root",
+        "GridMaterial"
       ],
       {
         "isExpanded" : true,

@@ -8,14 +8,14 @@
 import Foundation
 import RealityKit
 
-let rootEntity = Entity()
-let levelContainer = Entity()
+    let rootEntity = Entity()
+    let levelContainer = Entity()
+    
+    var tube: Entity? = nil
+    var tubeStraight: Entity? = nil
+    var tubeCorner: Entity? = nil
 
-var tube: Entity? = nil
-var tubeStraight: Entity? = nil
-var tubeCorner: Entity? = nil
+    var enemy: Entity? = nil
+    var enemyAnimationPlaybackController: AnimationPlaybackController?
+    
 
-var duck: Entity?
-
-var enemy: Entity? = nil
-var enemyAnimationPlaybackController: AnimationPlaybackController?

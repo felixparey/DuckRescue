@@ -15,7 +15,7 @@ import RealityKitContent
 public class AppState{
     //Everything concerning the logic goes here
     var hittingLogic = HittingLogic()
-    
+    var duck: Entity?
     var readyToStart = false
     var levels: [[Tube]] = []
     var currentLevelIndex = 0
@@ -34,7 +34,7 @@ public class AppState{
                 }
                 
                 group.addTask {
-                    duck = try? await Entity(named: "Rubber_Duck_01_1.fbxEF69E24E-9C93-48F3-A001-002997AF9D6C", in: realityKitContentBundle)
+                    self.duck = try? await Entity(named: "Rubber_Duck_01_1.fbxEF69E24E-9C93-48F3-A001-002997AF9D6C", in: realityKitContentBundle)
                 }
                 
                 await group.waitForAll()
@@ -51,6 +51,7 @@ public class AppState{
         buildLevel()
         initDuck()
         initEnemy()
+        
     }
     
     func buildLevel() {
@@ -81,6 +82,7 @@ public class AppState{
 //                tube.components.set(HoverEffectComponent())
                 
                 tube.generateCollisionShapes(recursive: true)
+                
                 levelContainer.addChild(tube)
             }
         }
@@ -91,23 +93,15 @@ public class AppState{
     }
     
     func initDuck() {
-        if let duckCopy = duck?.clone(recursive: true) {
-            duckCopy.name = "Duck"
-            duckCopy.transform.rotation = simd_quatf(
+        if let duck = duck{
+            duck.name = "Duck"
+            duck.transform.rotation = simd_quatf(
                 Rotation3D(angle: .degrees(90), axis: .y)
             )
             
-            
-            levelContainer.addChild(duckCopy)
-            
-            duckCopy.setPosition([0.0, 0.0, 0.0], relativeTo: levelContainer)
-            duckCopy.components.set(InputTargetComponent())
-            duckCopy.components.set(HoverEffectComponent())
-            duckCopy.generateCollisionShapes(recursive: true)
-            
-            duck = duckCopy
-            
-            
+            self.duck = duck
+            levelContainer.addChild(self.duck!)
+            self.duck?.setPosition([0.0, 0.0, 0.0], relativeTo: levelContainer)
         }
     }
     

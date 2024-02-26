@@ -20,13 +20,15 @@ struct ImmersiveView: View {
     var body: some View {
         RealityView { content, attachments in
             content.add(rootEntity)
-            rootEntity.position  = .init(x: 0, y: 1.7, z: -1.7)
+            
+            rootEntity.position = .init(x: 0, y: 1.3, z: -1.7)
             
             appState.reset()
             
             buildAttachments(attachments)
             
-            duckSubscription = content.subscribe(to: CollisionEvents.Began.self, on: rootEntity.children.first?.findEntity(named: "Duck")){ event in
+            duckSubscription = content.subscribe(to: CollisionEvents.Updated.self, on: appState.duck){ event in
+                print("HI ALEX")
                 appState.hittingLogic.duckHitTarget = true
             }
             
@@ -35,7 +37,7 @@ struct ImmersiveView: View {
                     moveEnemy()
                 }
             }
-            print(content.entities)
+            
             
         } update: { updateContent, attachments in
             moveEnemy()
