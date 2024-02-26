@@ -19,8 +19,10 @@ public class AppState{
     var readyToStart = false
     var levels: [[Tube]] = []
     var currentLevelIndex = 0
+    var currentLevelOrderedTubes: [(order: Int, entity: Entity?)] = []
     
     var isEnemyMoving = false
+    var isEnemyMovingContinue = false
     
     init() {
         Task { @MainActor in
@@ -57,6 +59,7 @@ public class AppState{
         levelContainer.children.removeAll()
         
         let level = levels[currentLevelIndex]
+        var orderedTubes: [(order: Int, entity: Entity?)] = []
         
         for (index, tubeData) in level.enumerated() {
             let tube: Entity? = spawnTube(tubeData.name)
@@ -74,20 +77,24 @@ public class AppState{
                 let newOrientation = Rotation3D(angle: .degrees(Double(90)), axis: .y)
                 tube.orientation = simd_quatf(newOrientation)
                 
-                tube.name = "tube"
+                tube.name = "tube\(tubeData.order)"
                 tube.position = [horizontalDistance * Float(j), verticalDistance * Float(i), 0.0]
                 
+                /*
                 tube.components.set(InputTargetComponent())
                 tube.components.set(HoverEffectComponent())
+                */
                 
-                tube.generateCollisionShapes(recursive: true
-                )
+                tube.generateCollisionShapes(recursive: true)
+                
                 levelContainer.addChild(tube)
+                orderedTubes.append((order: tubeData.order, entity: tube))
             }
         }
-        
+
+        self.currentLevelOrderedTubes = orderedTubes.sorted(by: { a, b in a.order < b.order })
+      
         rootEntity.addChild(levelContainer)
-        
         levelContainer.setPosition([-(tubeHeight * 3 / 2), -(tubeHeight * 3 / 2), 0.0], relativeTo: rootEntity)
     }
     
@@ -100,12 +107,10 @@ public class AppState{
             
             levelContainer.addChild(duckCopy)
             
-            duckCopy.setPosition([0.0, 0.0, 0.0], relativeTo: levelContainer)
+            duckCopy.setPosition([0.0, -0.05, 0.0], relativeTo: levelContainer)
             duckCopy.components.set(InputTargetComponent())
             duckCopy.components.set(HoverEffectComponent())
             duckCopy.generateCollisionShapes(recursive: true)
-            
-            duck = duckCopy
         }
     }
     
@@ -119,5 +124,15 @@ public class AppState{
             levels = JSONUtil.decode([[Tube]].self, from: jsonData)!
             print(levels)
         }
+    }
+    
+    func startEnemyMoving() {
+        self.isEnemyMoving.toggle()
+    }
+    
+    func finishEnemyMoving() {
+        self.isEnemyMoving.toggle()
+        self.isEnemyMovingContinue.toggle()
+        enemyCurrentTubeOrderIndex = 1
     }
 }

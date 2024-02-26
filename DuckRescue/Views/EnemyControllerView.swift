@@ -16,7 +16,7 @@ struct EnemyControllerView: View {
                 .font(.title)
                 .padding()
             Button {
-                appState.isEnemyMoving.toggle()
+                appState.startEnemyMoving()
             } label: {
                 Label("Play", systemImage: appState.isEnemyMoving ? "pause.fill" : "play.fill")
                     .labelStyle(.iconOnly)

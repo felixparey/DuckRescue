@@ -11,10 +11,12 @@ import RealityKit
 struct Tube : Decodable {
     var name: String
     var rotation: Float
+    var order: Int
     
-    init(name: String, rotation: Float) {
+    init(name: String, rotation: Float, order: Int) {
         self.name = name
         self.rotation = rotation
+        self.order = order
     }
 }
 
