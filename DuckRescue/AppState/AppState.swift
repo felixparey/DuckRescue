@@ -61,15 +61,20 @@ public class AppState{
         
         for (index, tubeData) in level.enumerated() {
             let tube: Entity? = spawnTube(tubeData.name)
+
             if let tube = tube {
                 tube.scale = .init(repeating: 0.08)
                 
                 let tubeBounds = tube.visualBounds(relativeTo: nil).max
                 let horizontalDistance: Float = tubeBounds.z * 2
-                let verticalDistance: Float = 0.3
+                print(tube.scale(relativeTo: nil))
+                let verticalDistance: Float = 0.11430265 * 2
                 
-                let i = index / 3
-                let j = index % 3
+                print(tubeData.name)
+                print(tubeBounds.y)
+                
+                let i = index / 5
+                let j = index % 5
                 
                 // let newOrientation = Rotation3D(angle: .degrees(Double(90) + Double(tubeData.rotation)), axis: .z)
                 let newOrientation = Rotation3D(angle: .degrees(Double(90)), axis: .y)
@@ -89,7 +94,7 @@ public class AppState{
         
         rootEntity.addChild(levelContainer)
         
-        levelContainer.setPosition([-(tubeHeight * 3 / 2), -(tubeHeight * 3 / 2), 0.0], relativeTo: rootEntity)
+        levelContainer.setPosition([-(tubeHeight * 5 / 2), -(tubeHeight * 5 / 2), 0.0], relativeTo: rootEntity)
     }
     
     func initDuck() {
