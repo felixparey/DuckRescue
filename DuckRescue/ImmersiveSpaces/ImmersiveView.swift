@@ -19,6 +19,9 @@ struct ImmersiveView: View {
     @State private var enemyAnimationSubscription: EventSubscription?
     @State private var duckSubscription: EventSubscription?
     
+    let timer = Timer.publish(every: 6, on: .current, in: .common).autoconnect()
+        @State private var counter = 0
+    
     
     var body: some View {
         RealityView { content, attachments in
@@ -55,6 +58,17 @@ struct ImmersiveView: View {
                     .glassBackgroundEffect()
             }
         }
+        .onReceive(timer) { time in
+                    if counter == 5 {
+                        timer.upstream.connect().cancel()
+                        print("timer is canceled")
+
+                    } else {
+                        print("moving")
+                        moveGasParticles()
+                        counter += 1
+                    }
+                }
         .gesture(DragGesture()
             .targetedToEntity(appState.duck ?? Entity())
             .onChanged { value in
@@ -66,6 +80,7 @@ struct ImmersiveView: View {
                     
                 }
             })
+        
         
         /*
          .gesture(DragGesture(minimumDistance: 0.0)
@@ -171,6 +186,45 @@ struct ImmersiveView: View {
         
         return .init(x: x, y: y, z: enemy!.position.z)
     }
+    
+    func moveGasParticles() {
+        appState.isGasMoving = true
+            if appState.isGasMoving {
+                if let gasAnimationPlaybackController = gasAnimationPlaybackController,
+                   gasAnimationPlaybackController.isPaused {
+                    gasAnimationPlaybackController.resume()
+                }
+                else {
+                    let duration: Double = 2.0
+                    
+                    if let gasParticles = gasParticles {
+                        let newPosition: SIMD3<Float> = calculateNextGasPosition()
+                        
+                        gasAnimationPlaybackController = gasParticles.move(
+                            to: Transform(
+                                scale: SIMD3(repeating: 1.0),
+                                rotation: gasParticles.orientation,
+                                translation: newPosition),
+                            relativeTo: gasParticles.parent,
+                            duration: duration,
+                            timingFunction: .linear
+                        )
+                    }
+                    
+                }
+            }
+            else if let gasAnimationPlaybackController = gasAnimationPlaybackController,
+                    gasAnimationPlaybackController.isPlaying {
+                gasAnimationPlaybackController.pause()
+            }
+        }
+        
+        func calculateNextGasPosition() -> SIMD3<Float> {
+            var x = gasParticles!.position.x
+            var y = gasParticles!.position.y + tubeHeight
+            
+            return .init(x: x, y: y, z: gasParticles!.position.z)
+        }
 }
 
 #Preview {
