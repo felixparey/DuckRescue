@@ -34,7 +34,7 @@ public class AppState{
                 }
                 
                 group.addTask {
-                    self.duck = try? await Entity(named: "Rubber_Duck_01_1.fbxEF69E24E-9C93-48F3-A001-002997AF9D6C", in: realityKitContentBundle)
+                    self.duck = try? await Entity(named: "duckEntity", in: realityKitContentBundle)
                 }
                 
                 await group.waitForAll()
@@ -101,7 +101,9 @@ public class AppState{
             
             self.duck = duck
             levelContainer.addChild(self.duck!)
-            self.duck?.setPosition([0.0, 0.0, 0.0], relativeTo: levelContainer)
+            self.duck?.components.set(HoverEffectComponent())
+            self.duck?.setScale([0.8,0.8,0.8], relativeTo: levelContainer)
+            self.duck?.setPosition([-0.25, -0.05, 0.0], relativeTo: levelContainer)
         }
     }
     

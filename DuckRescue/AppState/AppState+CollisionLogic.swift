@@ -8,8 +8,10 @@
 import Foundation
 import RealityKit
 
+
 extension AppState{
     
+    @Observable
     public class HittingLogic{
         var duckHitTarget = false
     }

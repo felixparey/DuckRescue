@@ -1,0 +1,70 @@
+#usda 1.0
+(
+    defaultPrim = "duck"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def "duck" (
+    active = true
+    customData = {
+        float3 rotationEulerHint = (0, 0, 0)
+    }
+    references = @duck.usdz@
+)
+{
+    quatf xformOp:orient = (1, 0, 0, 0)
+    float3 xformOp:scale = (0.01, 0.01, 0.01)
+    float3 xformOp:translate = (0, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+    def RealityKitComponent "InputTarget"
+    {
+        uniform token info:id = "RealityKit.InputTarget"
+    }
+
+    def RealityKitComponent "Collider"
+    {
+        uint group = 1
+        uniform token info:id = "RealityKit.Collider"
+        uint mask = 4294967295
+        token type = "Default"
+
+        def RealityKitStruct "Shape"
+        {
+            float3 extent = (7.2194004, 8.646285, 10.040558)
+            float radius = 5
+            token shapeType = "Sphere"
+
+            def RealityKitStruct "pose"
+            {
+                float3 position = (2.3841858e-7, 4.323114, 0.014776945)
+            }
+        }
+    }
+
+    def RealityKitComponent "RigidBody"
+    {
+        bool gravityEnabled = 0
+        uniform token info:id = "RealityKit.RigidBody"
+        bool lockRotationX = 1
+        bool lockRotationY = 1
+        bool lockRotationZ = 1
+        bool lockTranslationX = 1
+        bool lockTranslationY = 1
+        bool lockTranslationZ = 1
+        token motionType = "Kinematic"
+
+        def RealityKitStruct "massFrame"
+        {
+            def RealityKitStruct "m_pose"
+            {
+            }
+        }
+
+        def RealityKitStruct "material"
+        {
+        }
+    }
+}
+

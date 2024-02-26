@@ -24,11 +24,6 @@ struct ContentView: View {
                 dismiss()
             }
         }
-        .task {
-            if appState.hittingLogic.duckHitTarget{
-                await dismissImmersiveSpace()
-            }
-        }
     }
 }
 

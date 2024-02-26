@@ -11,11 +11,14 @@ import RealityKitContent
 
 var enemyCurrentTubeSegmentIndex: Int = 0
 
-struct ImmersiveView: View {    
+struct ImmersiveView: View {
     @Environment(AppState.self) private var appState
+    @Environment(\.openWindow) private var openWindow
+    @Environment(\.dismissImmersiveSpace) private var dismissImmersiveSpace
     
     @State private var enemyAnimationSubscription: EventSubscription?
     @State private var duckSubscription: EventSubscription?
+    
     
     var body: some View {
         RealityView { content, attachments in
@@ -27,9 +30,12 @@ struct ImmersiveView: View {
             
             buildAttachments(attachments)
             
-            duckSubscription = content.subscribe(to: CollisionEvents.Updated.self, on: appState.duck){ event in
-                print("HI ALEX")
-                appState.hittingLogic.duckHitTarget = true
+            duckSubscription = content.subscribe(to: CollisionEvents.Began.self, on: appState.duck){ event in
+                
+                
+                print(event.entityA.name)
+                
+                
             }
             
             enemyAnimationSubscription = content.subscribe(to: AnimationEvents.PlaybackCompleted.self, on: enemy, componentType: nil) { event in
@@ -40,6 +46,7 @@ struct ImmersiveView: View {
             
             
         } update: { updateContent, attachments in
+            
             moveEnemy()
         } attachments: {
             Attachment(id: "a1") {
@@ -48,20 +55,31 @@ struct ImmersiveView: View {
                     .glassBackgroundEffect()
             }
         }
-        .gesture(dragGesture)
-        /*
-        .gesture(DragGesture(minimumDistance: 0.0)
-            .targetedToAnyEntity()
+        .gesture(DragGesture()
+            .targetedToEntity(appState.duck ?? Entity())
             .onChanged { value in
-                value.entity.position = value.convert(value.location3D, from: .local, to: value.entity.parent!)
-                print(value)
+                
+                if let duck = appState.duck, let parent = appState.duck?.parent{
+                    
+                    duck.position.x = value.convert(value.location3D, from: .local, to: parent).x
+                    duck.position.y = value.convert(value.location3D, from: .local, to: parent).y
+                    
+                }
             })
         
-        .simultaneousGesture(
-            TapGesture()
-                .onEnded({ value in
-                    print(value)
-                }))
+        /*
+         .gesture(DragGesture(minimumDistance: 0.0)
+         .targetedToAnyEntity()
+         .onChanged { value in
+         value.entity.position = value.convert(value.location3D, from: .local, to: value.entity.parent!)
+         print(value)
+         })
+         
+         .simultaneousGesture(
+         TapGesture()
+         .onEnded({ value in
+         print(value)
+         }))
          */
     }
     
@@ -73,37 +91,37 @@ struct ImmersiveView: View {
     }
     
     func duckMoving(duck: Entity) {
-
+        
         // duck.move(to: .init(translation: [2.0, 0.0, 0.0]), relativeTo: levelContainer, duration: 1.0)
         // duck.move(to: Transform(translation: [1.0, 0.0, 0.0]), relativeTo: duck.parent, duration: 5.0, timingFunction: .linear)
         
         
         
         /*
-        duck.stopAllAnimations()
-        
-        let start = Point3D(
-            x: duck.position.x,
-            y: duck.position.y,
-            z: duck.position.z
-        )
-        let end = Point3D(
-            x: start.x + 2.0,
-            y: start.y,
-            z: start.z
-        )
-        let speed = 10.0
-        let line = FromToByAnimation<Transform>(
-            name: "line",
-            from: .init(translation: simd_float3(start.vector)),
-            to: .init(translation: simd_float3(end.vector)),
-            duration: speed,
-            bindTarget: .transform
-        )
-        let animation = try! AnimationResource
-            .generate(with: line)
-        duck.playAnimation(animation, transitionDuration: 1.0, startsPaused: false)
-        */
+         duck.stopAllAnimations()
+         
+         let start = Point3D(
+         x: duck.position.x,
+         y: duck.position.y,
+         z: duck.position.z
+         )
+         let end = Point3D(
+         x: start.x + 2.0,
+         y: start.y,
+         z: start.z
+         )
+         let speed = 10.0
+         let line = FromToByAnimation<Transform>(
+         name: "line",
+         from: .init(translation: simd_float3(start.vector)),
+         to: .init(translation: simd_float3(end.vector)),
+         duration: speed,
+         bindTarget: .transform
+         )
+         let animation = try! AnimationResource
+         .generate(with: line)
+         duck.playAnimation(animation, transitionDuration: 1.0, startsPaused: false)
+         */
         
     }
     
@@ -160,16 +178,7 @@ struct ImmersiveView: View {
         .previewLayout(.sizeThatFits)
 }
 
-var dragGesture : some Gesture {
-    DragGesture()
-        .targetedToAnyEntity()
-        .onChanged { value in
-            
-            if value.entity.name == "Rubber_Duck_01_1_geometry" {
 
-                let y = value.entity.position.y
-                value.entity.position = value.convert(value.location3D, from: .local, to: value.entity.parent!)
-                value.entity.position.y = y
-            }
-        }
-}
+
+
+
