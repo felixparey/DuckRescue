@@ -16,8 +16,3 @@ var tubeStraight: Entity? = nil
 var tubeCorner: Entity? = nil
 
 var duck: Entity? = nil
-
-var enemy: Entity? = nil
-var enemyAnimationSubscription: EventSubscription?
-var enemyAnimationPlaybackController: AnimationPlaybackController?
-var enemyCurrentTubeOrderIndex = 1

@@ -22,7 +22,9 @@ public class AppState{
     var currentLevelOrderedTubes: [(order: Int, entity: Entity?)] = []
     
     var isEnemyMoving = false
-    var isEnemyMovingContinue = false
+    var enemy: ModelEntity? = nil
+    var enemyMoveController: AnimationPlaybackController? = nil
+    var enemyCurrentSegmentOrder: Int = 1
     
     init() {
         Task { @MainActor in
@@ -115,8 +117,53 @@ public class AppState{
     }
     
     func initEnemy() {
-        enemy = ModelEntity(mesh: .generateSphere(radius: 0.05 / 2), materials: [SimpleMaterial(color: .yellow, isMetallic: false)])
+        self.enemy = ModelEntity(mesh: .generateSphere(radius: 0.05 / 2), materials: [SimpleMaterial(color: .yellow, isMetallic: false)])
         levelContainer.addChild(enemy!)
+    }
+    
+    func runEnemy() {
+        if self.isEnemyMoving {
+            return
+        }
+        
+        self.isEnemyMoving.toggle()
+        moveEnemy()
+    }
+    
+    func moveEnemy() {
+        let duration: Double = 0.5
+        
+        if let enemy = enemy {
+            if let nextPosition = calculateNextEnemyPosition() {
+                enemyMoveController = enemy.move(
+                    to: Transform(scale: SIMD3(repeating: 1.0), rotation: enemy.orientation, translation: nextPosition),
+                    relativeTo: enemy.parent,
+                    duration: duration,
+                    timingFunction: .linear
+                )
+                enemyCurrentSegmentOrder += 1
+            }
+            else {
+                stopEnemy()
+            }
+        }
+    }
+    
+    func calculateNextEnemyPosition() -> SIMD3<Float>? {
+        if let nextTube = currentLevelOrderedTubes.first(where: { item in item.order == enemyCurrentSegmentOrder }) {
+            let x = nextTube.entity!.position.x
+            let y = nextTube.entity!.position.y
+            return .init(x: x, y: y, z: enemy!.position.z)
+        }
+        return nil
+    }
+    
+    func stopEnemy() {
+        if self.isEnemyMoving {
+            enemyMoveController?.stop()
+            enemyCurrentSegmentOrder = 1
+            self.isEnemyMoving.toggle()
+        }
     }
     
     private func loadLevelData() async {
@@ -124,15 +171,5 @@ public class AppState{
             levels = JSONUtil.decode([[Tube]].self, from: jsonData)!
             print(levels)
         }
-    }
-    
-    func startEnemyMoving() {
-        self.isEnemyMoving.toggle()
-    }
-    
-    func finishEnemyMoving() {
-        self.isEnemyMoving.toggle()
-        self.isEnemyMovingContinue.toggle()
-        enemyCurrentTubeOrderIndex = 1
     }
 }
