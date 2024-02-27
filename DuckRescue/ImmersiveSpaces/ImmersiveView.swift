@@ -20,6 +20,8 @@ struct ImmersiveView: View {
             appState.reset()
             
             buildAttachments(attachments)
+            
+            EnemyMovementSystem.registerSystem()
         } update: { updateContent, attachments in
             // TODO:
             if appState.isEnemyMoving {

@@ -13,6 +13,7 @@
 		32EDF7872B870B05001185DC /* LevelDataJSONString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EDF7862B870B05001185DC /* LevelDataJSONString.swift */; };
 		32EDF7892B870E3F001185DC /* ChooseLevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EDF7882B870E3F001185DC /* ChooseLevelView.swift */; };
 		32EDF78B2B892854001185DC /* EnemyControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EDF78A2B892854001185DC /* EnemyControllerView.swift */; };
+		32EDF7902B8E3E55001185DC /* EnemyMovementSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EDF78F2B8E3E55001185DC /* EnemyMovementSystem.swift */; };
 		4D49555A2B7C279C00E7C608 /* AppState+CollisionLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4955592B7C279C00E7C608 /* AppState+CollisionLogic.swift */; };
 		4D9B736C2B7AE580007CA380 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = 4D9B736B2B7AE580007CA380 /* RealityKitContent */; };
 		4D9B736E2B7AE580007CA380 /* DuckRescueApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9B736D2B7AE580007CA380 /* DuckRescueApp.swift */; };
@@ -30,6 +31,7 @@
 		32EDF7862B870B05001185DC /* LevelDataJSONString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDataJSONString.swift; sourceTree = "<group>"; };
 		32EDF7882B870E3F001185DC /* ChooseLevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLevelView.swift; sourceTree = "<group>"; };
 		32EDF78A2B892854001185DC /* EnemyControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyControllerView.swift; sourceTree = "<group>"; };
+		32EDF78F2B8E3E55001185DC /* EnemyMovementSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyMovementSystem.swift; sourceTree = "<group>"; };
 		4D4955592B7C279C00E7C608 /* AppState+CollisionLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppState+CollisionLogic.swift"; sourceTree = "<group>"; };
 		4D9B73662B7AE580007CA380 /* DuckRescue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DuckRescue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D9B736A2B7AE580007CA380 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
@@ -69,6 +71,14 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		32EDF78E2B8E3A29001185DC /* Systems */ = {
+			isa = PBXGroup;
+			children = (
+				32EDF78F2B8E3E55001185DC /* EnemyMovementSystem.swift */,
+			);
+			path = Systems;
+			sourceTree = "<group>";
+		};
 		4D9B735D2B7AE580007CA380 = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +99,7 @@
 		4D9B73682B7AE580007CA380 /* DuckRescue */ = {
 			isa = PBXGroup;
 			children = (
+				32EDF78E2B8E3A29001185DC /* Systems */,
 				32EDF7802B870547001185DC /* Entities */,
 				4D9B736D2B7AE580007CA380 /* DuckRescueApp.swift */,
 				4D9B73802B7AE738007CA380 /* AppState */,
@@ -227,6 +238,7 @@
 				32EDF7872B870B05001185DC /* LevelDataJSONString.swift in Sources */,
 				32EDF7842B8707C1001185DC /* Tube.swift in Sources */,
 				4D9B736E2B7AE580007CA380 /* DuckRescueApp.swift in Sources */,
+				32EDF7902B8E3E55001185DC /* EnemyMovementSystem.swift in Sources */,
 				32EDF77F2B865F2E001185DC /* Utils.swift in Sources */,
 				32EDF7892B870E3F001185DC /* ChooseLevelView.swift in Sources */,
 				4D49555A2B7C279C00E7C608 /* AppState+CollisionLogic.swift in Sources */,

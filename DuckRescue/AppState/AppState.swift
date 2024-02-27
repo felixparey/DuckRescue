@@ -48,7 +48,6 @@ public class AppState{
             
             self.readyToStart = true
         }
-
     }
     
     func reset() {
@@ -118,6 +117,7 @@ public class AppState{
     
     func initEnemy() {
         self.enemy = ModelEntity(mesh: .generateSphere(radius: 0.05 / 2), materials: [SimpleMaterial(color: .yellow, isMetallic: false)])
+        self.enemy?.name = "Enemy"
         levelContainer.addChild(enemy!)
     }
     
