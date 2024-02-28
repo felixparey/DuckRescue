@@ -16,3 +16,5 @@ var tubeStraight: Entity? = nil
 var tubeCorner: Entity? = nil
 
 var duck: Entity? = nil
+
+var debugContainer = Entity()

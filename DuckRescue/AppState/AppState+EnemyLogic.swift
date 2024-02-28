@@ -11,7 +11,7 @@ import RealityKitContent
 
 extension AppState {
     func initEnemy() {
-        self.enemy = ModelEntity(mesh: .generateSphere(radius: 0.05 / 2), materials: [SimpleMaterial(color: .yellow, isMetallic: false)])
+        self.enemy = ModelEntity(mesh: .generateBox(size: 0.05), materials: [SimpleMaterial(color: .black, isMetallic: false)])
         self.enemy?.name = "Enemy"
         levelContainer.addChild(enemy!)
     }
@@ -36,38 +36,144 @@ extension AppState {
     }
     
     func moveEnemy() {
-        let duration: Double = 1
+        guard let enemy = enemy else {
+            return
+        }
         
-        if let enemy = enemy {
-            if let nextPosition = calculateNextEnemyPosition() {
-                let goStraight = FromToByAnimation<Transform>(
-                    name: "goStraight",
-                    from: .init(translation: enemy.position),
-                    to: .init(translation: nextPosition),
-                    duration: duration,
-                    bindTarget: .transform
-                )
-                
-                let goStraightAnimation = try! AnimationResource
-                    .generate(with: goStraight)
-                
-                enemyMoveController = enemy.playAnimation(goStraightAnimation)
-                
-                enemyCurrentSegmentOrder += 1
-            }
-            else {
-                stopEnemy()
-            }
+        if let moveAnimation = calculateMovementAnimation() {
+            enemyMoveController = enemy.playAnimation(moveAnimation)
+            enemyCurrentSegmentOrder += 1
+        }
+        else {
+            stopEnemy()
         }
     }
     
-    func calculateNextEnemyPosition() -> SIMD3<Float>? {
-        if let nextTube = currentLevelOrderedTubes.first(where: { item in item.order == enemyCurrentSegmentOrder }) {
-            let x = nextTube.entity!.position.x
-            let y = nextTube.entity!.position.y
-            return .init(x: x, y: y, z: enemy!.position.z)
+    func calculateMovementAnimation() -> AnimationResource? {
+        guard let enemy = enemy else {
+            return nil
         }
-        return nil
+        
+        guard let nextTube = currentLevelOrderedTubes.first(where: { item in item.order == enemyCurrentSegmentOrder }) else {
+            return nil
+        }
+        
+        debugContainer.children.removeAll()
+        
+        let nextPosition: SIMD3<Float> = .init(x: nextTube.entity!.position.x, y: nextTube.entity!.position.y, z: enemy.position.z)
+        let duration: Double = 1
+        let segmentEntityName = nextTube.entity?.name
+        let distanceBetweenSegmentsX: Float = 0.40701035 // TODO: hardcoded distance because without strong grid size
+        let halfOfDistance = distanceBetweenSegmentsX / 2
+        
+        switch segmentEntityName {
+        case "corner_1":
+            let go = FromToByAnimation<Transform>(
+                from: .init(translation: enemy.position),
+                to: .init(translation: nextPosition - [halfOfDistance, 0.0, 0.0]),
+                duration: duration,
+                bindTarget: .transform
+            )
+            let start = go.toValue!.translation
+            let control: simd_float3 = nextPosition
+            let end = nextPosition + [0.0, halfOfDistance, 0.0]
+            let step = 0.02
+            var transforms: [Transform] = []
+            for i in stride(from: 0.0, to: 1.0, by: step) {
+                transforms.append(Transform(translation: getQuadraticBezierPoint(start: start, control: control, end: end, t: Float(i))))
+            }
+            let turn = SampledAnimation(frames: transforms, frameInterval: Float(duration) / Float(transforms.count), bindTarget: .transform, delay: duration)
+            
+            let group = AnimationGroup(group: [go, turn])
+            let groupAnimation = try! AnimationResource
+                .generate(with: group)
+            
+            return groupAnimation
+        case "corner_2":
+            let start = enemy.position
+            let control: simd_float3 = nextPosition
+            let end = nextPosition - [halfOfDistance, 0.0, 0.0]
+            let step = 0.02
+            var transforms: [Transform] = []
+            for i in stride(from: 0.0, to: 1.0, by: step) {
+                transforms.append(Transform(translation: getQuadraticBezierPoint(start: start, control: control, end: end, t: Float(i))))
+            }
+            let turn = SampledAnimation(frames: transforms, frameInterval: Float(duration) / Float(transforms.count), bindTarget: .transform)
+            let go = FromToByAnimation<Transform>(
+                from: .init(translation: end),
+                to: .init(translation: nextPosition - [halfOfDistance, 0.0, 0.0]),
+                duration: duration,
+                bindTarget: .transform,
+                delay: duration
+            )
+            
+            let group = AnimationGroup(group: [turn, go])
+            let groupAnimation = try! AnimationResource
+                .generate(with: group)
+            
+            return groupAnimation
+        case "corner_3":
+            let start = enemy.position
+            let control: simd_float3 = nextPosition
+            let end = nextPosition + [halfOfDistance, 0.0, 0.0]
+            let step = 0.02
+            var transforms: [Transform] = []
+            for i in stride(from: 0.0, to: 1.0, by: step) {
+                transforms.append(Transform(translation: getQuadraticBezierPoint(start: start, control: control, end: end, t: Float(i))))
+            }
+            let turn = SampledAnimation(frames: transforms, frameInterval: Float(duration) / Float(transforms.count), bindTarget: .transform)
+            let go = FromToByAnimation<Transform>(
+                from: .init(translation: end),
+                to: .init(translation: nextPosition + [halfOfDistance, 0.0, 0.0]),
+                duration: duration,
+                bindTarget: .transform,
+                delay: duration
+            )
+            
+            let group = AnimationGroup(group: [turn, go])
+            let groupAnimation = try! AnimationResource
+                .generate(with: group)
+            
+            return groupAnimation
+        case "corner_4":
+            let go = FromToByAnimation<Transform>(
+                from: .init(translation: enemy.position),
+                to: .init(translation: nextPosition + [halfOfDistance, 0.0, 0.0]),
+                duration: duration,
+                bindTarget: .transform
+            )
+            let start = go.toValue!.translation
+            let control: simd_float3 = nextPosition
+            let end = nextPosition + [0.0, halfOfDistance, 0.0]
+            let step = 0.02
+            var transforms: [Transform] = []
+            for i in stride(from: 0.0, to: 1.0, by: step) {
+                transforms.append(Transform(translation: getQuadraticBezierPoint(start: start, control: control, end: end, t: Float(i))))
+            }
+            let turn = SampledAnimation(frames: transforms, frameInterval: Float(duration) / Float(transforms.count), bindTarget: .transform, delay: duration)
+            
+            let group = AnimationGroup(group: [go, turn])
+            let groupAnimation = try! AnimationResource
+                .generate(with: group)
+            
+            return groupAnimation
+        default:
+            let go = FromToByAnimation<Transform>(
+                from: .init(translation: enemy.position),
+                to: .init(translation: nextPosition),
+                duration: duration,
+                bindTarget: .transform
+            )
+            
+            let debugEntity = ModelEntity(mesh: .generateSphere(radius: 0.008), materials: [SimpleMaterial(color: .red, isMetallic: false)])
+            debugContainer.addChild(debugEntity)
+            debugEntity.setPosition(nextPosition, relativeTo: levelContainer)
+            
+            let goStraightAnimation = try! AnimationResource
+                .generate(with: go)
+            
+            return goStraightAnimation
+        }
     }
     
     func stopEnemy() {
@@ -77,5 +183,13 @@ extension AppState {
             self.enemy?.setPosition([0, 0, 0], relativeTo: self.enemy?.parent)
             self.isEnemyMoving.toggle()
         }
+    }
+    
+    private func getQuadraticBezierPoint(start: simd_float3, control: simd_float3, end: simd_float3, t: Float) -> simd_float3 {
+        let t2 = t * t
+        let a = (2 * t - 2 * t2)
+        let b = (t2 - 2 * t + 1)
+        let res = t2 * end + a * control + b * start
+        return res
     }
 }

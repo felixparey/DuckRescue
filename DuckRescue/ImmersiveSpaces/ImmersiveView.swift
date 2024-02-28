@@ -16,7 +16,7 @@ struct ImmersiveView: View {
         RealityView { content, attachments in
             content.add(rootEntity)
             rootEntity.position  = .init(x: 0, y: 1.7, z: -1.7)
-            
+    
             appState.reset()
             
             buildAttachments(attachments)
