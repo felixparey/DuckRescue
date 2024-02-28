@@ -36,16 +36,23 @@ extension AppState {
     }
     
     func moveEnemy() {
-        let duration: Double = 0.5
+        let duration: Double = 1
         
         if let enemy = enemy {
             if let nextPosition = calculateNextEnemyPosition() {
-                enemyMoveController = enemy.move(
-                    to: Transform(scale: SIMD3(repeating: 1.0), rotation: enemy.orientation, translation: nextPosition),
-                    relativeTo: enemy.parent,
+                let goStraight = FromToByAnimation<Transform>(
+                    name: "goStraight",
+                    from: .init(translation: enemy.position),
+                    to: .init(translation: nextPosition),
                     duration: duration,
-                    timingFunction: .linear
+                    bindTarget: .transform
                 )
+                
+                let goStraightAnimation = try! AnimationResource
+                    .generate(with: goStraight)
+                
+                enemyMoveController = enemy.playAnimation(goStraightAnimation)
+                
                 enemyCurrentSegmentOrder += 1
             }
             else {
@@ -67,6 +74,7 @@ extension AppState {
         if self.isEnemyMoving {
             enemyMoveController?.stop()
             enemyCurrentSegmentOrder = 1
+            self.enemy?.setPosition([0, 0, 0], relativeTo: self.enemy?.parent)
             self.isEnemyMoving.toggle()
         }
     }
