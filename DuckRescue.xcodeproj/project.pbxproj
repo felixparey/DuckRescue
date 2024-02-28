@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		32E47A0D2B8F062F00ABB405 /* AppState+EnemyLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E47A0C2B8F062F00ABB405 /* AppState+EnemyLogic.swift */; };
+		32E47A0F2B8F83EE00ABB405 /* AnimationResource+Bezier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E47A0E2B8F83EE00ABB405 /* AnimationResource+Bezier.swift */; };
 		32EDF75A2B863047001185DC /* GlobalEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EDF7592B863047001185DC /* GlobalEntities.swift */; };
 		32EDF77F2B865F2E001185DC /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EDF77E2B865F2E001185DC /* Utils.swift */; };
 		32EDF7842B8707C1001185DC /* Tube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EDF7832B8707C1001185DC /* Tube.swift */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		32E47A0C2B8F062F00ABB405 /* AppState+EnemyLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppState+EnemyLogic.swift"; sourceTree = "<group>"; };
+		32E47A0E2B8F83EE00ABB405 /* AnimationResource+Bezier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnimationResource+Bezier.swift"; sourceTree = "<group>"; };
 		32EDF7592B863047001185DC /* GlobalEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalEntities.swift; sourceTree = "<group>"; };
 		32EDF77E2B865F2E001185DC /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		32EDF7832B8707C1001185DC /* Tube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tube.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				4D9B73812B7AE755007CA380 /* AppState.swift */,
 				4D4955592B7C279C00E7C608 /* AppState+CollisionLogic.swift */,
 				32E47A0C2B8F062F00ABB405 /* AppState+EnemyLogic.swift */,
+				32E47A0E2B8F83EE00ABB405 /* AnimationResource+Bezier.swift */,
 				32EDF7832B8707C1001185DC /* Tube.swift */,
 			);
 			path = AppState;
@@ -244,6 +247,7 @@
 				4D9B736E2B7AE580007CA380 /* DuckRescueApp.swift in Sources */,
 				32EDF7902B8E3E55001185DC /* EnemyMovementSystem.swift in Sources */,
 				32EDF77F2B865F2E001185DC /* Utils.swift in Sources */,
+				32E47A0F2B8F83EE00ABB405 /* AnimationResource+Bezier.swift in Sources */,
 				32EDF7892B870E3F001185DC /* ChooseLevelView.swift in Sources */,
 				4D49555A2B7C279C00E7C608 /* AppState+CollisionLogic.swift in Sources */,
 				4D9B73722B7AE580007CA380 /* ImmersiveView.swift in Sources */,
