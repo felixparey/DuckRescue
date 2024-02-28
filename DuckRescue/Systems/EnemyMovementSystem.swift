@@ -24,7 +24,7 @@ class EnemyMovementSystem : System {
         let deltaTime = context.deltaTime
         
         if let enemy = context.scene.findEntity(named: "Enemy") {
-            enemy.setPosition([enemy.position.x + Float(velocity * deltaTime), 0.0, 0.0], relativeTo: enemy.parent)
+            // enemy.setPosition([enemy.position.x + Float(velocity * deltaTime), 0.0, 0.0], relativeTo: enemy.parent)
         }
     }
 }

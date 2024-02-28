@@ -20,16 +20,10 @@ struct ImmersiveView: View {
             appState.reset()
             
             buildAttachments(attachments)
-            
+
             EnemyMovementSystem.registerSystem()
         } update: { updateContent, attachments in
-            // TODO:
-            if appState.isEnemyMoving {
-                // Recursive run move animation again after completed.
-                _ = updateContent.subscribe(to: AnimationEvents.PlaybackCompleted.self, on: appState.enemy, componentType: nil) { event in
-                    appState.moveEnemy()
-                }
-            }
+            
         } attachments: {
             Attachment(id: "a1") {
                 ChooseLevelView()

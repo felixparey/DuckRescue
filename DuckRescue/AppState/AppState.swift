@@ -10,6 +10,7 @@ import SwiftUI
 import Observation
 import RealityKit
 import RealityKitContent
+import Combine
 
 @Observable
 public class AppState{
@@ -24,6 +25,7 @@ public class AppState{
     var isEnemyMoving = false
     var enemy: ModelEntity? = nil
     var enemyMoveController: AnimationPlaybackController? = nil
+    var enemyMovementSubscription: Cancellable?
     var enemyCurrentSegmentOrder: Int = 1
     
     init() {
@@ -112,57 +114,6 @@ public class AppState{
             duckCopy.components.set(InputTargetComponent())
             duckCopy.components.set(HoverEffectComponent())
             duckCopy.generateCollisionShapes(recursive: true)
-        }
-    }
-    
-    func initEnemy() {
-        self.enemy = ModelEntity(mesh: .generateSphere(radius: 0.05 / 2), materials: [SimpleMaterial(color: .yellow, isMetallic: false)])
-        self.enemy?.name = "Enemy"
-        levelContainer.addChild(enemy!)
-    }
-    
-    func runEnemy() {
-        if self.isEnemyMoving {
-            return
-        }
-        
-        self.isEnemyMoving.toggle()
-        moveEnemy()
-    }
-    
-    func moveEnemy() {
-        let duration: Double = 0.5
-        
-        if let enemy = enemy {
-            if let nextPosition = calculateNextEnemyPosition() {
-                enemyMoveController = enemy.move(
-                    to: Transform(scale: SIMD3(repeating: 1.0), rotation: enemy.orientation, translation: nextPosition),
-                    relativeTo: enemy.parent,
-                    duration: duration,
-                    timingFunction: .linear
-                )
-                enemyCurrentSegmentOrder += 1
-            }
-            else {
-                stopEnemy()
-            }
-        }
-    }
-    
-    func calculateNextEnemyPosition() -> SIMD3<Float>? {
-        if let nextTube = currentLevelOrderedTubes.first(where: { item in item.order == enemyCurrentSegmentOrder }) {
-            let x = nextTube.entity!.position.x
-            let y = nextTube.entity!.position.y
-            return .init(x: x, y: y, z: enemy!.position.z)
-        }
-        return nil
-    }
-    
-    func stopEnemy() {
-        if self.isEnemyMoving {
-            enemyMoveController?.stop()
-            enemyCurrentSegmentOrder = 1
-            self.isEnemyMoving.toggle()
         }
     }
     
