@@ -16,6 +16,8 @@ struct ImmersiveView: View {
     @Environment(\.openWindow) private var openWindow
     @Environment(\.dismissImmersiveSpace) private var dismissImmersiveSpace
     
+    
+    @State private var duck: Entity?
     @State private var enemyAnimationSubscription: EventSubscription?
     @State private var duckSubscription: EventSubscription?
     
@@ -28,12 +30,28 @@ struct ImmersiveView: View {
             
             appState.reset()
             
+            
+            
             buildAttachments(attachments)
             
-            duckSubscription = content.subscribe(to: CollisionEvents.Began.self, on: appState.duck){ event in
+//            if let duck = content.entities.first?.findEntity(named: "duck"){
+//                print("FOUND THE FUCKING DUCK")
+//            }
+            
+            duckSubscription = content.subscribe(to: CollisionEvents.Began.self, on: nil){ event in
                 
-                
-                print(event.entityA.name)
+                if let duck = appState.duck{
+                    
+                    
+                    //TODO: Make function for that
+                    if appState.hittingLogic.checkColissionBetweenTrackPieces(event.entityA.name, event.entityB.name){
+                        duck.setPosition([-0.8,0,0], relativeTo: levelContainer)
+                        print("ONLY DUCK HIT SOMETHING")
+                    }
+                    
+                    
+                }
+                print("HELLO\(event.entityA.name)")
                 
                 
             }

@@ -19,6 +19,7 @@ public class AppState{
     var readyToStart = false
     var levels: [[Tube]] = []
     var currentLevelIndex = 0
+    var widthOfLevel: Float = 1.2
     
     var isEnemyMoving = false
     
@@ -122,5 +123,11 @@ public class AppState{
             levels = JSONUtil.decode([[Tube]].self, from: jsonData)!
             print(levels)
         }
+    }
+    
+   public func claculateLevelWidth(){
+        
+        widthOfLevel = levelContainer.visualBounds(relativeTo: rootEntity).center.x
+        
     }
 }

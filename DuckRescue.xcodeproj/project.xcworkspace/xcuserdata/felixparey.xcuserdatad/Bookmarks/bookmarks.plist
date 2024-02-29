@@ -57,15 +57,15 @@
 				<key>location-parameters</key>
 				<dict>
 					<key>EndingColumnNumber</key>
-					<string>12</string>
+					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>32</string>
+					<string>41</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>32</string>
+					<string>40</string>
 					<key>Timestamp</key>
-					<string>730658630.943732</string>
+					<string>730858265.177456</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -81,16 +81,16 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>            duckSubscription = content.subscribe(to: CollisionEvents.Began.self, on: appState.duck){ event in
+				<string>            duckSubscription = content.subscribe(to: CollisionEvents.Began.self, on: nil){ event in
 </string>
 				<key>leading</key>
-				<string>            buildAttachments(attachments)
+				<string>//            }
             
 </string>
 				<key>trailing</key>
 				<string>                
-                
-                print(event.entityA.name)
+                if let duck = appState.duck{
+                    
 </string>
 			</dict>
 			<key>title</key>

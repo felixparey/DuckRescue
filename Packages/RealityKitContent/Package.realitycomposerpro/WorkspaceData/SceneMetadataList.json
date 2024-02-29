@@ -15,8 +15,9 @@
     "objectMetadataList" : [
       [
         "16C54D1F-8DCA-4D9A-9828-BFC95777EAF5",
-        "CurveWithFixedOrigin",
-        "Materials"
+        "Root",
+        "puzzleStart",
+        "Geom"
       ],
       {
         "isExpanded" : true,
@@ -24,9 +25,8 @@
       },
       [
         "16C54D1F-8DCA-4D9A-9828-BFC95777EAF5",
-        "Root",
-        "puzzleStart",
-        "Materials"
+        "CurveWithFixedOrigin",
+        "Geom"
       ],
       {
         "isExpanded" : true,
@@ -44,16 +44,7 @@
         "16C54D1F-8DCA-4D9A-9828-BFC95777EAF5",
         "Root",
         "puzzleStart",
-        "Geom"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "16C54D1F-8DCA-4D9A-9828-BFC95777EAF5",
-        "CurveWithFixedOrigin",
-        "Geom"
+        "Materials"
       ],
       {
         "isExpanded" : true,
@@ -69,12 +60,177 @@
       {
         "isExpanded" : true,
         "isLocked" : false
+      },
+      [
+        "16C54D1F-8DCA-4D9A-9828-BFC95777EAF5",
+        "CurveWithFixedOrigin",
+        "Materials"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
       }
     ]
   },
   "36DB7FC7-E314-4F25-B712-699763708147" : {
     "objectMetadataList" : [
-
+      [
+        "36DB7FC7-E314-4F25-B712-699763708147",
+        "newduck4"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "36DB7FC7-E314-4F25-B712-699763708147",
+        "duck",
+        "Rubber_Duck_01_1",
+        "Rubber_Duck_01_1_geometry"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "36DB7FC7-E314-4F25-B712-699763708147",
+        "duck",
+        "CUBUS",
+        "Geom",
+        "node_0",
+        "Scene_1",
+        "ORIGIN"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "36DB7FC7-E314-4F25-B712-699763708147",
+        "duck",
+        "stra",
+        "Geom",
+        "node_0"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "36DB7FC7-E314-4F25-B712-699763708147",
+        "duck",
+        "Str",
+        "Scenes",
+        "Scene"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "36DB7FC7-E314-4F25-B712-699763708147",
+        "duck",
+        "CUBUS",
+        "Geom"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "36DB7FC7-E314-4F25-B712-699763708147",
+        "newduck4",
+        "Geom"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "36DB7FC7-E314-4F25-B712-699763708147",
+        "duck",
+        "Str",
+        "Scenes"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "36DB7FC7-E314-4F25-B712-699763708147",
+        "duck",
+        "stra",
+        "Geom"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "36DB7FC7-E314-4F25-B712-699763708147",
+        "duck",
+        "CUBUS"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "36DB7FC7-E314-4F25-B712-699763708147",
+        "duck",
+        "Str",
+        "Scenes",
+        "Scene",
+        "Group_2313"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "36DB7FC7-E314-4F25-B712-699763708147",
+        "duck",
+        "Rubber_Duck_01_1"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "36DB7FC7-E314-4F25-B712-699763708147",
+        "duck",
+        "stra",
+        "Geom",
+        "node_0",
+        "Scene_1"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "36DB7FC7-E314-4F25-B712-699763708147",
+        "duck",
+        "CUBUS",
+        "Geom",
+        "node_0",
+        "Scene_1"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "36DB7FC7-E314-4F25-B712-699763708147",
+        "duck",
+        "CUBUS",
+        "Geom",
+        "node_0"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
     ]
   },
   "65F6F990-A780-4474-B78B-572E0E4E273D" : {
@@ -116,7 +272,7 @@
         "8153C497-3958-4103-B4B6-C5D83DB897C2",
         "Root",
         "Cube",
-        "Geom"
+        "Materials"
       ],
       {
         "isExpanded" : true,
@@ -133,7 +289,9 @@
       },
       [
         "8153C497-3958-4103-B4B6-C5D83DB897C2",
-        "Root"
+        "Root",
+        "Cube",
+        "Geom"
       ],
       {
         "isExpanded" : true,
@@ -141,9 +299,7 @@
       },
       [
         "8153C497-3958-4103-B4B6-C5D83DB897C2",
-        "Root",
-        "Cube",
-        "Materials"
+        "Root"
       ],
       {
         "isExpanded" : true,
@@ -186,6 +342,37 @@
         "AF09ED6F-1707-48FD-8720-65B998362C09",
         "Root",
         "Sphere_Right"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
+  "B957C93D-DE6F-42BA-A320-884E34385DA5" : {
+    "objectMetadataList" : [
+      [
+        "B957C93D-DE6F-42BA-A320-884E34385DA5",
+        "Root",
+        "Giovanni",
+        "Geom"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "B957C93D-DE6F-42BA-A320-884E34385DA5",
+        "Root",
+        "Giovanni"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "B957C93D-DE6F-42BA-A320-884E34385DA5",
+        "Root"
       ],
       {
         "isExpanded" : true,
