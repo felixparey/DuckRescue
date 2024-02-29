@@ -18,4 +18,5 @@ import RealityKit
     var enemy: Entity? = nil
     var enemyAnimationPlaybackController: AnimationPlaybackController?
     
-
+    var gasParticles: Entity? = nil
+    var gasAnimationPlaybackController: AnimationPlaybackController?

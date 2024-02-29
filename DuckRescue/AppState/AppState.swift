@@ -22,6 +22,7 @@ public class AppState{
     var widthOfLevel: Float = 1.2
     
     var isEnemyMoving = false
+    var isGasMoving = false
     
     init() {
         Task { @MainActor in
@@ -38,20 +39,25 @@ public class AppState{
                     self.duck = try? await Entity(named: "duckEntity", in: realityKitContentBundle)
                 }
                 
+                group.addTask {
+                    gasParticles = try? await Entity(named: "particles-gas2", in: realityKitContentBundle)
+                }
+                
                 await group.waitForAll()
             }
-
+            
             await loadLevelData()
             
             self.readyToStart = true
         }
-
+        
     }
     
     func reset() {
         buildLevel()
         initDuck()
         initEnemy()
+        initGasParticles()
         
     }
     
@@ -84,8 +90,8 @@ public class AppState{
                 tube.name = "tube"
                 tube.position = [horizontalDistance * Float(j), verticalDistance * Float(i), 0.0]
                 
-//                tube.components.set(InputTargetComponent())
-//                tube.components.set(HoverEffectComponent())
+                //                tube.components.set(InputTargetComponent())
+                //                tube.components.set(HoverEffectComponent())
                 
                 tube.generateCollisionShapes(recursive: true)
                 
@@ -117,6 +123,11 @@ public class AppState{
         enemy = ModelEntity(mesh: .generateSphere(radius: 0.05 / 2), materials: [SimpleMaterial(color: .yellow, isMetallic: false)])
         levelContainer.addChild(enemy!)
     }
+    
+    func initGasParticles() {
+            levelContainer.addChild(gasParticles!)
+            gasParticles?.setPosition([0.0, -0.2, 0.0], relativeTo: levelContainer)
+        }
     
     private func loadLevelData() async {
         if let jsonData = LevelDataJSONString.data(using: .utf8) {
