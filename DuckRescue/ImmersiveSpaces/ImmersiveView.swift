@@ -37,26 +37,14 @@ struct ImmersiveView: View {
             
             buildAttachments(attachments)
             
-//            if let duck = content.entities.first?.findEntity(named: "duck"){
-//                print("FOUND THE FUCKING DUCK")
-//            }
-            
             duckSubscription = content.subscribe(to: CollisionEvents.Began.self, on: nil){ event in
                 
                 if let duck = appState.duck{
-                    
-                    
-                    //TODO: Make function for that
                     if appState.hittingLogic.checkColissionBetweenTrackPieces(event.entityA.name, event.entityB.name){
                         duck.setPosition([-0.8,0,0], relativeTo: levelContainer)
                         print("ONLY DUCK HIT SOMETHING")
                     }
-                    
-                    
                 }
-                print("HELLO\(event.entityA.name)")
-                
-                
             }
             
             enemyAnimationSubscription = content.subscribe(to: AnimationEvents.PlaybackCompleted.self, on: enemy, componentType: nil) { event in
