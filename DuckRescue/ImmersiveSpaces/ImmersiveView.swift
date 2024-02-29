@@ -66,6 +66,7 @@ struct ImmersiveView: View {
                 ChooseLevelView()
                     .padding()
                     .glassBackgroundEffect()
+                    .frame(height: 80)
             }
         }
         .onReceive(timer) { time in
@@ -111,7 +112,8 @@ struct ImmersiveView: View {
     func buildAttachments(_ attachments: RealityViewAttachments) {
         if let entity = attachments.entity(for: "a1") {
             rootEntity.addChild(entity)
-            entity.setPosition([1.3, -0.25, 0], relativeTo: rootEntity)
+            entity.setPosition([levelContainer.visualBounds(relativeTo: nil).center.x, -0.825, 0.15], relativeTo: rootEntity)
+            entity.setOrientation(simd_quatf(Rotation3D(angle: .degrees(-15), axis: .x)), relativeTo: nil)
         }
     }
     

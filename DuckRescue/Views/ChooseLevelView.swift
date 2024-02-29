@@ -13,51 +13,59 @@ struct ChooseLevelView: View {
     @Environment(\.openWindow) private var openWindow
     
     var body: some View {
-        HStack(alignment: .top) {
-            VStack(spacing: 0) {
-                Text("CHOOSE LEVEL")
-                    .font(.title)
-                    .padding()
-                HStack(alignment: .center) {
-                    Button {
-                        if appState.currentLevelIndex > 0 {
-                            appState.currentLevelIndex -= 1
-                            appState.reset()
-                        }
-                    } label: {
-                        Label("Back", systemImage: "chevron.backward")
-                            .labelStyle(.iconOnly)
-                    }
-                    
-                    Text("\(appState.currentLevelIndex + 1)")
-                        .font(.largeTitle.bold())
-                        .padding()
-                        .frame(width: 100)
-                    
-                    Button {
-                        if appState.currentLevelIndex < appState.levels.count - 1 {
-                            appState.currentLevelIndex += 1
-                            appState.reset()
-                        }
-                    } label: {
-                        Label("Next", systemImage: "chevron.forward")
-                            .labelStyle(.iconOnly)
-                    }
+        HStack(alignment: .center) {
+            
+            Button{
+                
+            }label: {
+                Label("Select Level", systemImage: "square.grid.3x3.fill")
+                    .labelStyle(.iconOnly)
+            }
+            .help("Select Level")
+            
+            Divider()
+            
+            Button {
+                if appState.currentLevelIndex > 0 {
+                    appState.currentLevelIndex -= 1
+                    appState.reset()
+                }
+            } label: {
+                Label("Previous Level", systemImage: "chevron.backward")
+                    .labelStyle(.iconOnly)
+            }
+            .help("Previous Level")
+            
+            Text("Level \(appState.currentLevelIndex + 1)")
+                .padding()
+            
+            Button {
+                if appState.currentLevelIndex < appState.levels.count - 1 {
+                    appState.currentLevelIndex += 1
+                    appState.reset()
+                }
+            } label: {
+                Label("Next Level", systemImage: "chevron.forward")
+                    .labelStyle(.iconOnly)
+            }
+            .help("Next Level")
+            
+            Divider()
+            
+            Button {
+                Task {
+                    openWindow(id: "Start")
+                    await dismissImmersiveSpace()
                 }
                 
-                HStack {
-                    Button {
-                        Task {
-                            openWindow(id: "Start")
-                            await dismissImmersiveSpace()
-                        }
-                    } label: {
-                        Label("Exit", systemImage: "xmark.circle.fill")
-                            .labelStyle(.titleAndIcon)
-                    }
-                }
-                .padding()
+            } label: {
+                Label("Exit Immersive Space", systemImage: "arrow.down.right.and.arrow.up.left")
+                    .labelStyle(.iconOnly)
+                    
             }
+            .help("Exit Game")
+            
+            
         }
     }
 }

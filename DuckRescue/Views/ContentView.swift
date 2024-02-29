@@ -22,17 +22,21 @@ struct ContentView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fill)
             
-            Button("Start Game"){
+            Button{
                 Task{
                     await openImmersiveSpace(id: "ImmersiveSpace")
                     dismissWindow()
                 }
+            }label: {
+                Text("Start Game")
+                    .font(.title)
+                    .padding()
+                    .glassBackgroundEffect()
+                    
             }
-            .font(.title)
-            .padding()
-            .glassBackgroundEffect()
             .padding(.bottom, 40)
-            .buttonStyle(PlainButtonStyle())
+            .buttonStyle(.plain)
+            
         }
     }
 }
