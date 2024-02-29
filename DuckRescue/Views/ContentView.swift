@@ -14,15 +14,25 @@ struct ContentView: View {
     @Environment(AppState.self) private var appState
     @Environment(\.openImmersiveSpace) private var openImmersiveSpace
     @Environment(\.dismissImmersiveSpace) private var dismissImmersiveSpace
-    @Environment(\.dismissWindow) private var dismiss
+    @Environment(\.dismissWindow) private var dismissWindow
     
     var body: some View {
-        Button("Start"){
-            Task{
-                appState.hittingLogic.duckHitTarget = false
-                await openImmersiveSpace(id: "ImmersiveSpace")
-                dismiss()
+        ZStack(alignment: .bottom){
+            Image(.startUpScreen)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+            
+            Button("Start Game"){
+                Task{
+                    await openImmersiveSpace(id: "ImmersiveSpace")
+                    dismissWindow()
+                }
             }
+            .font(.title)
+            .padding()
+            .glassBackgroundEffect()
+            .padding(.bottom, 40)
+            .buttonStyle(PlainButtonStyle())
         }
     }
 }
