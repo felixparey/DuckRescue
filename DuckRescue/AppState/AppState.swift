@@ -20,7 +20,7 @@ public class AppState{
     var levels: [[Tube]] = []
     var currentLevelIndex = 0
     var widthOfLevel: Float = 1.2
-    
+    var startPosition: SIMD3<Float>?
     var isEnemyMoving = false
     var isGasMoving = false
     
@@ -43,6 +43,10 @@ public class AppState{
                     gasParticles = try? await Entity(named: "particles-gas2", in: realityKitContentBundle)
                 }
                 
+                group.addTask {
+                    startPiece = try? await Entity(named: "StartPiece", in: realityKitContentBundle)
+                }
+                
                 await group.waitForAll()
             }
             
@@ -57,12 +61,18 @@ public class AppState{
         buildLevel()
         initDuck()
         initEnemy()
-        initGasParticles()
+      //  initGasParticles()
         
     }
     
-    func buildLevel() {
+    private func buildLevel() {
         levelContainer.children.removeAll()
+        
+        startPiece?.scale = [0.015,0.015,0.015]
+        levelContainer.addChild(startPiece!)
+        startPiece?.setPosition([-0.32,-0.1,0], relativeTo: levelContainer)
+        startPosition = startPiece?.position
+        
         
         let level = levels[currentLevelIndex]
         
@@ -73,7 +83,7 @@ public class AppState{
                 tube.scale = .init(repeating: 0.08)
                 
                 let tubeBounds = tube.visualBounds(relativeTo: nil).max
-                let horizontalDistance: Float = tubeBounds.z * 2
+                let horizontalDistance: Float = tubeBounds.z * 2 - 0.025
                 print(tube.scale(relativeTo: nil))
                 let verticalDistance: Float = 0.11430265 * 2
                 
@@ -104,7 +114,7 @@ public class AppState{
         levelContainer.setPosition([-(tubeHeight * 5 / 2), -(tubeHeight * 5 / 2), 0.0], relativeTo: rootEntity)
     }
     
-    func initDuck() {
+   private func initDuck() {
         if let duck = duck{
             duck.name = "Duck"
             duck.transform.rotation = simd_quatf(
@@ -112,19 +122,19 @@ public class AppState{
             )
             
             self.duck = duck
-            levelContainer.addChild(self.duck!)
+            startPiece?.addChild(self.duck!)
             self.duck?.components.set(HoverEffectComponent())
             self.duck?.setScale([0.8,0.8,0.8], relativeTo: levelContainer)
-            self.duck?.setPosition([-0.25, -0.05, 0.0], relativeTo: levelContainer)
+            self.duck?.setPosition([0.0, 2, 0.0], relativeTo: startPiece)
         }
     }
     
-    func initEnemy() {
+    private func initEnemy() {
         enemy = ModelEntity(mesh: .generateSphere(radius: 0.05 / 2), materials: [SimpleMaterial(color: .yellow, isMetallic: false)])
         levelContainer.addChild(enemy!)
     }
     
-    func initGasParticles() {
+    private func initGasParticles() {
             levelContainer.addChild(gasParticles!)
             gasParticles?.setPosition([0.0, -0.2, 0.0], relativeTo: levelContainer)
         }

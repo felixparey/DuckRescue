@@ -38,12 +38,16 @@ struct ImmersiveView: View {
             buildAttachments(attachments)
             
             duckSubscription = content.subscribe(to: CollisionEvents.Began.self, on: nil){ event in
-                
+        
                 if let duck = appState.duck{
-                    if appState.hittingLogic.checkColissionBetweenTrackPieces(event.entityA.name, event.entityB.name){
-                        duck.setPosition([-0.8,0,0], relativeTo: levelContainer)
+                    
+                    if event.entityA.name == "duck" || event.entityB.name == "duck"{
+                       // appState.hittingLogic.resetDuck(duck, appState.startPosition ?? [0,0,0])
                         print("ONLY DUCK HIT SOMETHING")
                     }
+                    
+                        
+                    
                 }
             }
             

@@ -14,6 +14,7 @@ import RealityKit
     var tube: Entity? = nil
     var tubeStraight: Entity? = nil
     var tubeCorner: Entity? = nil
+    var startPiece: Entity? = nil
 
     var enemy: Entity? = nil
     var enemyAnimationPlaybackController: AnimationPlaybackController?
