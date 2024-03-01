@@ -39,3 +39,12 @@ func spawnTube(_ name: String) -> Entity? {
     return tubesModels[name]??.clone(recursive: true)
 }
 
+// source: https://stackoverflow.com/questions/72131489/realitykit-get-modelentity-size-as-simd3float
+extension BoundingBox {
+    var size: SIMD3<Float> {
+        let width = max.x - min.x
+        let height = max.y - min.y
+        let depth = max.z - min.z
+        return [width, height, depth]
+    }
+}

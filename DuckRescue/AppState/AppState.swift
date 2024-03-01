@@ -91,10 +91,10 @@ public class AppState{
             if let tube = tube {
                 tube.scale = .init(repeating: 0.08)
                 
-                let tubeBounds = tube.visualBounds(relativeTo: nil).max
-                let horizontalDistance: Float = tubeBounds.z * 2 - 0.002
-                let verticalDistance: Float = tubeBounds.y * 2
-                
+                let size = tube.visualBounds(relativeTo: nil).size
+                let horizontalDistance: Float = size[0]
+                let verticalDistance: Float = size[1]
+
                 let i = index / 5
                 let j = index % 5
                 
@@ -102,7 +102,7 @@ public class AppState{
                 tube.orientation = simd_quatf(newOrientation)
                 
                 tube.name = "tube"
-                tube.position = [horizontalDistance * Float(j), verticalDistance * Float(i), 0.0]
+                tube.position = [horizontalDistance * 2 * Float(j), verticalDistance * Float(i), 0.0]
                 
                 tube.components.set(InputTargetComponent())
                 tube.components.set(HoverEffectComponent())
