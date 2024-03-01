@@ -27,7 +27,7 @@ public class AppState{
     init() {
         Task { @MainActor in
             await withTaskGroup(of: Void.self) { group in
-                ["straight", "corner_1", "corner_2", "corner_3", "corner_4"].forEach { name in
+                ["STraightt", "Corner1", "Corner2", "Corner3", "Corner4"].forEach { name in
                     group.addTask {
                         if let model = try? await Entity(named: name, in: realityKitContentBundle) {
                             tubesModels[name] = model

@@ -8,9 +8,9 @@
     upAxis = "Y"
 )
 
-def "Striagthhh" (
+def "CurvaRU" (
     active = true
-    prepend references = @Striagthhh.usdz@
+    prepend references = @CurvaRU.usdz@
 )
 {
     float3 xformOp:scale = (1, 1, 1)
