@@ -8,9 +8,9 @@
     upAxis = "Y"
 )
 
-def "Striagthhh" (
+def "Straight" (
     active = true
-    prepend references = @Striagthhh.usdz@
+    references = @Straight.usdz@
 )
 {
     float3 xformOp:scale = (1, 1, 1)
