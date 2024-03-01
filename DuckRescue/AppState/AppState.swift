@@ -83,9 +83,9 @@ public class AppState{
                 tube.scale = .init(repeating: 0.08)
                 
                 let tubeBounds = tube.visualBounds(relativeTo: nil).max
-                let horizontalDistance: Float = tubeBounds.z * 2 - 0.025
+                let horizontalDistance: Float = tubeBounds.z * 2 - 0.002
                 print(tube.scale(relativeTo: nil))
-                let verticalDistance: Float = 0.11430265 * 2
+                let verticalDistance: Float = tubeBounds.y * 2
                 
                 print(tubeData.name)
                 print(tubeBounds.y)
