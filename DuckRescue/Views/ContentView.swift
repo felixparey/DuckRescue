@@ -27,12 +27,18 @@ struct ContentView: View {
                     await openImmersiveSpace(id: "ImmersiveSpace")
                     dismissWindow()
                 }
-            }label: {
-                Text("Start Game")
-                    .font(.title)
-                    .padding()
-                    .glassBackgroundEffect()
-                    
+            } label: {
+                if appState.readyToStart {
+                    Text("Start Game")
+                        .font(.title)
+                        .padding()
+                        .glassBackgroundEffect()
+                }
+                else {
+                    Text("Loading...")
+                        .font(.title)
+                        .padding()
+                }
             }
             .padding(.bottom, 40)
             .buttonStyle(.plain)
