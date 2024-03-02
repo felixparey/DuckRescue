@@ -11,8 +11,18 @@ import RealityKitContent
 
 extension AppState {
     func initEnemy() {
-        self.enemy = ModelEntity(mesh: .generateBox(size: 0.05), materials: [SimpleMaterial(color: .black, isMetallic: false)])
-        self.enemy?.name = "Enemy"
+        // Wrap enemy model into entity to reset incorrect rotation in original model
+        // and simplify manage it's position/rotation etc.
+        let originalEnemyModel = self.enemy!
+        
+        let wrapper = Entity()
+        wrapper.name = "Enemy"
+        wrapper.addChild(originalEnemyModel)
+        
+        originalEnemyModel.setOrientation(simd_quatf(.init(angle: .degrees(-90), axis: .y)), relativeTo: originalEnemyModel.parent)
+        
+        self.enemy = wrapper
+        
         levelContainer.addChild(enemy!)
     }
     
@@ -57,9 +67,7 @@ extension AppState {
         guard let nextTube = currentLevelOrderedTubes.first(where: { item in item.order == enemyCurrentSegmentOrder }) else {
             return nil
         }
-        
-        debugContainer.children.removeAll()
-        
+
         let nextPosition: SIMD3<Float> = .init(x: nextTube.entity!.position.x, y: nextTube.entity!.position.y, z: enemy.position.z)
         let duration: Double = 1
         let segmentEntityName = nextTube.entity?.name
@@ -164,10 +172,6 @@ extension AppState {
                 duration: duration,
                 bindTarget: .transform
             )
-            
-            let debugEntity = ModelEntity(mesh: .generateSphere(radius: 0.008), materials: [SimpleMaterial(color: .red, isMetallic: false)])
-            debugContainer.addChild(debugEntity)
-            debugEntity.setPosition(nextPosition, relativeTo: levelContainer)
             
             let goStraightAnimation = try! AnimationResource
                 .generate(with: go)

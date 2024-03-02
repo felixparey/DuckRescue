@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		32ECA2B42B924E290088E897 /* AppState+EnemyLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32ECA2B32B924E290088E897 /* AppState+EnemyLogic.swift */; };
+		32CFEB962B932AF8003D0000 /* AppState+EnemyLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CFEB952B932AF8003D0000 /* AppState+EnemyLogic.swift */; };
 		32EDF75A2B863047001185DC /* GlobalEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EDF7592B863047001185DC /* GlobalEntities.swift */; };
 		32EDF77F2B865F2E001185DC /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EDF77E2B865F2E001185DC /* Utils.swift */; };
 		32EDF7842B8707C1001185DC /* Tube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EDF7832B8707C1001185DC /* Tube.swift */; };
@@ -25,7 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		32ECA2B32B924E290088E897 /* AppState+EnemyLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "AppState+EnemyLogic.swift"; path = "../../../../../Downloads/AppState+EnemyLogic.swift"; sourceTree = "<group>"; };
+		32CFEB952B932AF8003D0000 /* AppState+EnemyLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppState+EnemyLogic.swift"; sourceTree = "<group>"; };
 		32EDF7592B863047001185DC /* GlobalEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalEntities.swift; sourceTree = "<group>"; };
 		32EDF77E2B865F2E001185DC /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		32EDF7832B8707C1001185DC /* Tube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tube.swift; sourceTree = "<group>"; };
@@ -137,7 +137,7 @@
 				32EDF7852B870AF7001185DC /* Data */,
 				4D9B73812B7AE755007CA380 /* AppState.swift */,
 				4D4955592B7C279C00E7C608 /* AppState+CollisionLogic.swift */,
-				32ECA2B32B924E290088E897 /* AppState+EnemyLogic.swift */,
+				32CFEB952B932AF8003D0000 /* AppState+EnemyLogic.swift */,
 				32EDF7832B8707C1001185DC /* Tube.swift */,
 			);
 			path = AppState;
@@ -219,13 +219,13 @@
 				4D9B73702B7AE580007CA380 /* ContentView.swift in Sources */,
 				32EDF75A2B863047001185DC /* GlobalEntities.swift in Sources */,
 				32EDF78B2B892854001185DC /* EnemyControllerView.swift in Sources */,
+				32CFEB962B932AF8003D0000 /* AppState+EnemyLogic.swift in Sources */,
 				32EDF7872B870B05001185DC /* LevelDataJSONString.swift in Sources */,
 				32EDF7842B8707C1001185DC /* Tube.swift in Sources */,
 				4D9B736E2B7AE580007CA380 /* DuckRescueApp.swift in Sources */,
 				32EDF77F2B865F2E001185DC /* Utils.swift in Sources */,
 				32EDF7892B870E3F001185DC /* ChooseLevelView.swift in Sources */,
 				4D49555A2B7C279C00E7C608 /* AppState+CollisionLogic.swift in Sources */,
-				32ECA2B42B924E290088E897 /* AppState+EnemyLogic.swift in Sources */,
 				4D9B73722B7AE580007CA380 /* ImmersiveView.swift in Sources */,
 				4D9B73822B7AE755007CA380 /* AppState.swift in Sources */,
 			);
