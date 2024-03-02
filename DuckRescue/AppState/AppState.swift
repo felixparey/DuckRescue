@@ -84,6 +84,7 @@ public class AppState{
         startPosition = startPiece?.position
         
         let level = levels[currentLevelIndex]
+        var size: SIMD3<Float>? = nil
         
         for (index, tubeData) in level.enumerated() {
             let tube: Entity? = spawnTube(tubeData.name)
@@ -91,18 +92,18 @@ public class AppState{
             if let tube = tube {
                 tube.scale = .init(repeating: 0.08)
                 
-                let size = tube.visualBounds(relativeTo: nil).size
-                let horizontalDistance: Float = size[0]
-                let verticalDistance: Float = size[1]
-
+                if size == nil {
+                    size = tube.visualBounds(relativeTo: nil).size
+                }
+                
+                let horizontalDistance: Float = size![0]
+                let verticalDistance: Float = size![1]
+                
                 let i = index / 5
                 let j = index % 5
                 
-                let newOrientation = Rotation3D(angle: .degrees(Double(90)), axis: .y)
-                tube.orientation = simd_quatf(newOrientation)
-                
                 tube.name = "tube"
-                tube.position = [horizontalDistance * 2 * Float(j), verticalDistance * Float(i), 0.0]
+                tube.position = [horizontalDistance * Float(j), verticalDistance * Float(i), 0.0]
                 
                 tube.components.set(InputTargetComponent())
                 tube.components.set(HoverEffectComponent())

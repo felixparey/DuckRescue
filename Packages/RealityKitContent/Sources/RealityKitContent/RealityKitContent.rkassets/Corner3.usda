@@ -11,14 +11,13 @@
 def "CurvaRU" (
     active = true
     customData = {
-        float3 rotationEulerHint = (0, 0, 3.1415927)
+        float3 rotationEulerHint = (0, 1.5707963, 3.1415927)
     }
     references = @CurvaRU.usdz@
 )
 {
-    quatf xformOp:orient = (-4.371139e-8, 0, 0, 1)
+    quatf xformOp:orient = (3.090862e-8, 0.70710677, 3.090862e-8, -0.70710677)
     float3 xformOp:scale = (1, 1, 1)
-    float3 xformOp:translate = (0, 0, 0)
     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 }
 
