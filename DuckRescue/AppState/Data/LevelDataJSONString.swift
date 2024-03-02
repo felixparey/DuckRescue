@@ -41,66 +41,66 @@ let LevelDataJSONString = """
         { "name": "Straight", "rotation": 0, "order": 25 }
     ],
     [
-        { "name": "straight", "rotation": 0, "order": 1 },
-        { "name": "straight", "rotation": 0, "order": 1 },
-        { "name": "corner_1", "rotation": 0, "order": 1 },
+        { "name": "Straight", "rotation": 0, "order": 1 },
+        { "name": "Corner1", "rotation": 0, "order": 1 },
         { "name": "Empty", "rotation": 0, "order": 1 },
-        { "name": "Empty", "rotation": 0, "order": 1 },
-
-        { "name": "Empty", "rotation": 0, "order": 1 },
-        { "name": "corner_4", "rotation": 0, "order": 1 },
-        { "name": "corner_2", "rotation": 0, "order": 1 },
         { "name": "Empty", "rotation": 0, "order": 1 },
         { "name": "Empty", "rotation": 0, "order": 1 },
 
+        { "name": "Corner4", "rotation": 0, "order": 1 },
+        { "name": "Corner2", "rotation": 0, "order": 1 },
         { "name": "Empty", "rotation": 0, "order": 1 },
-        { "name": "corner_3", "rotation": 0, "order": 1 },
-        { "name": "straight", "rotation": 0, "order": 1 },
-        { "name": "corner_1", "rotation": 0, "order": 1 },
+        { "name": "Empty", "rotation": 0, "order": 1 },
+        { "name": "Empty", "rotation": 0, "order": 1 },
+
+        { "name": "Corner3", "rotation": 0, "order": 1 },
+        { "name": "Straight", "rotation": 0, "order": 1 },
+        { "name": "Straight", "rotation": 0, "order": 1 },
+        { "name": "Corner1", "rotation": 0, "order": 1 },
         { "name": "Empty", "rotation": 0, "order": 1 },
 
         { "name": "Empty", "rotation": 0, "order": 1 },
-        { "name": "corner_4", "rotation": 0, "order": 1 },
-        { "name": "straight", "rotation": 0, "order": 1 },
-        { "name": "corner_2", "rotation": 0, "order": 1 },
+        { "name": "Corner4", "rotation": 0, "order": 1 },
+        { "name": "Straight", "rotation": 0, "order": 1 },
+        { "name": "Corner2", "rotation": 0, "order": 1 },
         { "name": "Empty", "rotation": 0, "order": 1 },
 
         { "name": "Empty", "rotation": 0, "order": 1 },
-        { "name": "corner_3", "rotation": 0, "order": 1 },
-        { "name": "straight", "rotation": 0, "order": 1 },
-        { "name": "straight", "rotation": 0, "order": 1 },
-        { "name": "straight", "rotation": 0, "order": 1 }
+        { "name": "Corner3", "rotation": 0, "order": 1 },
+        { "name": "Straight", "rotation": 0, "order": 1 },
+        { "name": "Straight", "rotation": 0, "order": 1 },
+        { "name": "Straight", "rotation": 0, "order": 1 }
     ],
     [
-        { "name": "straight", "rotation": 0, "order": 1 },
-        { "name": "corner_1", "rotation": 0, "order": 1 },
-        { "name": "Empty", "rotation": 0, "order": 1 },
-        { "name": "Empty", "rotation": 0, "order": 1 },
-        { "name": "Empty", "rotation": 0, "order": 1 },
-
-        { "name": "corner_4", "rotation": 0, "order": 1 },
-        { "name": "corner_2", "rotation": 0, "order": 1 },
-        { "name": "Empty", "rotation": 0, "order": 1 },
+        { "name": "Straight", "rotation": 0, "order": 1 },
+        { "name": "Straight", "rotation": 0, "order": 1 },
+        { "name": "Corner1", "rotation": 0, "order": 1 },
         { "name": "Empty", "rotation": 0, "order": 1 },
         { "name": "Empty", "rotation": 0, "order": 1 },
 
-        { "name": "corner_3", "rotation": 0, "order": 1 },
-        { "name": "straight", "rotation": 0, "order": 1 },
-        { "name": "straight", "rotation": 0, "order": 1 },
-        { "name": "corner_1", "rotation": 0, "order": 1 },
+        { "name": "Empty", "rotation": 0, "order": 1 },
+        { "name": "Corner4", "rotation": 0, "order": 1 },
+        { "name": "Corner2", "rotation": 0, "order": 1 },
+        { "name": "Empty", "rotation": 0, "order": 1 },
         { "name": "Empty", "rotation": 0, "order": 1 },
 
         { "name": "Empty", "rotation": 0, "order": 1 },
-        { "name": "corner_4", "rotation": 0, "order": 1 },
-        { "name": "straight", "rotation": 0, "order": 1 },
-        { "name": "corner_2", "rotation": 0, "order": 1 },
+        { "name": "Corner3", "rotation": 0, "order": 1 },
+        { "name": "Straight", "rotation": 0, "order": 1 },
+        { "name": "Corner1", "rotation": 0, "order": 1 },
         { "name": "Empty", "rotation": 0, "order": 1 },
 
         { "name": "Empty", "rotation": 0, "order": 1 },
-        { "name": "corner_3", "rotation": 0, "order": 1 },
-        { "name": "straight", "rotation": 0, "order": 1 },
-        { "name": "straight", "rotation": 0, "order": 1 },
-        { "name": "straight", "rotation": 0, "order": 1 }
+        { "name": "Corner4", "rotation": 0, "order": 1 },
+        { "name": "Straight", "rotation": 0, "order": 1 },
+        { "name": "Corner2", "rotation": 0, "order": 1 },
+        { "name": "Empty", "rotation": 0, "order": 1 },
+
+        { "name": "Empty", "rotation": 0, "order": 1 },
+        { "name": "Corner3", "rotation": 0, "order": 1 },
+        { "name": "Straight", "rotation": 0, "order": 1 },
+        { "name": "Straight", "rotation": 0, "order": 1 },
+        { "name": "Straight", "rotation": 0, "order": 1 }
     ]
 ]
 """
