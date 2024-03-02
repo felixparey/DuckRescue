@@ -11,18 +11,7 @@ import RealityKitContent
 
 extension AppState {
     func initEnemy() {
-        // Wrap enemy model into entity to reset incorrect rotation in original model
-        // and simplify manage it's position/rotation etc.
-        let originalEnemyModel = self.enemy!
-        
-        let wrapper = Entity()
-        wrapper.name = "Enemy"
-        wrapper.addChild(originalEnemyModel)
-        
-        originalEnemyModel.setOrientation(simd_quatf(.init(angle: .degrees(-90), axis: .y)), relativeTo: originalEnemyModel.parent)
-        
-        self.enemy = wrapper
-        
+        enemy!.name = "Enemy"
         levelContainer.addChild(enemy!)
     }
     
@@ -75,7 +64,7 @@ extension AppState {
         let halfOfDistance = distanceBetweenSegmentsX / 2
         
         switch segmentEntityName {
-        case "corner_1":
+        case "Corner1":
             let go = FromToByAnimation<Transform>(
                 from: .init(translation: enemy.position),
                 to: .init(translation: nextPosition - [halfOfDistance, 0.0, 0.0]),
@@ -97,7 +86,7 @@ extension AppState {
                 .generate(with: group)
             
             return groupAnimation
-        case "corner_2":
+        case "Corner2":
             let start = enemy.position
             let control: simd_float3 = nextPosition
             let end = nextPosition - [halfOfDistance, 0.0, 0.0]
@@ -120,7 +109,7 @@ extension AppState {
                 .generate(with: group)
             
             return groupAnimation
-        case "corner_3":
+        case "Corner3":
             let start = enemy.position
             let control: simd_float3 = nextPosition
             let end = nextPosition + [halfOfDistance, 0.0, 0.0]
@@ -143,7 +132,7 @@ extension AppState {
                 .generate(with: group)
             
             return groupAnimation
-        case "corner_4":
+        case "Corner4":
             let go = FromToByAnimation<Transform>(
                 from: .init(translation: enemy.position),
                 to: .init(translation: nextPosition + [halfOfDistance, 0.0, 0.0]),
