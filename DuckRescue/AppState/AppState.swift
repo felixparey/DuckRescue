@@ -28,7 +28,7 @@ public class AppState{
     var startPosition: SIMD3<Float>?
     
     var isEnemyMoving = false
-    var enemy: ModelEntity? = nil
+    var enemy: Entity? = nil
     var enemyMoveController: AnimationPlaybackController? = nil
     var enemyMovementSubscription: Cancellable?
     var enemyCurrentSegmentOrder: Int = 1
@@ -56,6 +56,10 @@ public class AppState{
                 
                 group.addTask {
                     startPiece = try? await Entity(named: "StartPiece", in: realityKitContentBundle)
+                }
+                
+                group.addTask {
+                    self.enemy = try? await Entity(named: "rat", in: realityKitContentBundle)
                 }
                 
                 await group.waitForAll()
@@ -104,9 +108,6 @@ public class AppState{
                 
                 tube.name = "tube"
                 tube.position = [horizontalDistance * Float(j), verticalDistance * Float(i), 0.0]
-                
-                tube.components.set(InputTargetComponent())
-                tube.components.set(HoverEffectComponent())
                 
                 tube.generateCollisionShapes(recursive: true)
                 
