@@ -8,16 +8,13 @@
 import Foundation
 import RealityKit
 
-    let rootEntity = Entity()
-    let levelContainer = Entity()
-    
-    var tube: Entity? = nil
-    var tubeStraight: Entity? = nil
-    var tubeCorner: Entity? = nil
-    var startPiece: Entity? = nil
+let rootEntity = Entity()
+let levelContainer = Entity()
 
-    var enemy: Entity? = nil
-    var enemyAnimationPlaybackController: AnimationPlaybackController?
-    
-    var gasParticles: Entity? = nil
-    var gasAnimationPlaybackController: AnimationPlaybackController?
+var tube: Entity? = nil
+var tubeStraight: Entity? = nil
+var tubeCorner: Entity? = nil
+var startPiece: Entity? = nil
+
+var gasParticles: Entity? = nil
+var gasAnimationPlaybackController: AnimationPlaybackController?

@@ -10,11 +10,23 @@
 
 def "CurvaRU" (
     active = true
+    customData = {
+        float3 rotationEulerHint = (0, 1.5707963, 0)
+    }
     prepend references = @CurvaRU.usdz@
 )
 {
+    quatf xformOp:orient = (0.70710677, 0, 0.70710677, 0)
     float3 xformOp:scale = (1, 1, 1)
-    float3 xformOp:translate = (0, -0.0000019073486, 0)
     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+    over "Materials"
+    {
+        over "defaultMaterial"
+        {
+            token outputs:mtlx:surface
+            token outputs:realitykit:vertex
+        }
+    }
 }
 

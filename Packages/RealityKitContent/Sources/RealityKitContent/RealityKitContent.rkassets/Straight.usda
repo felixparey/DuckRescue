@@ -8,13 +8,16 @@
     upAxis = "Y"
 )
 
-def "Striagthhh" (
+def "Straight" (
     active = true
-    prepend references = @Striagthhh.usdz@
+    customData = {
+        float3 rotationEulerHint = (0, 1.5707963, 0)
+    }
+    references = @Straight.usdz@
 )
 {
+    quatf xformOp:orient = (0.70710677, 0, 0.70710677, 0)
     float3 xformOp:scale = (1, 1, 1)
-    float3 xformOp:translate = (0, 0, 0)
     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 }
 

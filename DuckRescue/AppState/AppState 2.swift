@@ -10,7 +10,6 @@ import SwiftUI
 import Observation
 import RealityKit
 import RealityKitContent
-import Combine
 
 @Observable
 public class AppState{
@@ -18,27 +17,17 @@ public class AppState{
     var hittingLogic = HittingLogic()
     var duck: Entity?
     var readyToStart = false
-    
     var levels: [[Tube]] = []
-    
     var currentLevelIndex = 0
-    var currentLevelOrderedTubes: [(order: Int, entity: Entity?)] = []
-    
     var widthOfLevel: Float = 1.2
     var startPosition: SIMD3<Float>?
-    
     var isEnemyMoving = false
-    var enemy: Entity? = nil
-    var enemyMoveController: AnimationPlaybackController? = nil
-    var enemyMovementSubscription: Cancellable?
-    var enemyCurrentSegmentOrder: Int = 1
-    
     var isGasMoving = false
     
     init() {
         Task { @MainActor in
             await withTaskGroup(of: Void.self) { group in
-                ["Straight", "Corner1", "Corner2", "Corner3", "Corner4"].forEach { name in
+                ["STraightt", "STraight-geiser", "Corner1", "Corner2", "Corner3", "Corner4"].forEach { name in
                     group.addTask {
                         if let model = try? await Entity(named: name, in: realityKitContentBundle) {
                             tubesModels[name] = model
@@ -58,10 +47,6 @@ public class AppState{
                     startPiece = try? await Entity(named: "StartPiece", in: realityKitContentBundle)
                 }
                 
-                group.addTask {
-                    self.enemy = try? await Entity(named: "rat", in: realityKitContentBundle)
-                }
-                
                 await group.waitForAll()
             }
             
@@ -69,13 +54,14 @@ public class AppState{
             
             self.readyToStart = true
         }
+        
     }
     
     func reset() {
         buildLevel()
         initDuck()
         initEnemy()
-        //  initGasParticles()
+      //  initGasParticles()
         
     }
     
@@ -87,27 +73,35 @@ public class AppState{
         startPiece?.setPosition([-0.32,-0.1,0], relativeTo: levelContainer)
         startPosition = startPiece?.position
         
+        
         let level = levels[currentLevelIndex]
-        var size: SIMD3<Float>? = nil
         
         for (index, tubeData) in level.enumerated() {
             let tube: Entity? = spawnTube(tubeData.name)
-            
+
             if let tube = tube {
                 tube.scale = .init(repeating: 0.08)
                 
-                if size == nil {
-                    size = tube.visualBounds(relativeTo: nil).size
-                }
+                let tubeBounds = tube.visualBounds(relativeTo: nil).max
+                let horizontalDistance: Float = tubeBounds.z * 2 - 0.002
+                print(tube.scale(relativeTo: nil))
+                let verticalDistance: Float = tubeBounds.y * 2
                 
-                let horizontalDistance: Float = size![0]
-                let verticalDistance: Float = size![1]
+                print(tubeData.name)
+                print(tubeBounds.y)
                 
                 let i = index / 5
                 let j = index % 5
                 
+                // let newOrientation = Rotation3D(angle: .degrees(Double(90) + Double(tubeData.rotation)), axis: .z)
+                let newOrientation = Rotation3D(angle: .degrees(Double(90)), axis: .y)
+                tube.orientation = simd_quatf(newOrientation)
+                
                 tube.name = "tube"
                 tube.position = [horizontalDistance * Float(j), verticalDistance * Float(i), 0.0]
+                
+                //                tube.components.set(InputTargetComponent())
+                //                tube.components.set(HoverEffectComponent())
                 
                 tube.generateCollisionShapes(recursive: true)
                 
@@ -120,7 +114,7 @@ public class AppState{
         levelContainer.setPosition([-(tubeHeight * 5 / 2), -(tubeHeight * 5 / 2), 0.0], relativeTo: rootEntity)
     }
     
-    private func initDuck() {
+   private func initDuck() {
         if let duck = duck{
             duck.name = "Duck"
             duck.transform.rotation = simd_quatf(
@@ -135,10 +129,15 @@ public class AppState{
         }
     }
     
-    private func initGasParticles() {
-        levelContainer.addChild(gasParticles!)
-        gasParticles?.setPosition([0.0, -0.2, 0.0], relativeTo: levelContainer)
+    private func initEnemy() {
+        enemy = ModelEntity(mesh: .generateSphere(radius: 0.05 / 2), materials: [SimpleMaterial(color: .yellow, isMetallic: false)])
+        levelContainer.addChild(enemy!)
     }
+    
+    private func initGasParticles() {
+            levelContainer.addChild(gasParticles!)
+            gasParticles?.setPosition([0.0, -0.2, 0.0], relativeTo: levelContainer)
+        }
     
     private func loadLevelData() async {
         if let jsonData = LevelDataJSONString.data(using: .utf8) {
@@ -147,7 +146,9 @@ public class AppState{
         }
     }
     
-    public func claculateLevelWidth(){
+   public func claculateLevelWidth(){
+        
         widthOfLevel = levelContainer.visualBounds(relativeTo: rootEntity).center.x
+        
     }
 }

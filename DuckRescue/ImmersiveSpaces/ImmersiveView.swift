@@ -13,54 +13,30 @@ var enemyCurrentTubeSegmentIndex: Int = 0
 
 struct ImmersiveView: View {
     @Environment(AppState.self) private var appState
-    @Environment(\.openWindow) private var openWindow
-    @Environment(\.dismissImmersiveSpace) private var dismissImmersiveSpace
-    
-    
-    @State private var duck: Entity?
-    @State private var enemyAnimationSubscription: EventSubscription?
     @State private var duckSubscription: EventSubscription?
     
     let timer = Timer.publish(every: 6, on: .current, in: .common).autoconnect()
-        @State private var counter = 0
-    
+    @State private var counter = 0
     
     var body: some View {
         RealityView { content, attachments in
             content.add(rootEntity)
-            
             rootEntity.position = .init(x: 0, y: 1.3, z: -1.7)
             
             appState.reset()
             
-            
-            
             buildAttachments(attachments)
             
             duckSubscription = content.subscribe(to: CollisionEvents.Began.self, on: nil){ event in
-        
                 if let duck = appState.duck{
-                    
                     if event.entityA.name == "duck" || event.entityB.name == "duck"{
-                       // appState.hittingLogic.resetDuck(duck, appState.startPosition ?? [0,0,0])
+                        // appState.hittingLogic.resetDuck(duck, appState.startPosition ?? [0,0,0])
                         print("ONLY DUCK HIT SOMETHING")
                     }
-                    
-                        
-                    
                 }
             }
-            
-            enemyAnimationSubscription = content.subscribe(to: AnimationEvents.PlaybackCompleted.self, on: enemy, componentType: nil) { event in
-                Task {
-                    moveEnemy()
-                }
-            }
-            
-            
         } update: { updateContent, attachments in
             
-            moveEnemy()
         } attachments: {
             Attachment(id: "a1") {
                 ChooseLevelView()
@@ -70,43 +46,24 @@ struct ImmersiveView: View {
             }
         }
         .onReceive(timer) { time in
-                    if counter == 5 {
-                        timer.upstream.connect().cancel()
-                        print("timer is canceled")
-
-                    } else {
-                        print("moving")
-                        moveGasParticles()
-                        counter += 1
-                    }
-                }
+            if counter == 5 {
+                timer.upstream.connect().cancel()
+                print("timer is canceled")
+                
+            } else {
+                print("moving")
+                moveGasParticles()
+                counter += 1
+            }
+        }
         .gesture(DragGesture()
             .targetedToEntity(appState.duck ?? Entity())
             .onChanged { value in
-                
                 if let duck = appState.duck, let parent = appState.duck?.parent{
-                    
                     duck.position.x = value.convert(value.location3D, from: .local, to: parent).x
                     duck.position.y = value.convert(value.location3D, from: .local, to: parent).y
-                    
                 }
             })
-        
-        
-        /*
-         .gesture(DragGesture(minimumDistance: 0.0)
-         .targetedToAnyEntity()
-         .onChanged { value in
-         value.entity.position = value.convert(value.location3D, from: .local, to: value.entity.parent!)
-         print(value)
-         })
-         
-         .simultaneousGesture(
-         TapGesture()
-         .onEnded({ value in
-         print(value)
-         }))
-         */
     }
     
     func buildAttachments(_ attachments: RealityViewAttachments) {
@@ -152,91 +109,44 @@ struct ImmersiveView: View {
         
     }
     
-    func moveEnemy() {
-        if enemyCurrentTubeSegmentIndex == appState.levels[appState.currentLevelIndex].count - 1 {
-            appState.isEnemyMoving.toggle()
-            return
-        }
-        
-        if appState.isEnemyMoving {
-            if let enemyAnimationPlaybackController = enemyAnimationPlaybackController,
-               enemyAnimationPlaybackController.isPaused {
-                enemyAnimationPlaybackController.resume()
+    func moveGasParticles() {
+        appState.isGasMoving = true
+        if appState.isGasMoving {
+            if let gasAnimationPlaybackController = gasAnimationPlaybackController,
+               gasAnimationPlaybackController.isPaused {
+                gasAnimationPlaybackController.resume()
             }
             else {
                 let duration: Double = 2.0
                 
-                if let enemy = enemy {
-                    let newPosition: SIMD3<Float> = calculateNextEnemyPosition()
+                if let gasParticles = gasParticles {
+                    let newPosition: SIMD3<Float> = calculateNextGasPosition()
                     
-                    enemyAnimationPlaybackController = enemy.move(
+                    gasAnimationPlaybackController = gasParticles.move(
                         to: Transform(
                             scale: SIMD3(repeating: 1.0),
-                            rotation: enemy.orientation,
+                            rotation: gasParticles.orientation,
                             translation: newPosition),
-                        relativeTo: enemy.parent,
+                        relativeTo: gasParticles.parent,
                         duration: duration,
                         timingFunction: .linear
                     )
                 }
                 
-                enemyCurrentTubeSegmentIndex += 1
             }
         }
-        else if let enemyAnimationPlaybackController = enemyAnimationPlaybackController,
-                enemyAnimationPlaybackController.isPlaying {
-            enemyAnimationPlaybackController.pause()
+        else if let gasAnimationPlaybackController = gasAnimationPlaybackController,
+                gasAnimationPlaybackController.isPlaying {
+            gasAnimationPlaybackController.pause()
         }
     }
     
-    func calculateNextEnemyPosition() -> SIMD3<Float> {
-        let currentTubeSegment = appState.levels[appState.currentLevelIndex][enemyCurrentTubeSegmentIndex]
+    func calculateNextGasPosition() -> SIMD3<Float> {
+        var x = gasParticles!.position.x
+        var y = gasParticles!.position.y + tubeHeight
         
-        // TODO: instead calculate the next coordinates, maybe, need thinking about ready to use tube coordinates?
-        var x = enemy!.position.x + tubeHeight
-        var y = enemy!.position.y
-        
-        return .init(x: x, y: y, z: enemy!.position.z)
+        return .init(x: x, y: y, z: gasParticles!.position.z)
     }
-    
-    func moveGasParticles() {
-        appState.isGasMoving = true
-            if appState.isGasMoving {
-                if let gasAnimationPlaybackController = gasAnimationPlaybackController,
-                   gasAnimationPlaybackController.isPaused {
-                    gasAnimationPlaybackController.resume()
-                }
-                else {
-                    let duration: Double = 2.0
-                    
-                    if let gasParticles = gasParticles {
-                        let newPosition: SIMD3<Float> = calculateNextGasPosition()
-                        
-                        gasAnimationPlaybackController = gasParticles.move(
-                            to: Transform(
-                                scale: SIMD3(repeating: 1.0),
-                                rotation: gasParticles.orientation,
-                                translation: newPosition),
-                            relativeTo: gasParticles.parent,
-                            duration: duration,
-                            timingFunction: .linear
-                        )
-                    }
-                    
-                }
-            }
-            else if let gasAnimationPlaybackController = gasAnimationPlaybackController,
-                    gasAnimationPlaybackController.isPlaying {
-                gasAnimationPlaybackController.pause()
-            }
-        }
-        
-        func calculateNextGasPosition() -> SIMD3<Float> {
-            var x = gasParticles!.position.x
-            var y = gasParticles!.position.y + tubeHeight
-            
-            return .init(x: x, y: y, z: gasParticles!.position.z)
-        }
 }
 
 #Preview {
