@@ -28,5 +28,468 @@ def "CurvaRU" (
             token outputs:realitykit:vertex
         }
     }
+
+    over "Geom"
+    {
+        over "Floor2"
+        {
+            def RealityKitComponent "Collider"
+            {
+                uint group = 1
+                uniform token info:id = "RealityKit.Collider"
+                uint mask = 4294967295
+                token type = "Default"
+
+                def RealityKitStruct "Shape"
+                {
+                    float3 extent = (2, 0, 2)
+                    token shapeType = "Box"
+
+                    def RealityKitStruct "pose"
+                    {
+                    }
+                }
+            }
+
+            def RealityKitComponent "RigidBody"
+            {
+                bool gravityEnabled = 0
+                uniform token info:id = "RealityKit.RigidBody"
+                bool lockRotationX = 1
+                bool lockRotationY = 1
+                bool lockRotationZ = 1
+                bool lockTranslationX = 1
+                bool lockTranslationY = 1
+                bool lockTranslationZ = 1
+
+                def RealityKitStruct "massFrame"
+                {
+                    float m_mass = 1000
+
+                    def RealityKitStruct "m_pose"
+                    {
+                    }
+                }
+
+                def RealityKitStruct "material"
+                {
+                }
+            }
+        }
+
+        over "Floor3"
+        {
+            def RealityKitComponent "Collider"
+            {
+                uint group = 1
+                uniform token info:id = "RealityKit.Collider"
+                uint mask = 4294967295
+                token type = "Default"
+
+                def RealityKitStruct "Shape"
+                {
+                    float3 extent = (2, 0, 2)
+                    token shapeType = "Box"
+
+                    def RealityKitStruct "pose"
+                    {
+                    }
+                }
+            }
+
+            def RealityKitComponent "RigidBody"
+            {
+                bool gravityEnabled = 0
+                uniform token info:id = "RealityKit.RigidBody"
+                bool lockRotationX = 1
+                bool lockRotationY = 1
+                bool lockRotationZ = 1
+                bool lockTranslationX = 1
+                bool lockTranslationY = 1
+                bool lockTranslationZ = 1
+
+                def RealityKitStruct "massFrame"
+                {
+                    float m_mass = 1000
+
+                    def RealityKitStruct "m_pose"
+                    {
+                    }
+                }
+
+                def RealityKitStruct "material"
+                {
+                }
+            }
+        }
+
+        over "Floor4"
+        {
+            def RealityKitComponent "Collider"
+            {
+                uint group = 1
+                uniform token info:id = "RealityKit.Collider"
+                uint mask = 4294967295
+                token type = "Default"
+
+                def RealityKitStruct "Shape"
+                {
+                    float3 extent = (2, 0, 2)
+                    token shapeType = "Box"
+
+                    def RealityKitStruct "pose"
+                    {
+                    }
+                }
+            }
+
+            def RealityKitComponent "RigidBody"
+            {
+                bool gravityEnabled = 0
+                uniform token info:id = "RealityKit.RigidBody"
+                bool lockRotationX = 1
+                bool lockRotationY = 1
+                bool lockRotationZ = 1
+                bool lockTranslationX = 1
+                bool lockTranslationY = 1
+                bool lockTranslationZ = 1
+
+                def RealityKitStruct "massFrame"
+                {
+                    float m_mass = 1000
+
+                    def RealityKitStruct "m_pose"
+                    {
+                    }
+                }
+
+                def RealityKitStruct "material"
+                {
+                }
+            }
+        }
+
+        over "Floor5"
+        {
+            def RealityKitComponent "Collider"
+            {
+                uint group = 1
+                uniform token info:id = "RealityKit.Collider"
+                uint mask = 4294967295
+                token type = "Default"
+
+                def RealityKitStruct "Shape"
+                {
+                    float3 extent = (2, 0, 2)
+                    token shapeType = "Box"
+
+                    def RealityKitStruct "pose"
+                    {
+                    }
+                }
+            }
+
+            def RealityKitComponent "RigidBody"
+            {
+                bool gravityEnabled = 0
+                uniform token info:id = "RealityKit.RigidBody"
+                bool lockRotationX = 1
+                bool lockRotationY = 1
+                bool lockRotationZ = 1
+                bool lockTranslationX = 1
+                bool lockTranslationY = 1
+                bool lockTranslationZ = 1
+
+                def RealityKitStruct "massFrame"
+                {
+                    float m_mass = 1000
+
+                    def RealityKitStruct "m_pose"
+                    {
+                    }
+                }
+
+                def RealityKitStruct "material"
+                {
+                }
+            }
+        }
+
+        over "Floor6"
+        {
+            def RealityKitComponent "Collider"
+            {
+                uint group = 1
+                uniform token info:id = "RealityKit.Collider"
+                uint mask = 4294967295
+                token type = "Default"
+
+                def RealityKitStruct "Shape"
+                {
+                    float3 extent = (2, 0, 2)
+                    token shapeType = "Box"
+
+                    def RealityKitStruct "pose"
+                    {
+                    }
+                }
+            }
+
+            def RealityKitComponent "RigidBody"
+            {
+                bool gravityEnabled = 0
+                uniform token info:id = "RealityKit.RigidBody"
+                bool lockRotationX = 1
+                bool lockRotationY = 1
+                bool lockRotationZ = 1
+                bool lockTranslationX = 1
+                bool lockTranslationY = 1
+                bool lockTranslationZ = 1
+
+                def RealityKitStruct "massFrame"
+                {
+                    float m_mass = 1000
+
+                    def RealityKitStruct "m_pose"
+                    {
+                    }
+                }
+
+                def RealityKitStruct "material"
+                {
+                }
+            }
+        }
+
+        over "Floor7"
+        {
+            def RealityKitComponent "Collider"
+            {
+                uint group = 1
+                uniform token info:id = "RealityKit.Collider"
+                uint mask = 4294967295
+                token type = "Default"
+
+                def RealityKitStruct "Shape"
+                {
+                    float3 extent = (2, 0, 2)
+                    token shapeType = "Box"
+
+                    def RealityKitStruct "pose"
+                    {
+                    }
+                }
+            }
+
+            def RealityKitComponent "RigidBody"
+            {
+                bool gravityEnabled = 0
+                uniform token info:id = "RealityKit.RigidBody"
+                bool lockRotationX = 1
+                bool lockRotationY = 1
+                bool lockRotationZ = 1
+                bool lockTranslationX = 1
+                bool lockTranslationY = 1
+                bool lockTranslationZ = 1
+
+                def RealityKitStruct "massFrame"
+                {
+                    float m_mass = 1000
+
+                    def RealityKitStruct "m_pose"
+                    {
+                    }
+                }
+
+                def RealityKitStruct "material"
+                {
+                }
+            }
+        }
+
+        over "Floor8"
+        {
+            def RealityKitComponent "Collider"
+            {
+                uint group = 1
+                uniform token info:id = "RealityKit.Collider"
+                uint mask = 4294967295
+                token type = "Default"
+
+                def RealityKitStruct "Shape"
+                {
+                    float3 extent = (2, 0, 2)
+                    token shapeType = "Box"
+
+                    def RealityKitStruct "pose"
+                    {
+                    }
+                }
+            }
+
+            def RealityKitComponent "RigidBody"
+            {
+                bool gravityEnabled = 0
+                uniform token info:id = "RealityKit.RigidBody"
+                bool lockRotationX = 1
+                bool lockRotationY = 1
+                bool lockRotationZ = 1
+                bool lockTranslationX = 1
+                bool lockTranslationY = 1
+                bool lockTranslationZ = 1
+
+                def RealityKitStruct "massFrame"
+                {
+                    float m_mass = 1000
+
+                    def RealityKitStruct "m_pose"
+                    {
+                    }
+                }
+
+                def RealityKitStruct "material"
+                {
+                }
+            }
+        }
+
+        over "Floor9"
+        {
+            def RealityKitComponent "Collider"
+            {
+                uint group = 1
+                uniform token info:id = "RealityKit.Collider"
+                uint mask = 4294967295
+                token type = "Default"
+
+                def RealityKitStruct "Shape"
+                {
+                    float3 extent = (2, 0, 2)
+                    token shapeType = "Box"
+
+                    def RealityKitStruct "pose"
+                    {
+                    }
+                }
+            }
+
+            def RealityKitComponent "RigidBody"
+            {
+                bool gravityEnabled = 0
+                uniform token info:id = "RealityKit.RigidBody"
+                bool lockRotationX = 1
+                bool lockRotationY = 1
+                bool lockRotationZ = 1
+                bool lockTranslationX = 1
+                bool lockTranslationY = 1
+                bool lockTranslationZ = 1
+
+                def RealityKitStruct "massFrame"
+                {
+                    float m_mass = 1000
+
+                    def RealityKitStruct "m_pose"
+                    {
+                    }
+                }
+
+                def RealityKitStruct "material"
+                {
+                }
+            }
+        }
+
+        over "Floor10"
+        {
+            def RealityKitComponent "Collider"
+            {
+                uint group = 1
+                uniform token info:id = "RealityKit.Collider"
+                uint mask = 4294967295
+                token type = "Default"
+
+                def RealityKitStruct "Shape"
+                {
+                    float3 extent = (2, 0, 2)
+                    token shapeType = "Box"
+
+                    def RealityKitStruct "pose"
+                    {
+                    }
+                }
+            }
+
+            def RealityKitComponent "RigidBody"
+            {
+                bool gravityEnabled = 0
+                uniform token info:id = "RealityKit.RigidBody"
+                bool lockRotationX = 1
+                bool lockRotationY = 1
+                bool lockRotationZ = 1
+                bool lockTranslationX = 1
+                bool lockTranslationY = 1
+                bool lockTranslationZ = 1
+
+                def RealityKitStruct "massFrame"
+                {
+                    float m_mass = 1000
+
+                    def RealityKitStruct "m_pose"
+                    {
+                    }
+                }
+
+                def RealityKitStruct "material"
+                {
+                }
+            }
+        }
+
+        over "Floor1"
+        {
+            def RealityKitComponent "Collider"
+            {
+                uint group = 1
+                uniform token info:id = "RealityKit.Collider"
+                uint mask = 4294967295
+                token type = "Default"
+
+                def RealityKitStruct "Shape"
+                {
+                    float3 extent = (2, 0, 2)
+                    token shapeType = "Box"
+
+                    def RealityKitStruct "pose"
+                    {
+                    }
+                }
+            }
+
+            def RealityKitComponent "RigidBody"
+            {
+                bool gravityEnabled = 0
+                uniform token info:id = "RealityKit.RigidBody"
+                bool lockRotationX = 1
+                bool lockRotationY = 1
+                bool lockRotationZ = 1
+                bool lockTranslationX = 1
+                bool lockTranslationY = 1
+                bool lockTranslationZ = 1
+
+                def RealityKitStruct "massFrame"
+                {
+                    float m_mass = 1000
+
+                    def RealityKitStruct "m_pose"
+                    {
+                    }
+                }
+
+                def RealityKitStruct "material"
+                {
+                }
+            }
+        }
+    }
 }
 

@@ -29,10 +29,13 @@ struct ImmersiveView: View {
             
             duckSubscription = content.subscribe(to: CollisionEvents.Began.self, on: nil){ event in
                 if let duck = appState.duck{
-                    if event.entityA.name == "duck" || event.entityB.name == "duck"{
-                        // appState.hittingLogic.resetDuck(duck, appState.startPosition ?? [0,0,0])
-                        print("ONLY DUCK HIT SOMETHING")
-                    }
+                    appState.setDuckCollisonPartner(event.entityA, event.entityB)
+                    print(appState.duckCollisionPartner)
+                    //print(event.entityA.name)
+//                    if event.entityA.name == "duck" || event.entityB.name == "duck"{
+//                        // appState.hittingLogic.resetDuck(duck, appState.startPosition ?? [0,0,0])
+//                        print("ONLY DUCK HIT SOMETHING")
+//                    }
                 }
             }
         } update: { updateContent, attachments in

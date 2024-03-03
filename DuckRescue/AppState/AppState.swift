@@ -15,9 +15,9 @@ import Combine
 @Observable
 public class AppState{
     //Everything concerning the logic goes here
-    var hittingLogic = HittingLogic()
     var duck: Entity?
     var readyToStart = false
+    var duckCollisionPartner: HitTarget?
     
     var levels: [[Tube]] = []
     
