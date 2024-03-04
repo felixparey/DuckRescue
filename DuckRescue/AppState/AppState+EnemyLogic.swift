@@ -133,7 +133,7 @@ extension AppState {
         
         // TODO: next, all okay
         // Sample points along the trajectory
-        let numSamples = 8
+        let numSamples = 4
         var sampledTransforms: [Transform] = []
         for i in 0..<numSamples {
             let t = Float(i) / Float(numSamples - 1)
