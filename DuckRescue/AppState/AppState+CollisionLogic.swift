@@ -11,21 +11,56 @@ import RealityKit
 
 extension AppState{
     
-    @Observable
-    public class HittingLogic{
+    enum HitTarget{
+        case Floor
+        case Ceiling
+        case Geysir
+        case Rat
+        case Start
+        case End
+        case Nothing
+    }
         
-        var duckHitTarget = false
+    func setDuckCollisonPartner(_ entityA: Entity, _ entityB: Entity){
         
-        func resetDuck(_ duck: Entity, _ startPosition: SIMD3<Float>){
-            duck.components.remove(InputTargetComponent.self)
-            duck.move(to: Transform(translation: startPosition), relativeTo: duck.parent, duration: 2, timingFunction: .easeInOut)
+        if entityA.name == "duck"{
+            switch entityB.name{
+            case "Plane_001": duckCollisionPartner = .Floor
+            case "Ceiling": duckCollisionPartner = .Ceiling
+            case "Geysir": duckCollisionPartner = .Geysir
+            case "Rat": duckCollisionPartner = .Rat
+            case "Start": duckCollisionPartner = .Start
+            case "End": duckCollisionPartner = .End
+            default: duckCollisionPartner = .Nothing
+            }
+            
+            self.phase.transition(to: .hitSomething)
+            
+        }else if entityB.name == "duck"{
+            switch entityA.name{
+            case "Floor": duckCollisionPartner = .Floor
+            case "Ceiling": duckCollisionPartner = .Ceiling
+            case "Geysir": duckCollisionPartner = .Geysir
+            case "Rat": duckCollisionPartner = .Rat
+            case "Start": duckCollisionPartner = .Start
+            case "End": duckCollisionPartner = .End
+            default: duckCollisionPartner = .Nothing
+            }
+            
+            self.phase.transition(to: .hitSomething)
+            
         }
+        
+        
     }
     
-    //    public func duckHitTarget() -> Bool{
-    //
-    //        return true
-    //
-    //    }
-    
+    func checkIfCollisionIsWorking(){
+        switch duckCollisionPartner{
+        case .Floor: print("Duck hit the Floor")
+        case .Ceiling: print("Duck hit the Ceiling")
+        case .End: print("Duck finished Level")
+        default: print("Hit Nothing Yet")
+        }
+    }
+
 }

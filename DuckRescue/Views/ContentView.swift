@@ -15,6 +15,7 @@ struct ContentView: View {
     @Environment(\.openImmersiveSpace) private var openImmersiveSpace
     @Environment(\.dismissImmersiveSpace) private var dismissImmersiveSpace
     @Environment(\.dismissWindow) private var dismissWindow
+    @Environment(\.openWindow) private var openWindow
     
     var body: some View {
         ZStack(alignment: .bottom){
@@ -23,10 +24,7 @@ struct ContentView: View {
                 .aspectRatio(contentMode: .fill)
             
             Button{
-                Task{
-                    await openImmersiveSpace(id: "ImmersiveSpace")
-                    dismissWindow()
-                }
+                appState.startGame()
             } label: {
                 if appState.readyToStart {
                     Text("Start Game")
@@ -43,6 +41,14 @@ struct ContentView: View {
             .padding(.bottom, 40)
             .buttonStyle(.plain)
             
+        }
+        .onChange(of: appState.phase) { oldPhase, newPhase in
+            if newPhase == .waitingToStart{
+                Task{
+                    await openImmersiveSpace(id: "ImmersiveSpace")
+                    dismissWindow()
+                }
+            }
         }
     }
 }
