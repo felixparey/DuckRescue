@@ -23,7 +23,11 @@ struct DuckRescueApp: App {
         .defaultSize(width: 1000, height: 600)
         .windowResizability(.contentSize)
        // .modelContainer(for: Level.self)
-        
+        WindowGroup(id: "GameOver"){
+            GameOverView()
+                .environment(appState)
+        }
+        .windowResizability(.contentSize)
 
         ImmersiveSpace(id: "ImmersiveSpace") {
             ImmersiveView()

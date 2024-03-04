@@ -12,13 +12,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>57</string>
+					<string>22</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>56</string>
+					<string>21</string>
 					<key>Timestamp</key>
-					<string>730138049.608117</string>
+					<string>731209098.917955</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -27,27 +27,215 @@
 					<key>payload</key>
 					<dict>
 						<key>relative-path</key>
-						<string>DuckRescue/Views/LevelBuilderView.swift</string>
+						<string>DuckRescue/AppState/AppState+Phases.swift</string>
 					</dict>
 				</dict>
 			</dict>
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>            if let firstEntity = levelSegments.first?.entity {
+				<string>        //TODO: handle logic of disabling everything besides Game Over Window
 </string>
 				<key>leading</key>
-				<string>               try? await levelSegments.append(LevelSegment(entity: Entity(named: "duck1", in: realityKitContentBundle), position: [xPos, yPos, 0]))
-            }
+				<string>    
+    public func gameOver(){
 </string>
 				<key>trailing</key>
-				<string>                
-                print("count of entities in array: \(levelSegments.count)")
-                
+				<string>        phase.transition(to: .hitSomething)
+    }
+    
 </string>
 			</dict>
 			<key>title</key>
-			<string>Somehow doesnt add to content</string>
+			<string>handle logic of disabling everything besides Game Over Window</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>57</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>56</string>
+					<key>Timestamp</key>
+					<string>731209117.4301929</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>DuckRescue/AppState/AppState+CollisionLogic.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>    func checkIfCollisionIsWorking(){
+</string>
+				<key>leading</key>
+				<string>    }
+    
+</string>
+				<key>trailing</key>
+				<string>        switch duckCollisionPartner{
+        case .Floor: print("Duck hit the Floor")
+        case .Ceiling: print("Duck hit the Ceiling")
+</string>
+			</dict>
+			<key>title</key>
+			<string>Replace print with transitions to phases</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>21</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>20</string>
+					<key>Timestamp</key>
+					<string>731209238.1118619</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>DuckRescue/Views/GameOverView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>                appState.phase.transition(to: .waitingToStart)
+</string>
+				<key>leading</key>
+				<string>            
+            Button{
+</string>
+				<key>trailing</key>
+				<string>            } label: {
+                    Text("Try Again")
+                        .font(.title)
+</string>
+			</dict>
+			<key>title</key>
+			<string>Currently just changes the Phase but nothing happens</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>50</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>49</string>
+					<key>Timestamp</key>
+					<string>731209359.219759</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>DuckRescue/ImmersiveSpaces/ImmersiveView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>            if oldValue == .levelRunning &amp;&amp; newValue == .hitSomething{
+</string>
+				<key>leading</key>
+				<string>        }
+        .onChange(of: appState.phase) { oldValue, newValue in
+</string>
+				<key>trailing</key>
+				<string>                openWindow(id: "GameOver")
+                
+            }else if newValue == .levelBeaten{
+</string>
+			</dict>
+			<key>title</key>
+			<string>Triggers the window spawning too often</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>25</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>24</string>
+					<key>Timestamp</key>
+					<string>731209604.371749</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>DuckRescue/AppState/AppState+CollisionLogic.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>        
+</string>
+				<key>leading</key>
+				<string>        
+    func setDuckCollisonPartner(_ entityA: Entity, _ entityB: Entity){
+</string>
+				<key>trailing</key>
+				<string>        if entityA.name == "duck"{
+            switch entityB.name{
+            case "Plane_001": duckCollisionPartner = .Floor
+</string>
+			</dict>
+			<key>title</key>
+			<string>Change to the actual names of the entities</string>
 			<key>type</key>
 			<string>bookmark</string>
 		</dict>

@@ -13,6 +13,7 @@ var enemyCurrentTubeSegmentIndex: Int = 0
 
 struct ImmersiveView: View {
     @Environment(AppState.self) private var appState
+    @Environment(\.openWindow) private var openWindow
     @State private var duckSubscription: EventSubscription?
     
     let timer = Timer.publish(every: 6, on: .current, in: .common).autoconnect()
@@ -30,12 +31,9 @@ struct ImmersiveView: View {
             duckSubscription = content.subscribe(to: CollisionEvents.Began.self, on: nil){ event in
                 if let duck = appState.duck{
                     appState.setDuckCollisonPartner(event.entityA, event.entityB)
-                    print(appState.duckCollisionPartner)
-                    //print(event.entityA.name)
-//                    if event.entityA.name == "duck" || event.entityB.name == "duck"{
-//                        // appState.hittingLogic.resetDuck(duck, appState.startPosition ?? [0,0,0])
-//                        print("ONLY DUCK HIT SOMETHING")
-//                    }
+                    appState.checkIfCollisionIsWorking()
+                    //TODO: TEmporary changing app Phase here, just for testing
+                    appState.phase = .hitSomething
                 }
             }
         } update: { updateContent, attachments in
@@ -47,6 +45,17 @@ struct ImmersiveView: View {
                     .glassBackgroundEffect()
                     .frame(height: 80)
             }
+        }
+        .onChange(of: appState.phase) { oldValue, newValue in
+            if oldValue == .levelRunning && newValue == .hitSomething{
+                openWindow(id: "GameOver")
+                
+            }else if newValue == .levelBeaten{
+                appState.currentLevelIndex += 1
+            }else if newValue == .levelRunning{
+                //TODO: Make the rat run and the geysirs do their thing
+            }
+            
         }
         .onReceive(timer) { time in
             if counter == 5 {
@@ -65,6 +74,8 @@ struct ImmersiveView: View {
                 if let duck = appState.duck, let parent = appState.duck?.parent{
                     duck.position.x = value.convert(value.location3D, from: .local, to: parent).x
                     duck.position.y = value.convert(value.location3D, from: .local, to: parent).y
+                    
+                    appState.phase.transition(to: .levelRunning)
                 }
             })
     }

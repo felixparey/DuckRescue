@@ -34,6 +34,8 @@ extension AppState{
             default: duckCollisionPartner = .Nothing
             }
             
+            self.phase.transition(to: .hitSomething)
+            
         }else if entityB.name == "duck"{
             switch entityA.name{
             case "Floor": duckCollisionPartner = .Floor
@@ -44,6 +46,9 @@ extension AppState{
             case "End": duckCollisionPartner = .End
             default: duckCollisionPartner = .Nothing
             }
+            
+            self.phase.transition(to: .hitSomething)
+            
         }
         
         
@@ -51,7 +56,7 @@ extension AppState{
     
     func checkIfCollisionIsWorking(){
         switch duckCollisionPartner{
-        case .Floor: print("Duck hit the floor")
+        case .Floor: print("Duck hit the Floor")
         case .Ceiling: print("Duck hit the Ceiling")
         case .End: print("Duck finished Level")
         default: print("Hit Nothing Yet")

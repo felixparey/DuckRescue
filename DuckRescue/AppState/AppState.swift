@@ -18,6 +18,7 @@ public class AppState{
     var duck: Entity?
     var readyToStart = false
     var duckCollisionPartner: HitTarget?
+    var phase: AppPhase = .appLaunched
     
     var levels: [[Tube]] = []
     

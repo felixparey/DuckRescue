@@ -54,6 +54,7 @@ struct ChooseLevelView: View {
             
             Button {
                 Task {
+                    appState.exitGame()
                     openWindow(id: "Start")
                     await dismissImmersiveSpace()
                 }
