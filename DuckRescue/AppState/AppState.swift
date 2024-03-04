@@ -32,6 +32,7 @@ public class AppState{
     var enemyMoveController: AnimationPlaybackController? = nil
     var enemyMovementSubscription: Cancellable?
     var enemyCurrentSegmentOrder: Int = 1
+    var enemyAnimations: AnimationResource? = nil
     
     var isGasMoving = false
     
@@ -94,6 +95,7 @@ public class AppState{
         
         let level = levels[currentLevelIndex]
         var size: SIMD3<Float>? = nil
+        var orderedTubes: [(order: Int, entity: Entity?)] = []
         
         for (index, tubeData) in level.enumerated() {
             let tube: Entity? = spawnTube(tubeData.name)
@@ -111,17 +113,18 @@ public class AppState{
                 let i = index / 5
                 let j = index % 5
                 
-                tube.name = "tube"
+                tube.name = tubeData.name
                 tube.position = [horizontalDistance * Float(j), verticalDistance * Float(i), 0.0]
                 
                 tube.generateCollisionShapes(recursive: true)
                 
                 levelContainer.addChild(tube)
+                orderedTubes.append((order: tubeData.order, entity: tube))
             }
         }
         
         rootEntity.addChild(levelContainer)
-        
+        self.currentLevelOrderedTubes = orderedTubes.sorted(by: { a, b in a.order < b.order })
         levelContainer.setPosition([-(tubeHeight * 5 / 2), -(tubeHeight * 5 / 2), 0.0], relativeTo: rootEntity)
     }
     

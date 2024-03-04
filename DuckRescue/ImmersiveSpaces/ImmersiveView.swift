@@ -48,10 +48,10 @@ struct ImmersiveView: View {
         .onReceive(timer) { time in
             if counter == 5 {
                 timer.upstream.connect().cancel()
-                print("timer is canceled")
+                //print("timer is canceled")
                 
             } else {
-                print("moving")
+                //print("moving")
                 moveGasParticles()
                 counter += 1
             }
@@ -59,9 +59,13 @@ struct ImmersiveView: View {
         .gesture(DragGesture()
             .targetedToEntity(appState.duck ?? Entity())
             .onChanged { value in
-                if let duck = appState.duck, let parent = appState.duck?.parent{
+                if let duck = appState.duck, let parent = appState.duck?.parent {
                     duck.position.x = value.convert(value.location3D, from: .local, to: parent).x
                     duck.position.y = value.convert(value.location3D, from: .local, to: parent).y
+                
+                    if duck.position.x >= DuckDistanceXToStartEnemyMovement && !appState.isEnemyMoving {
+                        appState.runEnemy()
+                    }
                 }
             })
     }

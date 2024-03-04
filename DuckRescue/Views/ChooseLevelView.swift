@@ -64,8 +64,6 @@ struct ChooseLevelView: View {
                     
             }
             .help("Exit Game")
-            
-            
         }
     }
 }
