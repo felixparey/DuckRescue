@@ -13,6 +13,15 @@ let DuckDistanceXToStartEnemyMovement: Float = 32
 
 extension AppState {
     func initEnemy() {
+        self.isEnemyMoving = false
+        self.enemyAnimations = nil
+        self.enemyMoveController = nil
+        
+        if self.enemyMovementSubscription != nil {
+            self.enemyMovementSubscription?.cancel()
+        }
+        self.enemyMovementSubscription = nil
+        
         if let position = startPiece?.position {
             enemy!.setPosition([position.x, 0.0, position.z], relativeTo: enemy!.parent)
         }
