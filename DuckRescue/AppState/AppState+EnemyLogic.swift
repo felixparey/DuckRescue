@@ -76,12 +76,6 @@ extension AppState {
             }
         }
         
-        transforms.forEach { p in
-            let sphere = ModelEntity(mesh: .generateSphere(radius: 0.008), materials: [SimpleMaterial(color: .red, isMetallic: false)])
-            levelContainer.addChild(sphere)
-            sphere.setPosition(p.translation, relativeTo: sphere.parent)
-        }
-        
         let animation = SampledAnimation(frames: transforms, frameInterval: Float(duration) / Float(transforms.count), bindTarget: .transform, delay: 0)
         let animationResource = try! AnimationResource
             .generate(with: animation)
@@ -128,13 +122,7 @@ extension AppState {
             break
         }
         
-        // TODO: next, all okay 
-        controlPoints.forEach { p in
-            let sphere = ModelEntity(mesh: .generateSphere(radius: 0.009), materials: [SimpleMaterial(color: .yellow.withAlphaComponent(0.5), isMetallic: false)])
-            levelContainer.addChild(sphere)
-            sphere.setPosition(p, relativeTo: sphere.parent)
-        }
-        
+        // TODO: next, all okay
         // Sample points along the trajectory
         let numSamples = 8
         var sampledTransforms: [Transform] = []
