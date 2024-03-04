@@ -12,13 +12,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>22</string>
+					<string>23</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>21</string>
+					<string>22</string>
 					<key>Timestamp</key>
-					<string>731209098.917955</string>
+					<string>731262105.737591</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -42,8 +42,8 @@
 </string>
 				<key>trailing</key>
 				<string>        phase.transition(to: .hitSomething)
+        
     }
-    
 </string>
 			</dict>
 			<key>title</key>
@@ -59,60 +59,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>57</string>
+					<string>23</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>56</string>
+					<string>22</string>
 					<key>Timestamp</key>
-					<string>731209117.4301929</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>DuckRescue/AppState/AppState+CollisionLogic.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>    func checkIfCollisionIsWorking(){
-</string>
-				<key>leading</key>
-				<string>    }
-    
-</string>
-				<key>trailing</key>
-				<string>        switch duckCollisionPartner{
-        case .Floor: print("Duck hit the Floor")
-        case .Ceiling: print("Duck hit the Ceiling")
-</string>
-			</dict>
-			<key>title</key>
-			<string>Replace print with transitions to phases</string>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>21</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
-					<key>StartingLineNumber</key>
-					<string>20</string>
-					<key>Timestamp</key>
-					<string>731209238.1118619</string>
+					<string>731257605.924592</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -153,13 +106,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>50</string>
+					<string>52</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>49</string>
+					<string>51</string>
 					<key>Timestamp</key>
-					<string>731209359.219759</string>
+					<string>731261916.3934079</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -182,9 +135,9 @@
         .onChange(of: appState.phase) { oldValue, newValue in
 </string>
 				<key>trailing</key>
-				<string>                openWindow(id: "GameOver")
-                
-            }else if newValue == .levelBeaten{
+				<string>                switch appState.duckCollisionPartner{
+                case .Floor, .Ceiling, .Geysir, .Rat: 
+                    if appState.windowCount == 0{
 </string>
 			</dict>
 			<key>title</key>
@@ -230,8 +183,8 @@
 </string>
 				<key>trailing</key>
 				<string>        if entityA.name == "duck"{
+            let array = ["Floor1", "Floor2", "Floor3"]
             switch entityB.name{
-            case "Plane_001": duckCollisionPartner = .Floor
 </string>
 			</dict>
 			<key>title</key>

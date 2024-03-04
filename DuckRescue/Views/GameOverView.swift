@@ -10,6 +10,8 @@ import SwiftUI
 struct GameOverView: View {
     
     @Environment(AppState.self) private var appState
+    @Environment(\.openImmersiveSpace) private var openImmersiveSpace
+    @Environment(\.dismissWindow) private var dismissWindow
     
     var body: some View {
         
@@ -27,6 +29,15 @@ struct GameOverView: View {
             }
             .padding(.bottom, 40)
             .buttonStyle(.plain)
+        }
+        .onChange(of: appState.phase) { oldValue, newValue in
+            if newValue == .waitingToStart{
+                Task{
+                    await openImmersiveSpace(id: "ImmersiveSpace")
+                    dismissWindow()
+                    appState.windowCount = 0
+                }
+            }
         }
     }
 }

@@ -24,18 +24,19 @@ extension AppState{
     func setDuckCollisonPartner(_ entityA: Entity, _ entityB: Entity){
         
         if entityA.name == "duck"{
+            let array = ["Floor1", "Floor2", "Floor3"]
             switch entityB.name{
-            case "Plane_001": duckCollisionPartner = .Floor
+            case "Plane_001", "Floor1", "Floor2", "Floor3", "Floor4", "Floor5", "Floor6", "Floor7", "Floor8", "Floor9", "Floor10": duckCollisionPartner = .Floor
             case "Ceiling": duckCollisionPartner = .Ceiling
             case "Geysir": duckCollisionPartner = .Geysir
             case "Rat": duckCollisionPartner = .Rat
             case "Start": duckCollisionPartner = .Start
-            case "End": duckCollisionPartner = .End
+            case "earth_realistc_lod0": duckCollisionPartner = .End
             default: duckCollisionPartner = .Nothing
             }
             
             self.phase.transition(to: .hitSomething)
-            
+            print(entityB.name.contains("Floor"))
         }else if entityB.name == "duck"{
             switch entityA.name{
             case "Floor": duckCollisionPartner = .Floor
@@ -43,7 +44,7 @@ extension AppState{
             case "Geysir": duckCollisionPartner = .Geysir
             case "Rat": duckCollisionPartner = .Rat
             case "Start": duckCollisionPartner = .Start
-            case "End": duckCollisionPartner = .End
+            case "earth_realistc_lod0": duckCollisionPartner = .End
             default: duckCollisionPartner = .Nothing
             }
             
@@ -56,10 +57,9 @@ extension AppState{
     
     func checkIfCollisionIsWorking(){
         switch duckCollisionPartner{
-        case .Floor: print("Duck hit the Floor")
-        case .Ceiling: print("Duck hit the Ceiling")
-        case .End: print("Duck finished Level")
-        default: print("Hit Nothing Yet")
+        case .Floor, .Ceiling, .Geysir, .Rat: gameOver()
+        case .End: goToNextLevel()
+        default: return
         }
     }
 
