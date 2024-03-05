@@ -7,7 +7,8 @@
     "Corner2.usda",
     "Corner3.usda",
     "Corner4.usda",
-    "EndPieceScene.usda"
+    "EndPieceScene.usda",
+    "enemy.usda"
   ],
   "recentIdentifiers" : {
     "2C99BF58-1D1A-41C9-AF75-88E1FECEF878" : [
@@ -698,6 +699,52 @@
           0,
           22.079695,
           33.090282,
+          1
+        ]
+      }
+    ],
+    "593C726E-1E26-4BE0-ACEC-2E94F27516FD" : [
+      {
+        "date" : 731338164.110668,
+        "title" : "Untitled",
+        "transform" : [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0.8660253,
+          -0.5000002,
+          0,
+          0,
+          0.5000002,
+          0.8660253,
+          0,
+          0,
+          0.3996179,
+          0.6921585,
+          1
+        ]
+      },
+      {
+        "date" : 731338105.144462,
+        "title" : "Untitled",
+        "transform" : [
+          1,
+          0,
+          -0,
+          0,
+          -0,
+          0.8660253,
+          -0.5000002,
+          0,
+          0,
+          0.5000002,
+          0.8660253,
+          0,
+          0,
+          0.46641654,
+          0.80785716,
           1
         ]
       }
@@ -1465,5 +1512,5 @@
       }
     ]
   },
-  "selectedSceneRelativePath" : "duckEntity.usda"
+  "selectedSceneRelativePath" : "enemy.usda"
 }

@@ -29,7 +29,7 @@ extension AppState{
             case "Plane_001", "Floor1", "Floor2", "Floor3", "Floor4", "Floor5", "Floor6", "Floor7", "Floor8", "Floor9", "Floor10": duckCollisionPartner = .Floor
             case "Ceiling": duckCollisionPartner = .Ceiling
             case "Geysir": duckCollisionPartner = .Geysir
-            case "Rat": duckCollisionPartner = .Rat
+            case "Sphere": duckCollisionPartner = .Rat
             case "Start": duckCollisionPartner = .Start
             case "earth_realistc_lod0": duckCollisionPartner = .End
             default: duckCollisionPartner = .Nothing
@@ -42,13 +42,11 @@ extension AppState{
             case "Floor": duckCollisionPartner = .Floor
             case "Ceiling": duckCollisionPartner = .Ceiling
             case "Geysir": duckCollisionPartner = .Geysir
-            case "Rat": duckCollisionPartner = .Rat
+            case "Sphere": duckCollisionPartner = .Rat
             case "Start": duckCollisionPartner = .Start
             case "earth_realistc_lod0": duckCollisionPartner = .End
             default: duckCollisionPartner = .Nothing
             }
-            
-            self.phase.transition(to: .hitSomething)
             
         }
         

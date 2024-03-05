@@ -112,7 +112,7 @@
 					<key>StartingLineNumber</key>
 					<string>53</string>
 					<key>Timestamp</key>
-					<string>731333666.965981</string>
+					<string>731338340.855716</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -183,8 +183,8 @@
 </string>
 				<key>trailing</key>
 				<string>        if entityA.name == "duck"{
+            let array = ["Floor1", "Floor2", "Floor3"]
             switch entityB.name{
-            case "Plane_001": duckCollisionPartner = .Floor
 </string>
 			</dict>
 			<key>title</key>

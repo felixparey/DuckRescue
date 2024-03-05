@@ -34,8 +34,8 @@ struct ImmersiveView: View {
                     appState.setDuckCollisonPartner(event.entityA, event.entityB)
                     appState.checkIfCollisionIsWorking()
                     print(event.entityB.name)
+                    print("PHASE: \(appState.phase)")
                     //TODO: TEmporary changing app Phase here, just for testing
-                    appState.phase.transition(to: .hitSomething)
                 }
             }
         } update: { updateContent, attachments in
