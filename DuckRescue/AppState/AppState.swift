@@ -87,7 +87,7 @@ public class AppState{
         initEnemy()
         //  initGasParticles()
         
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { timer in 
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { timer in
             ImmersiveView.isGestureLock = false
         }
     }

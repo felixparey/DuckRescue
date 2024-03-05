@@ -32,7 +32,7 @@ struct ImmersiveView: View {
             buildAttachments(attachments)
             
             duckSubscription = content.subscribe(to: CollisionEvents.Began.self, on: nil){ event in
-                if let duck = appState.duck{
+                if let duck = appState.duck, !ImmersiveView.isGestureLock {
                     appState.setDuckCollisonPartner(event.entityA, event.entityB)
                     appState.checkIfCollisionIsWorking()
                     print(event.entityB.name)

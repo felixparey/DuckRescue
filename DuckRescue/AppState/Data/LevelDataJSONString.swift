@@ -69,7 +69,7 @@ let LevelDataJSONString = """
         { "name": "Corner3", "rotation": 0, "order": 12 },
         { "name": "Straight", "rotation": 0, "order": 13 },
         { "name": "Straight", "rotation": 0, "order": 14 },
-        { "name": "Straight", "rotation": 0, "order": 15 }
+        { "name": "EndPieceScene", "rotation": 0, "order": 15 }
     ],
     [
         { "name": "Straight", "rotation": 0, "order": 1 },
@@ -100,7 +100,7 @@ let LevelDataJSONString = """
         { "name": "Corner3", "rotation": 0, "order": 13 },
         { "name": "Straight", "rotation": 0, "order": 14 },
         { "name": "Straight", "rotation": 0, "order": 15 },
-        { "name": "Straight", "rotation": 0, "order": 16 }
+        { "name": "EndPieceScene", "rotation": 0, "order": 16 }
     ]
 ]
 """

@@ -60,7 +60,8 @@ extension AppState{
     func checkIfCollisionIsWorking(){
         switch duckCollisionPartner{
         case .Floor, .Ceiling, .Geysir, .Rat: gameOver()
-        case .End: goToNextLevel()
+        case .End: 
+            goToNextLevel()
         default: return
         }
     }
