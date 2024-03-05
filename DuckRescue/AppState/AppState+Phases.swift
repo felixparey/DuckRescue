@@ -28,7 +28,7 @@ extension AppState{
     public func goToNextLevel(){
         phase.transition(to: .levelBeaten)
         currentLevelIndex += 1
-        duck?.components.removeAll()
+//        duck?.components.removeAll()
         reset()
         print("Current Giovanni\(currentLevelIndex)")
         phase.transition(to: .waitingToStart)
