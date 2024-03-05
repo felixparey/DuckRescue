@@ -3,4 +3,164 @@
    uuid = "59F994FF-DCDF-4009-A193-95FA290C4582"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C371F77C-26F0-4CA4-B5BB-2037D514B349"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DuckRescue/AppState/AppState.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "buildLevel()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "050D8262-CBB0-4008-8503-0A3AC86B94FE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DuckRescue/AppState/AppState+CollisionLogic.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "setDuckCollisonPartner(_:_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7C16E51D-59EE-46B5-BC1B-77C2400B9FF5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DuckRescue/AppState/AppState+CollisionLogic.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "checkIfCollisionIsWorking()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1EE0A676-DB35-47CB-8036-86D3DCC1EB2E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DuckRescue/AppState/AppState+CollisionLogic.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "checkIfCollisionIsWorking()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "51856345-F052-41A3-A8DD-3660A95F5C36"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DuckRescue/ImmersiveSpaces/ImmersiveView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "51856345-F052-41A3-A8DD-3660A95F5C36 - e402d97ca053c193"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #6 (_RealityKit_SwiftUI.EntityTargetValue&lt;SwiftUI.DragGesture.Value&gt;) -&gt; () in DuckRescue.ImmersiveView.body.getter : some"
+                  moduleName = "DuckRescue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrchubutkin/Documents/GitHub/DuckRescue/DuckRescue/ImmersiveSpaces/ImmersiveView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "812">
+               </Location>
+               <Location
+                  uuid = "51856345-F052-41A3-A8DD-3660A95F5C36 - e402d97ca053c193"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #6 (_RealityKit_SwiftUI.EntityTargetValue&lt;SwiftUI.DragGesture.Value&gt;) -&gt; () in DuckRescue.ImmersiveView.body.getter : some"
+                  moduleName = "DuckRescue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrchubutkin/Documents/GitHub/DuckRescue/DuckRescue/ImmersiveSpaces/ImmersiveView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "1028">
+               </Location>
+               <Location
+                  uuid = "51856345-F052-41A3-A8DD-3660A95F5C36 - e402d97ca053c193"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #6 (_RealityKit_SwiftUI.EntityTargetValue&lt;SwiftUI.DragGesture.Value&gt;) -&gt; () in DuckRescue.ImmersiveView.body.getter : some"
+                  moduleName = "DuckRescue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrchubutkin/Documents/GitHub/DuckRescue/DuckRescue/ImmersiveSpaces/ImmersiveView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "992">
+               </Location>
+               <Location
+                  uuid = "51856345-F052-41A3-A8DD-3660A95F5C36 - e402d97ca053c193"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #6 (_RealityKit_SwiftUI.EntityTargetValue&lt;SwiftUI.DragGesture.Value&gt;) -&gt; () in DuckRescue.ImmersiveView.body.getter : some"
+                  moduleName = "DuckRescue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrchubutkin/Documents/GitHub/DuckRescue/DuckRescue/ImmersiveSpaces/ImmersiveView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "1208">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CE793797-C480-4265-AB70-3D6D1F8EE4C0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DuckRescue/ImmersiveSpaces/ImmersiveView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
