@@ -20,6 +20,8 @@ struct ImmersiveView: View {
     let timer = Timer.publish(every: 6, on: .current, in: .common).autoconnect()
     @State private var counter = 0
     
+    static var isGestureLock = false
+    
     var body: some View {
         RealityView { content, attachments in
             content.add(rootEntity)
@@ -80,6 +82,10 @@ struct ImmersiveView: View {
         .gesture(DragGesture()
             .targetedToEntity(appState.duck ?? Entity())
             .onChanged { value in
+                if ImmersiveView.isGestureLock {
+                    return
+                }
+                
                 appState.phase.transition(to: .levelRunning)
                 if appState.phase == .levelRunning{
                     if let duck = appState.duck, let parent = appState.duck?.parent{

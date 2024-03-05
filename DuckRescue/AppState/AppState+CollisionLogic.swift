@@ -31,7 +31,9 @@ extension AppState{
             case "Geysir": duckCollisionPartner = .Geysir
             case "Sphere": duckCollisionPartner = .Rat
             case "Start": duckCollisionPartner = .Start
-            case "earth_realistc_lod0": duckCollisionPartner = .End
+            case "earth_realistc_lod0": 
+                duckCollisionPartner = .End
+                ImmersiveView.isGestureLock = true
             default: duckCollisionPartner = .Nothing
             }
             
@@ -44,7 +46,9 @@ extension AppState{
             case "Geysir": duckCollisionPartner = .Geysir
             case "Sphere": duckCollisionPartner = .Rat
             case "Start": duckCollisionPartner = .Start
-            case "earth_realistc_lod0": duckCollisionPartner = .End
+            case "earth_realistc_lod0": 
+                duckCollisionPartner = .End
+                ImmersiveView.isGestureLock = true
             default: duckCollisionPartner = .Nothing
             }
             
