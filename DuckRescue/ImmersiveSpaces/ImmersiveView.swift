@@ -14,6 +14,7 @@ var enemyCurrentTubeSegmentIndex: Int = 0
 struct ImmersiveView: View {
     @Environment(AppState.self) private var appState
     @Environment(\.openWindow) private var openWindow
+    @Environment(\.dismissImmersiveSpace) private var dimissImmersiveSpace
     @State private var duckSubscription: EventSubscription?
     
     let timer = Timer.publish(every: 6, on: .current, in: .common).autoconnect()
@@ -32,8 +33,9 @@ struct ImmersiveView: View {
                 if let duck = appState.duck{
                     appState.setDuckCollisonPartner(event.entityA, event.entityB)
                     appState.checkIfCollisionIsWorking()
+                    print(event.entityB.name)
                     //TODO: TEmporary changing app Phase here, just for testing
-                    appState.phase = .hitSomething
+                    appState.phase.transition(to: .hitSomething)
                 }
             }
         } update: { updateContent, attachments in
@@ -48,10 +50,17 @@ struct ImmersiveView: View {
         }
         .onChange(of: appState.phase) { oldValue, newValue in
             if oldValue == .levelRunning && newValue == .hitSomething{
-                openWindow(id: "GameOver")
-                
-            }else if newValue == .levelBeaten{
-                appState.currentLevelIndex += 1
+                switch appState.duckCollisionPartner{
+                case .Floor, .Ceiling, .Geysir, .Rat: 
+                    if appState.windowCount == 0{
+                        openWindow(id: "GameOver")
+                        appState.windowCount = 1
+                    }
+                    Task{
+                       await dimissImmersiveSpace()
+                    }
+                default: return
+                }
             }else if newValue == .levelRunning{
                 //TODO: Make the rat run and the geysirs do their thing
             }
@@ -71,15 +80,16 @@ struct ImmersiveView: View {
         .gesture(DragGesture()
             .targetedToEntity(appState.duck ?? Entity())
             .onChanged { value in
-                if let duck = appState.duck, let parent = appState.duck?.parent {
-                    duck.position.x = value.convert(value.location3D, from: .local, to: parent).x
-                    duck.position.y = value.convert(value.location3D, from: .local, to: parent).y
-                
-                    if duck.position.x >= DuckDistanceXToStartEnemyMovement && !appState.isEnemyMoving {
-                        appState.runEnemy()
+                appState.phase.transition(to: .levelRunning)
+                if appState.phase == .levelRunning{
+                    if let duck = appState.duck, let parent = appState.duck?.parent{
+                        duck.position.x = value.convert(value.location3D, from: .local, to: parent).x
+                        duck.position.y = value.convert(value.location3D, from: .local, to: parent).y
+
+                        if duck.position.x >= DuckDistanceXToStartEnemyMovement && !appState.isEnemyMoving {
+                            appState.runEnemy()
+                        }
                     }
-                    
-                    appState.phase.transition(to: .levelRunning)
                 }
             })
     }

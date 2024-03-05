@@ -47,6 +47,7 @@ struct ContentView: View {
                 Task{
                     await openImmersiveSpace(id: "ImmersiveSpace")
                     dismissWindow()
+                    appState.windowCount = 0
                 }
             }
         }

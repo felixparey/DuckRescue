@@ -19,6 +19,7 @@ public class AppState{
     var readyToStart = false
     var duckCollisionPartner: HitTarget?
     var phase: AppPhase = .appLaunched
+    var windowCount = 1
     
     var levels: [[Tube]] = []
     
@@ -40,7 +41,8 @@ public class AppState{
     init() {
         Task { @MainActor in
             await withTaskGroup(of: Void.self) { group in
-                ["Straight", "Corner1", "Corner2", "Corner3", "Corner4"].forEach { name in
+                ["StraightScene", "Corner1", "Corner2", "Corner3", "Corner4", "EndPieceScene"].forEach { name in
+
                     group.addTask {
                         if let model = try? await Entity(named: name, in: realityKitContentBundle) {
                             tubesModels[name] = model

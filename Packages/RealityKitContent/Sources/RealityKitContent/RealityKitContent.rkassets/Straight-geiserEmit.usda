@@ -1,0 +1,33 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "Reality Composer Pro Version 1.0 (409.60.6)"
+    }
+    defaultPrim = ""
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def "Straight" (
+    active = true
+    customData = {
+        float3 rotationEulerHint = (0, 1.5707963, 0)
+    }
+    references = @Straight.usdz@
+)
+{
+    quatf xformOp:orient = (0.70710677, 0, 0.70710677, 0)
+    float3 xformOp:scale = (1, 1, 1)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+    def "geiser_particles" (
+        active = true
+        prepend references = @geiser-particles.usda@
+    )
+    {
+        quatf xformOp:orient = (0.70710677, 0, -0.7071067, 0)
+        float3 xformOp:scale = (0.99999994, 0.99999994, 0.99999994)
+        float3 xformOp:translate = (0, -0.82, 0)
+    }
+}
+

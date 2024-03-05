@@ -1,0 +1,86 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "Reality Composer Pro Version 1.0 (409.60.6)"
+    }
+    defaultPrim = ""
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def "Earth" (
+    active = true
+    prepend references = @Earth.usdz@
+)
+{
+    quatf xformOp:orient = (1, 0, 0, 0)
+    float3 xformOp:scale = (1, 1, 1)
+    float3 xformOp:translate = (0, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+    over "geom"
+    {
+        over "realistic"
+        {
+            over "geo"
+            {
+                over "lod0"
+                {
+                    over "earth_realistc_lod0" (
+                        customData = {
+                            float3 rotationEulerHint = (0, 0, -6.276354)
+                        }
+                    )
+                    {
+                        quatf xformOp:orient = (-0.99999416, 0, 0, -0.0034154905)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        def RealityKitComponent "RigidBody"
+                        {
+                            bool gravityEnabled = 0
+                            uniform token info:id = "RealityKit.RigidBody"
+                            bool lockRotationX = 1
+                            bool lockRotationY = 1
+                            bool lockRotationZ = 1
+                            bool lockTranslationX = 1
+                            bool lockTranslationY = 1
+                            bool lockTranslationZ = 1
+
+                            def RealityKitStruct "massFrame"
+                            {
+                                def RealityKitStruct "m_pose"
+                                {
+                                }
+                            }
+
+                            def RealityKitStruct "material"
+                            {
+                            }
+                        }
+
+                        def RealityKitComponent "Collider"
+                        {
+                            uint group = 1
+                            uniform token info:id = "RealityKit.Collider"
+                            uint mask = 4294967295
+                            token type = "Trigger"
+
+                            def RealityKitStruct "Shape"
+                            {
+                                float3 extent = (0.20000002, 0.19999999, 0.19999999)
+                                float radius = 0.10000001
+                                token shapeType = "Box"
+
+                                def RealityKitStruct "pose"
+                                {
+                                    float3 position = (0.00013357773, -2.2351742e-8, 1.8626451e-8)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
