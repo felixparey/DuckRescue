@@ -61,10 +61,11 @@ public class AppState{
                 }
                 
                 group.addTask {
-                    if let enemy = try? await Entity(named: "rat", in: realityKitContentBundle) {
+                    if let enemy = try? await Entity(named: "enemy", in: realityKitContentBundle) {
                         let wrapper = await Entity()
                         await wrapper.addChild(enemy)
                         await enemy.setOrientation(simd_quatf(.init(angle: .degrees(-90), axis: .y)), relativeTo: enemy.parent)
+                        await enemy.setScale([0.5, 0.5, 0.5], relativeTo: enemy)
                         self.enemy = wrapper
                     }
                 }
