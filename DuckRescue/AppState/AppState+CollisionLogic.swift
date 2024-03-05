@@ -37,8 +37,6 @@ extension AppState{
             default: duckCollisionPartner = .Nothing
             }
             
-            self.phase.transition(to: .hitSomething)
-            print(entityB.name.contains("Floor"))
         }else if entityB.name == "duck"{
             switch entityA.name{
             case "Floor": duckCollisionPartner = .Floor
