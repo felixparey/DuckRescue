@@ -13,6 +13,7 @@ def "duck" (
     references = @duck.usdz@
 )
 {
+    reorder nameChildren = ["Materials", "Rubber_Duck_01_1", "InputTarget", "Collider", "RigidBody", "PaperaOrigin2"]
     quatf xformOp:orient = (1, 0, 0, 0)
     float3 xformOp:scale = (0.01, 0.01, 0.01)
     float3 xformOp:translate = (0, 0, 0)
@@ -33,7 +34,7 @@ def "duck" (
         def RealityKitStruct "Shape"
         {
             float3 extent = (7.2194004, 8.646285, 10.040558)
-            float radius = 5
+            float radius = 3.6
             token shapeType = "Sphere"
 
             def RealityKitStruct "pose"
@@ -65,6 +66,96 @@ def "duck" (
         def RealityKitStruct "material"
         {
         }
+    }
+
+    over "Materials"
+    {
+        over "Rubber_Duck_01_1_WF"
+        {
+            token outputs:mtlx:surface
+            token outputs:realitykit:vertex
+        }
+    }
+
+    def "PaperaOrigin2" (
+        active = true
+        references = @PaperaOrigin2.usdz@
+    )
+    {
+        float3 xformOp:scale = (2.4, 2.4, 2.4)
+        float3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Geom"
+        {
+            over "Sphere_007"
+            {
+            }
+
+            over "Cylinder"
+            {
+                over "Cylinder_001"
+                {
+                }
+
+                over "Sphere_001"
+                {
+                    over "Sphere_003"
+                    {
+                    }
+
+                    over "Sphere_004"
+                    {
+                    }
+
+                    over "Sphere_005"
+                    {
+                    }
+
+                    over "Sphere_008"
+                    {
+                    }
+
+                    over "Sphere_009"
+                    {
+                    }
+
+                    over "Sphere_010"
+                    {
+                    }
+
+                    over "Sphere_011"
+                    {
+                    }
+
+                    over "Sphere_015"
+                    {
+                    }
+
+                    over "Sphere_016"
+                    {
+                    }
+
+                    over "Sphere_017"
+                    {
+                    }
+                }
+
+                over "Sphere_002"
+                {
+                }
+            }
+
+            over "Sphere_014"
+            {
+            }
+        }
+    }
+
+    over "Rubber_Duck_01_1" (
+        active = false
+    )
+    {
     }
 }
 

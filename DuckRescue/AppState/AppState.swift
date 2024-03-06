@@ -157,6 +157,13 @@ public class AppState{
                     self.checkIfCollisionIsWorking()
                 }
             }
+            
+            for animation in duck.availableAnimations {
+                print("Found animation: \(String(describing: animation.name))")
+                let animation = animation.repeat(count: Int.max)
+                let controller = duck.playAnimation(animation, transitionDuration: 0.0, startsPaused: false)
+                controller.resume()
+            }
         }
     }
     
