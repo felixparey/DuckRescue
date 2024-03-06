@@ -55,7 +55,7 @@ def "Straight" (
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (2, 0.5, 2)
+                    float3 extent = (2, 0, 2)
                     token shapeType = "Box"
 
                     def RealityKitStruct "pose"
