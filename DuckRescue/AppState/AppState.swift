@@ -143,10 +143,10 @@ public class AppState{
             )
             
             self.duck = duck
-            startPiece?.addChild(self.duck!)
+            levelContainer.addChild(self.duck!)
             self.duck?.components.set(HoverEffectComponent())
             self.duck?.setScale([0.8,0.8,0.8], relativeTo: levelContainer)
-            self.duck?.setPosition([0.0, 2, 0.0], relativeTo: startPiece)
+            self.duck?.setPosition(startPiece!.position + [0.0, 0.05, 0.0], relativeTo: levelContainer)
         }
     }
     
