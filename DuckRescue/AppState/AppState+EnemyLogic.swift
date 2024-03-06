@@ -9,7 +9,7 @@ import Foundation
 import RealityKit
 import RealityKitContent
 
-let DuckDistanceXToStartEnemyMovement: Float = 32
+let DuckDistanceXToStartEnemyMovement: Float = 0.32
 
 extension AppState {
     func initEnemy() {

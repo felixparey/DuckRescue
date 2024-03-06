@@ -28,7 +28,7 @@ struct ImmersiveView: View {
             content.add(rootEntity)
             rootEntity.position = .init(x: 0, y: 1.3, z: -1.7)
             
-            Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { timer in
+            Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { timer in
                 appState.reset()
             }
             
@@ -85,12 +85,6 @@ struct ImmersiveView: View {
                 if appState.phase == .levelRunning{
                     if let duck = appState.duck, let parent = appState.duck?.parent {
                         handleDrag(value)
-         
-                        print("\(duck.position.x) \(duck.position.y) \(duck.position.z)")
-                        
-                        if duck.position.z >= DuckDistanceXToStartEnemyMovement && !appState.isEnemyMoving {
-                            appState.runEnemy()
-                        }
                     }
                 }
             }
@@ -123,6 +117,10 @@ struct ImmersiveView: View {
         
         let position = dragStart + offset
         tappedEntity.position = [tappedEntity.position.x, position.y, position.z]
+    
+        if tappedEntity.position.z >= DuckDistanceXToStartEnemyMovement && !appState.isEnemyMoving {
+           appState.runEnemy()
+        }
     }
     
     func duckMoving(duck: Entity) {
