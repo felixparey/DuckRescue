@@ -28,15 +28,14 @@ struct ImmersiveView: View {
             content.add(rootEntity)
             rootEntity.position = .init(x: 0, y: 1.3, z: -1.7)
             
+            buildAttachments(attachments)
+            dragStart = nil
+            
             Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { timer in
                 appState.reset()
             }
-            
-            buildAttachments(attachments)
-            
-            dragStart = nil
         } update: { updateContent, attachments in
-            
+            // TODO:
         } attachments: {
             Attachment(id: "a1") {
                 ChooseLevelView()
@@ -46,9 +45,9 @@ struct ImmersiveView: View {
             }
         }
         .onChange(of: appState.phase) { oldValue, newValue in
-            if oldValue == .levelRunning && newValue == .hitSomething{
-                switch appState.duckCollisionPartner{
-                case .Floor, .Ceiling, .Geysir, .Rat: 
+            if oldValue == .levelRunning && newValue == .hitSomething {
+                switch appState.duckCollisionPartner {
+                case .Floor, .Ceiling, .Geysir, .Rat:
                     if appState.windowCount == 0{
                         openWindow(id: "GameOver")
                         appState.windowCount = 1
@@ -56,20 +55,18 @@ struct ImmersiveView: View {
                     Task{
                        await dimissImmersiveSpace()
                     }
-                default: return
+                default: 
+                    return
                 }
-            }else if newValue == .levelRunning{
-                //TODO: Make the rat run and the geysirs do their thing
+            } else if newValue == .levelRunning{
+                // TODO:
             }
             
         }
         .onReceive(timer) { time in
             if counter == 5 {
                 timer.upstream.connect().cancel()
-                //print("timer is canceled")
-                
             } else {
-                //print("moving")
                 moveGasParticles()
                 counter += 1
             }
@@ -82,10 +79,8 @@ struct ImmersiveView: View {
                 }
                 
                 appState.phase.transition(to: .levelRunning)
-                if appState.phase == .levelRunning{
-                    if let duck = appState.duck, let parent = appState.duck?.parent {
-                        handleDrag(value)
-                    }
+                if appState.phase == .levelRunning {
+                    handleDrag(value)
                 }
             }
             .onEnded { value in
@@ -121,41 +116,6 @@ struct ImmersiveView: View {
         if tappedEntity.position.z >= DuckDistanceXToStartEnemyMovement && !appState.isEnemyMoving {
            appState.runEnemy()
         }
-    }
-    
-    func duckMoving(duck: Entity) {
-        
-        // duck.move(to: .init(translation: [2.0, 0.0, 0.0]), relativeTo: levelContainer, duration: 1.0)
-        // duck.move(to: Transform(translation: [1.0, 0.0, 0.0]), relativeTo: duck.parent, duration: 5.0, timingFunction: .linear)
-        
-        
-        
-        /*
-         duck.stopAllAnimations()
-         
-         let start = Point3D(
-         x: duck.position.x,
-         y: duck.position.y,
-         z: duck.position.z
-         )
-         let end = Point3D(
-         x: start.x + 2.0,
-         y: start.y,
-         z: start.z
-         )
-         let speed = 10.0
-         let line = FromToByAnimation<Transform>(
-         name: "line",
-         from: .init(translation: simd_float3(start.vector)),
-         to: .init(translation: simd_float3(end.vector)),
-         duration: speed,
-         bindTarget: .transform
-         )
-         let animation = try! AnimationResource
-         .generate(with: line)
-         duck.playAnimation(animation, transitionDuration: 1.0, startsPaused: false)
-         */
-        
     }
     
     func moveGasParticles() {

@@ -9,7 +9,6 @@ import Foundation
 import RealityKit
 
 extension AppState{
-    
     public func startGame(){
         phase.transition(to: .waitingToStart)
     }
@@ -19,18 +18,13 @@ extension AppState{
     }
     
     public func gameOver(){
-        //TODO: handle logic of disabling everything besides Game Over Window
         phase.transition(to: .hitSomething)
-        
     }
     
     public func goToNextLevel(){
         phase.transition(to: .levelBeaten)
         currentLevelIndex += 1
-//        duck?.components.removeAll()
         reset()
-        print("Current Giovanni\(currentLevelIndex)")
         phase.transition(to: .waitingToStart)
     }
-    
 }
