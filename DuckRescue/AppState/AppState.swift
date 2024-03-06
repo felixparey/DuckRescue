@@ -18,6 +18,9 @@ public class AppState{
     var duck: Entity?
     var readyToStart = false
     var duckCollisionPartner: HitTarget?
+    
+    var duckSubscription: Cancellable?
+    
     var phase: AppPhase = .appLaunched
     var windowCount = 1
     
@@ -147,6 +150,13 @@ public class AppState{
             self.duck?.components.set(HoverEffectComponent())
             self.duck?.setScale([0.8,0.8,0.8], relativeTo: levelContainer)
             self.duck?.setPosition(startPiece!.position + [0.0, 0.05, 0.0], relativeTo: levelContainer)
+            
+            duckSubscription = rootEntity.scene!.subscribe(to: CollisionEvents.Began.self, on: nil) { event in
+                if !ImmersiveView.isGestureLock {
+                    self.setDuckCollisonPartner(event.entityA, event.entityB)
+                    self.checkIfCollisionIsWorking()
+                }
+            }
         }
     }
     
@@ -158,7 +168,6 @@ public class AppState{
     private func loadLevelData() async {
         if let jsonData = LevelDataJSONString.data(using: .utf8) {
             levels = JSONUtil.decode([[Tube]].self, from: jsonData)!
-            print(levels)
         }
     }
     

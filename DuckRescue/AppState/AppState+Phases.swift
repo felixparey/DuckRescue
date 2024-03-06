@@ -12,7 +12,6 @@ extension AppState{
     
     public func startGame(){
         phase.transition(to: .waitingToStart)
-        self.reset()
     }
     
     public func exitGame(){

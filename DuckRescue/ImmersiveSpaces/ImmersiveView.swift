@@ -15,7 +15,6 @@ struct ImmersiveView: View {
     @Environment(AppState.self) private var appState
     @Environment(\.openWindow) private var openWindow
     @Environment(\.dismissImmersiveSpace) private var dimissImmersiveSpace
-    @State private var duckSubscription: EventSubscription?
     
     let timer = Timer.publish(every: 6, on: .current, in: .common).autoconnect()
     @State private var counter = 0
@@ -29,20 +28,13 @@ struct ImmersiveView: View {
             content.add(rootEntity)
             rootEntity.position = .init(x: 0, y: 1.3, z: -1.7)
             
-            appState.reset()
+            Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { timer in
+                appState.reset()
+            }
             
             buildAttachments(attachments)
             
-            duckSubscription = content.subscribe(to: CollisionEvents.Began.self, on: nil){ event in
-                if let duck = appState.duck, !ImmersiveView.isGestureLock {
-                    appState.setDuckCollisonPartner(event.entityA, event.entityB)
-                    appState.checkIfCollisionIsWorking()
-                    print(event.entityB.name)
-                    print("PHASE: \(appState.phase)")
-                    //TODO: TEmporary changing app Phase here, just for testing
-                }
-            }
-        
+            dragStart = nil
         } update: { updateContent, attachments in
             
         } attachments: {
@@ -93,8 +85,10 @@ struct ImmersiveView: View {
                 if appState.phase == .levelRunning{
                     if let duck = appState.duck, let parent = appState.duck?.parent {
                         handleDrag(value)
+         
+                        print("\(duck.position.x) \(duck.position.y) \(duck.position.z)")
                         
-                        if duck.position.x >= DuckDistanceXToStartEnemyMovement && !appState.isEnemyMoving {
+                        if duck.position.z >= DuckDistanceXToStartEnemyMovement && !appState.isEnemyMoving {
                             appState.runEnemy()
                         }
                     }

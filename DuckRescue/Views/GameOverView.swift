@@ -21,7 +21,6 @@ struct GameOverView: View {
             
             Button{
                 appState.phase.transition(to: .waitingToStart)
-                appState.reset()
             } label: {
                     Text("Try Again")
                         .font(.title)
