@@ -20,6 +20,8 @@ struct ImmersiveView: View {
     let timer = Timer.publish(every: 6, on: .current, in: .common).autoconnect()
     @State private var counter = 0
     
+    @State private var dragStart: SIMD3<Float>?
+    
     static var isGestureLock = false
     
     var body: some View {
@@ -88,15 +90,18 @@ struct ImmersiveView: View {
                 
                 appState.phase.transition(to: .levelRunning)
                 if appState.phase == .levelRunning{
-                    if let duck = appState.duck, let parent = appState.duck?.parent{
-                        duck.position.x = value.convert(value.location3D, from: .local, to: parent).x
-                        duck.position.y = value.convert(value.location3D, from: .local, to: parent).y
-
+                    if let duck = appState.duck, let parent = appState.duck?.parent {
+                        handleDrag(value)
+                        
                         if duck.position.x >= DuckDistanceXToStartEnemyMovement && !appState.isEnemyMoving {
                             appState.runEnemy()
                         }
                     }
                 }
+            }
+            .onEnded { value in
+                let tappedEntity = value.entity
+                dragStart = tappedEntity.position
             })
     }
     
@@ -106,6 +111,23 @@ struct ImmersiveView: View {
             entity.setPosition([levelContainer.visualBounds(relativeTo: nil).center.x, -0.825, 0.15], relativeTo: rootEntity)
             entity.setOrientation(simd_quatf(Rotation3D(angle: .degrees(-15), axis: .x)), relativeTo: nil)
         }
+    }
+    
+    @MainActor
+    func handleDrag(_ value: EntityTargetValue<DragGesture.Value>) {
+        let tappedEntity = value.entity
+        let translation3D = value.convert(value.gestureValue.translation3D, from: .local, to: tappedEntity.parent!)
+        
+        let offset = SIMD3<Float>(x: Float(translation3D.x),
+                                  y: Float(translation3D.y),
+                                  z: Float(translation3D.z))
+        
+        guard let dragStart = dragStart else {
+            return
+        }
+        
+        let position = dragStart + offset
+        tappedEntity.position = [tappedEntity.position.x, position.y, position.z]
     }
     
     func duckMoving(duck: Entity) {
