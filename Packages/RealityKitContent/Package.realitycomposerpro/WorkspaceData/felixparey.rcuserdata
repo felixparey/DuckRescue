@@ -2,13 +2,13 @@
   "advancedEditorSelectedIdentifier" : "ProjectBrowser",
   "openSceneRelativePaths" : [
     "duckEntity.usda",
-    "StraightScene.usda",
     "Corner1.usda",
     "Corner2.usda",
     "Corner3.usda",
     "Corner4.usda",
     "EndPieceScene.usda",
-    "enemy.usda"
+    "enemy.usda",
+    "Straight.usda"
   ],
   "recentIdentifiers" : {
     "2C99BF58-1D1A-41C9-AF75-88E1FECEF878" : [
@@ -254,6 +254,72 @@
       }
     ],
     "4FABD446-4A32-4C34-8A97-0726B18F44BC" : [
+      {
+        "date" : 731429954.794469,
+        "title" : "Untitled",
+        "transform" : [
+          0.6367632,
+          -3.915198e-09,
+          -0.7710594,
+          0,
+          -0.3054227,
+          0.91820395,
+          -0.25222698,
+          0,
+          0.70798975,
+          0.39610794,
+          0.58467853,
+          0,
+          4.797621,
+          0.74982196,
+          3.4905338,
+          1
+        ]
+      },
+      {
+        "date" : 731429943.767865,
+        "title" : "Untitled",
+        "transform" : [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0.8660246,
+          -0.5000013,
+          0,
+          0,
+          0.5000013,
+          0.8660246,
+          0,
+          0.5301958,
+          1.4105115,
+          5.7783213,
+          1
+        ]
+      },
+      {
+        "date" : 731429942.5348,
+        "title" : "Untitled",
+        "transform" : [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0.8660246,
+          -0.5000013,
+          0,
+          0,
+          0.5000013,
+          0.8660246,
+          0,
+          0.643812,
+          1.1809216,
+          5.9108753,
+          1
+        ]
+      },
       {
         "date" : 731168544.566968,
         "title" : "Untitled",
@@ -1512,5 +1578,5 @@
       }
     ]
   },
-  "selectedSceneRelativePath" : "enemy.usda"
+  "selectedSceneRelativePath" : "Straight.usda"
 }
