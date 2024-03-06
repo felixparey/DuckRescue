@@ -42,6 +42,7 @@ struct ImmersiveView: View {
                     //TODO: TEmporary changing app Phase here, just for testing
                 }
             }
+        
         } update: { updateContent, attachments in
             
         } attachments: {

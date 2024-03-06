@@ -51,7 +51,7 @@ public class AppState{
                 }
                 
                 group.addTask {
-                    self.duck = try? await Entity(named: "duckEntity", in: realityKitContentBundle)
+                    duckInstance = try? await Entity(named: "duckEntity", in: realityKitContentBundle)
                 }
                 
                 group.addTask {
@@ -136,7 +136,7 @@ public class AppState{
     }
     
     private func initDuck() {
-        if let duck = duck{
+        if let duck = duckInstance?.clone(recursive: true) {
             duck.name = "Duck"
             duck.transform.rotation = simd_quatf(
                 Rotation3D(angle: .degrees(90), axis: .y)
